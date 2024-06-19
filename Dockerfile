@@ -20,6 +20,5 @@ RUN npm run build
 # Expose Port
 EXPOSE 5173
 
-# Run Project
-# CMD ["npm", "run", "preview"]
+# Run Frontend
 CMD ["npm", "run", "dev"]
