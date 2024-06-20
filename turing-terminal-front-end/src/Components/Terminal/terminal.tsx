@@ -2,6 +2,23 @@ import "./terminal.css"
 
 import React, { useState, useEffect} from 'react'
 
+
+
+function Dropdown() {
+    
+    const [open, setOpen] = useState(false);
+
+    console.log("DROPDOWN")
+
+
+    return (
+        <div className="dropdown-menu">
+            TEST
+        </div>
+    )
+}
+
+
 function Terminal() {
 
     const [time, setTime] = useState(new Date());
@@ -14,7 +31,9 @@ function Terminal() {
         return () => clearInterval(interval)
     }, [])
 
-
+    function searchBar() {
+        console.log("TEST");
+    }
 
     return (
         <div className="terminal">
@@ -22,7 +41,7 @@ function Terminal() {
 
             <div className="top-menu-row">
 
-                <div className="right-side-search-bar">
+                <div className="right-side-search-bar" onClick={Dropdown}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
                     </svg>
