@@ -1,6 +1,118 @@
 .login {
-    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+}
+
+.large-space2 {
+    width: 100%;
+    min-height: 7rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-row {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+label {
+    margin-right: 10px;
+    width: 80px; 
+}
+
+.login-button2 {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-wrap:nowrap;
+    border-radius: 10px;
+    background-color: #03A05E; 
+    width: 120px;
+    height: 45px;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    cursor: pointer;
+}
+
+h3 {
+    width: 95%; 
+    text-align: center; 
+    border-bottom: 1px solid white; 
+    line-height: 0.1em;
+    margin: 10px 0 20px; 
+} 
+
+h3 span { 
+    background-color: #141414;
+    padding:0 5px; 
+}
+
+.login-container {    
+    column-gap: 20px;
+    background: #141414;
     height: 500px;
-    width: 200px;
-    z-index: 1000;
+    width: 500px;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 2px;
+    border-radius: 15px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.register-account,
+.register-account p {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.forgot-password-reset,
+.forgot-password-reset p {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.register-account a,
+.forgot-password-reset a {
+    color: #1668DC;
+    cursor: pointer;
+}
+
+.login-button1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-wrap:nowrap;
+    border-radius: 10px;
+    background-color: #03A05E;
+    width: 120px;
+    height: 45px;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    cursor: pointer;
 }

@@ -1,12 +1,24 @@
 import './navbar.css'
-import { BrowserRouter, Routes, Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
     return(
-        <div className='navbar'>
-            <Link to={"/home"}>Home</Link>
-            <Link to={"/terminal"}>Terminal</Link>
-            <Link to={"/login"}>Login</Link>   
+        <div className='navbar'>    
+            <div className='left-side-links'>
+            <a>Turing Terminal</a>
+                <Link to={"/home"} className='home-button'>Home</Link>
+                <Link to={"/pricing"} className='pricing-button'>Pricing</Link>
+                <Link to={"/roadmap"} className='roadmap-button'>Roadmap</Link>
+            </div>
+            <div className='right-side-links'>    
+                <div className='login-button'>
+                    <Link to={"/login"} className='login-text'>Log in</Link>   
+                </div>
+                
+                <div className='terminal-button'>
+                    <Link to={"/terminal"} className='terminal-text'>Launch Terminal</Link>   
+                </div>
+            </div>
         </div>   
     )
 }

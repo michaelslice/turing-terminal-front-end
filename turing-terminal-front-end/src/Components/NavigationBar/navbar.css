@@ -1,6 +1,61 @@
 
 .navbar {
+    background-color: #141414;
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+    min-height: 5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     display: flex;
-    background-color: purple;
-    
+    justify-content: space-between;
+}
+
+.login-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-wrap:nowrap;
+    border-radius: 10px;
+    height: 45px;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.login-button:hover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-wrap:nowrap;
+    border-radius: 10px;
+    background-color: white;
+    height: 45px;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.left-side-links,
+.right-side-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.terminal-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-wrap:nowrap;
+    border-radius: 10px;
+    background-color: #3E8B66;
+    width: 120px;
+    height: 45px;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.home-button:hover,
+.pricing-button:hover,
+.roadmap-button:hover,
+.terminal-button:hover,
+.login-text:hover {
+    color: rgb(61, 55, 55);
 }

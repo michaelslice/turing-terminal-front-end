@@ -3,7 +3,7 @@ import "./terminal.css"
 function Terminal() {
 
     return (
-        <div className="login"></div>
+        <div className="terminal"></div>
     )
 }
 
