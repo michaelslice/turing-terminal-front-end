@@ -6,10 +6,14 @@ import './home.css'
 
 import '/src/Components/NavigationBar/Navbar'
 
+import Navbar from './Components/NavigationBar/Navbar';
+
 function Home() {
 
   return (
     <>
+     
+     <Navbar />
       <div className='large-space'></div>
         <div className='intro-text'>
           <h1>Bringing Finance to Everyone</h1>

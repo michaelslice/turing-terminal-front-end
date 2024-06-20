@@ -1,11 +1,15 @@
 
 import "./roadmap.css"
+import Navbar from "../NavigationBar/Navbar"
 
 function Roadmap() {
     return(
-        <div className="roadmap">
+        <>
+            <Navbar />
+            <div className="roadmap">
 
-        </div>
+            </div>
+        </>
     )
 }
 

@@ -1,0 +1,229 @@
+.terminal {
+    display: flex;
+}
+
+.top-menu-row {
+    display: flex;
+    justify-content: space-between;
+    background-color: #141414;
+    top: 0;
+    width: 100%;
+
+    min-height: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    
+}   
+
+.middle-settings-options span {
+    display: flex;
+    flex-direction: row;
+    text-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+} 
+
+.middle-settings-options button {
+    background: none;
+    border: none;
+    outline: none;
+    background-color: #141414;
+}
+
+.middle-settings-options button:hover {
+    background-color: rgb(63, 62, 62);
+    transition: .1s;
+    border-radius: 5px;
+    height: 35px;
+    border: none;
+}
+
+
+
+.right-side-search-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+ 
+}
+
+.searchbar {
+
+}
+
+.middle-settings-options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.pin {
+
+}
+
+.left-side-terminal-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px
+}
+
+.help-button span {
+    display: flex;
+    flex-direction: row;
+    text-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+} 
+
+.help-button button {
+    background: none;
+    border: none;
+    outline: none;
+    background-color: #141414;
+}
+
+.help-button button:hover {
+    background-color: rgb(63, 62, 62);
+    transition: .1s;
+    border-radius: 5px;
+    height: 35px;
+    border: none;
+}
+
+
+.time-options button {
+    background: none;
+    border: none;
+    outline: none;
+    background-color: #141414;
+    display: flex;
+    flex-direction: row;
+    text-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    gap: 5px;
+    cursor: pointer;
+} 
+
+.time-options button:hover {
+    background-color: rgb(63, 62, 62);
+    transition: .1s;
+    border-radius: 5px;
+    height: 35px;
+    border: none;
+}
+
+.circle {
+    display: flex;
+    flex-direction: row;
+    text-wrap: nowrap;
+    color: grey;
+    align-items: center;
+    justify-content: center;
+    font-size: 5px;
+}
+
+
+.register-button {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-wrap:nowrap;
+    border-radius: 5px;
+    background-color: #3E8B66;
+    width:80px;
+    height: 35px;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    cursor: pointer;
+    border: none;
+}
+
+.register-button span,
+.login-button-terminal span {
+    font-size: 15px;
+}
+
+.login-button-terminal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-wrap:nowrap;
+    border-radius: 5px;
+    background-color: rgb(94, 91, 91); 
+    border-color: rgb(94, 91, 91); ;
+    width: 60px;
+    height: 35px;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    cursor: pointer;
+    border: none;
+}
+
+.login-button-terminal:hover {
+    border-color: #3E8B66; 
+    color: #3E8B66; 
+}
+
+
+
+/* BOTTOM MENU ROW */
+
+.bottom-menu-row {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    min-height: 2rem;
+    background-color: #252121CC;
+    bottom: 0;
+    width: 100%;
+}
+
+.main-button {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: #38795A;
+    border: none;
+    align-items: center;   
+}
+
+.main-button span {
+    font-family: Oxygen Mono, sans-serif;
+}
+
+.main-button:hover {
+    background-color: #508a6e;   
+    transition: .5s;
+}
+
+.add-button {
+    display: flex;
+    color: white;
+    border: none;
+    align-items: center;
+}
+
+.add-button:hover {
+    background-color: grey;
+    transition: .5s;
+}
+.add {
+    align-items: center;
+}

@@ -24,6 +24,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html,
+body {  
+  margin: 0%; /* INCLUDE FOR NAV BAR TO COVER 100% WINDOW WIDTH */
+}
+
 a {
   font-weight: 500;
   color: white;

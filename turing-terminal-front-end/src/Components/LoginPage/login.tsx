@@ -1,8 +1,12 @@
 
 import "./login.css"
+import Navbar from "../NavigationBar/Navbar"
 
 function Login() {
     return (
+<>       
+        <Navbar />
+
        
        <div className="login">
        
@@ -52,6 +56,7 @@ function Login() {
             </div>
             </div>
         </div>
+        </>
     )
 }
 
