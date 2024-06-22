@@ -10,7 +10,9 @@
     min-width: 400px;
     display: flex;
     flex-direction: column;
+    
     overflow-y: hidden;
+    /* overflow-y: scroll; */
 }
 
 .top-settings-row {
@@ -66,3 +68,4 @@
     display: flex;
     align-items: center;
 }
+
