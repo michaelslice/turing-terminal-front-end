@@ -10,6 +10,7 @@
     min-width: 400px;
     display: flex;
     flex-direction: column;
+    overflow-y: hidden;
 }
 
 .top-settings-row {
@@ -38,4 +39,30 @@
 
 .x {
 
+}
+
+.settings-options {
+    display: flex;
+    flex-direction: row;
+    padding-right: .5rem;
+    padding-left: .5rem; 
+    height: 30px;
+    align-items: center;
+    
+}
+
+.settings-options h1 {
+    font-size: 20px;
+}
+
+.settings-options button {
+    padding-left: .5rem;
+    row-gap: 2px;
+}
+
+
+.settings-row {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
 }

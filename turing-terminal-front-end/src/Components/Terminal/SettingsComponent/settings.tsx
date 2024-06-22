@@ -31,10 +31,68 @@ function Settings({ closeSettings }: any) {
         
         <div className="settings-options">
             <h1>Options</h1>
-
             <button>
                 <span>Defaults</span>
             </button>
+        </div>
+
+
+        <div className="settings-options">
+            <div className="color-picker-trigger">
+                <div className="color-picker-inner">
+
+                </div>
+            </div>
+            <div className="settings-col">
+                <span>Primary Color</span>
+            </div>
+        </div>
+
+
+        <div className="settings-options">
+            <div className="color-picker-trigger">
+                <div className="color-picker-inner">
+                    <input type="color"></input>
+                </div>
+            </div>
+            <div className="settings-col">
+                <span>Positive Color</span>
+            </div>
+        </div>
+
+
+        <div className="settings-options">
+            <div className="color-picker-trigger">
+                <div className="color-picker-inner">
+                <input type="color"></input>
+                </div>
+            </div>
+            <div className="settings-col">
+                <span>Negative Color</span>
+            </div>
+        </div>
+
+        <div className="settings-options">
+            <div className="color-picker-trigger">
+                <div className="color-picker-inner">
+                <input type="color"></input>
+                </div>
+            </div>
+            <div className="settings-col">
+                <span>Background Color</span>
+            </div>
+        </div>
+
+        <div className="settings-options">
+            <h1>Themes</h1>
+        </div>
+
+        <div className="settings-options">
+            <h1>Themes</h1>
+            <button>
+                <span>Defaults</span>
+            </button>
+            <input type="dropdown"></input>
         </div>
     </div>
 )};
