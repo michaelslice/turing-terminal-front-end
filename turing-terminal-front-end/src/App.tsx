@@ -11,9 +11,7 @@ import Roadmap from './Components/RoadmapPage/Roadmap';
 function App() {
     return(
         <>
-{/*d 
-        <Navbar />
-*/}
+
         <div className='container'>
             <Routes>
                 <Route path="/" element={<Home />} />
