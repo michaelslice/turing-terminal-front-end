@@ -8,11 +8,7 @@
     cursor: pointer;
     min-height: 100px;
     min-width: 640px;
-    display: flex;
-    flex-direction: column;
-    
-    overflow-y: hidden;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
 }
 
 .box button {
@@ -40,9 +36,7 @@
     padding-right: .5rem;
 }
 
-.filing-table th {
-    color: #B5B5B5;
-}
+
 
 .filings-options input {
     width: 5rem;
@@ -52,3 +46,10 @@
     width: 10rem;
 }
 
+.calender-section {
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    flex-direction: row;
+        
+}

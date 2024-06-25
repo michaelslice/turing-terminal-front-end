@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import useDragger from "../DraggerComponent/dragger";
 
-import CalenderDisplay from "../CalenderComponent/calender";
+import CalenderFirstDisplay from "../CalenderComponents/calenderstart";
+import CalenderEndDisplay from "../CalenderComponents/calenderend";
 
 import "./filings.css"
 
+import "../CalenderComponents/calenderstart.css"
+import "../CalenderComponents/calenderend.css"
 
 function Filings({setOpenFilings}: any) {
     
@@ -14,13 +17,23 @@ function Filings({setOpenFilings}: any) {
         setOpenFilings(false);
     }
 
-    const [startDate, setStartDate] = useState(' ');
-    const [startEndDate, setEndDate] = useState(' ');
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
 
-    const setFirstDate = (e: any) => { console.log("TEST"); setStartDate(e.target.value) }
+    const setFirstDateFunction = (e: any) => { setStartDate(e) }
+    const setEndDateFunction = (e: any) => { setEndDate(e) }
 
+    const handleStartDateChange = (event: any) => {
+        setStartDate(event.target.valueAsDate); 
+    };
+
+    const handleEndDateChange = (event: any ) => {
+        setEndDate(event.target.valueAsDate); 
+    };
+    
     useDragger("filings-box");
     return(
+
         <div id="filings-box" className="filing-box">
             <div className="top-settings-row">
             
@@ -49,29 +62,43 @@ function Filings({setOpenFilings}: any) {
             </div>
             
             <div className="time-frame-options">
-                <input placeholder="Start date" onChange={setFirstDate}></input>
-            </div>
+                <input 
+                    placeholder="Start date" 
+                    value={ startDate ? (startDate as any)?.toISOString().substr(0, 10): ''} 
+                    onChange={handleStartDateChange}>
+                </input>
+            
 
-            <div className="time-frame-options">
-                <input placeholder="End date"></input>
+                <input 
+                    placeholder="End date" 
+                    value={endDate ? (endDate as any)?.toISOString().substr(0, 10) : ''} 
+                    onChange={handleEndDateChange}>
+                </input>
             </div>
 
             <div className="filings-options"> 
                 <button>
                     <span>Clear</span>
                 </button>
-            </div>
-                <div className="filings-options"> 
+       
                 <button>
                     <span>Pause</span>
                 </button>
             </div>        
         </div>
 
-       
+        <div className="calender-section">
+            {startDate == null && 
+                <CalenderFirstDisplay 
+                onDateChange={setFirstDateFunction}/>
+            }
+            {endDate == null &&
+                <CalenderEndDisplay 
+                onDateChange={setEndDateFunction}/>
+            }
+        </div>
 
-{/*d *
-            <div className="filing-table">
+        <div className="filing-table">
             <table>
                 <th>Ticker</th>
                 <th>Type</th>
@@ -79,15 +106,10 @@ function Filings({setOpenFilings}: any) {
                 <th>Time</th>
                 <th>Filed</th>
                 <th>Accepted</th>
-            </table>
-            
-            </div>
-            */}
-             {startDate &&   <CalenderDisplay />}
-        </div> 
+            </table>    
+        </div>
 
-        
-    )
+    </div>)
 }
 
 export default Filings
