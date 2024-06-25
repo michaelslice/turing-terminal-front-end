@@ -1,0 +1,4 @@
+.calendar {
+    display: relative;
+    z-index: 1000;
+}

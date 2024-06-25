@@ -1,18 +1,27 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import useDragger from "../DraggerComponent/dragger";
+
+import CalenderDisplay from "../CalenderComponent/calender";
+
 import "./filings.css"
+
 
 function Filings({setOpenFilings}: any) {
     
 
     const closeOpenFilings = () => {
-        console.log("close settings")
+        console.log("close filings")
         setOpenFilings(false);
     }
 
+    const [startDate, setStartDate] = useState(' ');
+    const [startEndDate, setEndDate] = useState(' ');
+
+    const setFirstDate = (e: any) => { console.log("TEST"); setStartDate(e.target.value) }
+
     useDragger("filings-box");
     return(
-        <div id="filings-box" className="box">
+        <div id="filings-box" className="filing-box">
             <div className="top-settings-row">
             
             <div className="settings-text">
@@ -32,7 +41,52 @@ function Filings({setOpenFilings}: any) {
                 </button>
             </div>       
         </div>
+
+        <div className="filings-text">            
+            <div className="filings-options">
+                <input placeholder="Company" id="theme" >
+                </input>
+            </div>
+            
+            <div className="time-frame-options">
+                <input placeholder="Start date" onChange={setFirstDate}></input>
+            </div>
+
+            <div className="time-frame-options">
+                <input placeholder="End date"></input>
+            </div>
+
+            <div className="filings-options"> 
+                <button>
+                    <span>Clear</span>
+                </button>
+            </div>
+                <div className="filings-options"> 
+                <button>
+                    <span>Pause</span>
+                </button>
+            </div>        
         </div>
+
+       
+
+{/*d *
+            <div className="filing-table">
+            <table>
+                <th>Ticker</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Time</th>
+                <th>Filed</th>
+                <th>Accepted</th>
+            </table>
+            
+            </div>
+            */}
+             {startDate &&   <CalenderDisplay />}
+        </div> 
+
+        
     )
 }
 

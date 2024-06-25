@@ -96,9 +96,7 @@ function Terminal() {
 
     const [search, setSearch] = useState(" ");
     
-    const searchValue = (e: any) => { 
-        setSearch(e.target.value)
-    }
+    const searchValue = (e: any) => { setSearch(e.target.value) }
 
 
     const [openSetting, setOpenSettings] = useState(false);

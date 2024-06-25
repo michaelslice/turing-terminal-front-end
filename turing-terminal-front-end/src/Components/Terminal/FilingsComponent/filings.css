@@ -1,4 +1,4 @@
-.box {
+.filing-box {
     position: absolute;
     top: 0;
     left: 0;
@@ -6,8 +6,8 @@
     height: 60px;
     width: 60px;
     cursor: pointer;
-    min-height: 200px;
-    min-width: 400px;
+    min-height: 100px;
+    min-width: 640px;
     display: flex;
     flex-direction: column;
     
@@ -19,3 +19,36 @@
     display: flex;
     height: 20px;
 }
+
+.filings-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.time-frame {
+    display: flex;
+    flex-direction: row;
+}
+
+.filing-table {
+    display: flex;
+    flex-direction: column;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.filing-table th {
+    color: #B5B5B5;
+}
+
+.filings-options input {
+    width: 5rem;
+}
+
+.time-frame-options input {
+    width: 10rem;
+}
+
