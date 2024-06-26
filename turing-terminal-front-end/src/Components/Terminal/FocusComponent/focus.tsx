@@ -8,10 +8,27 @@ function Focus({setOpenFocus}: any) {
     
     const closeOpenFocus = () => { setOpenFocus(false); }
 
+    /**
+     *  
+     * @param Callback function: Creates a resizeObserver to monitor 
+     * changes in the focus-box, when the size changes update boxSize
+     * 
+     * @param Dependencies []: This hook will run  
+     * 
+     * @param callback function (entries) => {...}: Recieves an 
+     * array of ResizeObserverEntry objects(entries). Each entry contains
+     * info about the observed elements size changes
+     * 
+     * @notes ResizeObserver is a API that allows you to observe changes 
+     * in the size of DOM elements
+     * 
+     * https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver
+     * 
+     */
     const [boxSize, setBoxSize] = useState({ width: 0, height: 0 });
-
+    
     useEffect(() => {
-        const resizeObserver = new ResizeObserver((entries) => {
+        const resizeObserver = new ResizeObserver((entries) => { 
             for(let entry of entries) {
                 const { width, height} = entry.contentRect;
                 setBoxSize({ width, height})
@@ -21,6 +38,7 @@ function Focus({setOpenFocus}: any) {
         const boxElement = document.getElementById('focus-box');
         resizeObserver.observe(boxElement as Element);
 
+        // Clean up code, before component unmounts
         return() => {
             resizeObserver.unobserve(boxElement as Element);
         };
@@ -32,6 +50,7 @@ function Focus({setOpenFocus}: any) {
             
             <div className="settings-text">
                 <span>Focus</span>
+                <input placeholder="Ticker"></input>
             </div>
             <div className="settings-right-side-buttons">
                 <button>

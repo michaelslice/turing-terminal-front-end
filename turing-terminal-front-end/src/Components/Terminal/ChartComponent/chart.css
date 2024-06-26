@@ -1,0 +1,111 @@
+.box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+    min-height: 200px;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    
+    overflow-y: hidden;
+    /* overflow-y: scroll; */
+}
+
+.top-chart-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: .5rem;
+    padding-left: .5rem; 
+}
+
+.top-chart-row-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding-right: .5rem;
+    padding-left: .5rem; 
+}
+
+
+.chart-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.chart-right-side-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: right;
+}
+.gear {
+
+}
+
+.x {
+
+}
+
+.chart-options {
+    display: flex;
+    flex-direction: row;
+    padding-right: .5rem;
+    padding-left: .5rem; 
+    height: 30px;
+    align-items: center;
+    
+}
+
+.chart-options h1 {
+    font-size: 20px;
+}
+
+.chart-options button {
+    padding-left: .5rem;
+    row-gap: 2px;
+}
+
+
+.chart-row {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+.candle-options {
+    
+    position: relative;
+width: 100%;
+   display: flex;
+    z-index: 1000;
+    flex-direction: column;
+    
+}
+
+.period-options {
+    display: flex;
+    flex-direction: column;
+    padding-left: .5rem;
+    position: relative;
+    
+    z-index: 1000;
+
+}
+
+
+.options {
+    /*
+    display: flex;
+    flex-direction: row;
+    */
+    position: relative;
+    flex-direction: row;
+    display: flex;
+}

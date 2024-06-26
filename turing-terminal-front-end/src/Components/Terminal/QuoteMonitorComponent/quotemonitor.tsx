@@ -2,6 +2,9 @@ import { useState } from "react";
 import useDragger from "../DraggerComponent/dragger";
 import "./quotemonitor.css"
 
+import "../FilingsComponent/filings.css"
+
+
 function QuoteMonitor({setOpenQuoteMonitor}: any) {
     
     useDragger("quote-monitor-box");
@@ -10,6 +13,21 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
         console.log("close settings")
         setOpenQuoteMonitor(false);
     }
+
+    const [stocks, setStocks] = useState<string[]>([]);
+    const [newStock, setNewStock] = useState<string>("");
+
+    /**
+     * 
+     * 
+     * 
+     */
+    const addStock = (e: any) => {
+        if(e.key === 'Enter' && newStock.trim() !== '') {
+            setStocks([...stocks, newStock.trim()]);
+            setNewStock('');
+        }
+    };
 
     return(
         <div id="quote-monitor-box" className="box">
@@ -32,8 +50,45 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
                 </button>
             </div>       
         </div>
+
+        <div className="filing-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th>Last</th>
+                        <th>Bid</th>
+                        <th>Ask</th>
+                        <th>Change</th>
+                        <th>Change %</th>
+                        <th>Volume</th>
+                    </tr>
+                </thead> 
+            <tbody>
+                {stocks.map((stock, index) => (
+                    <tr key={index}>
+                        <td>{stock}</td>
+                        <td>Placeholder</td>
+                        <td>Placeholder</td>
+                        <td>Placeholder</td>
+                        <td>Placeholder</td>
+                        <td>Placeholder</td>
+                        <td>Placeholder</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>    
+
+        <div className="filing-row1">
+            <input
+                placeholder="Add a ticker"
+                value={newStock}
+                onChange={(e) => setNewStock(e.target.value)}
+                onKeyDown={addStock}
+            />
         </div>
-    )
+        </div>
+    </div>)
 }
 
 export default QuoteMonitor
