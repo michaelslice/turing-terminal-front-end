@@ -32,6 +32,41 @@ function WorldIndices({setOpenWordIndices}: any) {
                 </button>
             </div>       
         </div>
+
+
+        <div className="top-indices-row"> 
+            <span>Americas</span>
+
+            <div className="filing-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th>Name</th>
+                        <th>Value</th>
+                        <th>Change</th>
+                        <th>Change %</th>
+                    </tr>
+                </thead> 
+            <tbody>
+           
+                    <tr>
+                        <td>Placeholder</td>
+                        <td>Placeholder</td>
+                        <td>Placeholder</td>
+                        <td>Placeholder</td>
+                        <td>Placeholder</td>
+                    </tr>
+            
+            </tbody>
+        </table>    
+        </div>
+        </div>
+
+        <div className="top-settings-row"> 
+            <span>Americas</span>
+        </div>
+
         </div>
     )
 }

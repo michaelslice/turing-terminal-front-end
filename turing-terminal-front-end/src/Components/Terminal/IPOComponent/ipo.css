@@ -1,0 +1,5 @@
+#ipo-box {
+    min-width: 400px;
+    min-height: 200px;
+    overflow: scroll;
+}

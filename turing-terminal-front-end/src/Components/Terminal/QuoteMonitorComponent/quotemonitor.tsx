@@ -18,9 +18,16 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
     const [newStock, setNewStock] = useState<string>("");
 
     /**
+     *
+     *  @function addStock: Is used to add a user inputted stock
+     * into the useState array
      * 
+     * @param e : An event object, that contains info about the event
      * 
-     * 
+     * @note setStocks([...stocks, newStock.trim()]): Creates a new 
+     * array with all existing stocks and adds the new stock
+     * newStock.trim() at the end of the array
+     *  
      */
     const addStock = (e: any) => {
         if(e.key === 'Enter' && newStock.trim() !== '') {
@@ -80,15 +87,11 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
         </table>    
 
         <div className="filing-row1">
-            <input
-                placeholder="Add a ticker"
-                value={newStock}
-                onChange={(e) => setNewStock(e.target.value)}
-                onKeyDown={addStock}
-            />
+            <input placeholder="Add a ticker" value={newStock} onChange={(e) => setNewStock(e.target.value)} onKeyDown={addStock}/>
         </div>
-        </div>
-    </div>)
+
+    </div>
+</div>)
 }
 
 export default QuoteMonitor

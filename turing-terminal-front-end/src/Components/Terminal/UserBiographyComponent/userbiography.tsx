@@ -32,6 +32,13 @@ function UserBiography({setOpenUserBiography}: any) {
                 </button>
             </div>       
         </div>
+
+        <div className="top-settings-row">
+            <p>Loading...</p>
+        </div>
+
+
+        
         </div>
     )
 }

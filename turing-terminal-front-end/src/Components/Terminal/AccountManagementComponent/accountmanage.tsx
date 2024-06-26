@@ -31,6 +31,11 @@ function AccountManagement({setOpenAccountManagement}: any) {
                 </button>
             </div>       
         </div>
+
+        <div className="top-settings-row">
+            <p>Please login to manage your account</p>
+        </div>
+
         </div>
     )
 }

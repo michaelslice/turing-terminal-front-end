@@ -32,6 +32,26 @@ function Ipo({setOpenInitialPublicOfferings}: any) {
                 </button>
             </div>       
         </div>
+
+
+        <div className="filing-table">
+            <table>
+                <th>Ticker</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Exchange</th>
+                <th>Offer</th>
+                <th>Price</th>
+                <th>Shares</th>
+                <th>Open</th>
+                <th>Close</th>
+                <th>Volume</th>
+                <th>Change 1D</th>
+                <th>Change 1W</th>
+                <th>Change 1M</th>
+            </table>    
+        </div>
+
         </div>
     )
 }

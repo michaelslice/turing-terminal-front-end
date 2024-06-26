@@ -1,3 +1,7 @@
-.filing-row1 {
+.filing-row1 input{
     width: 100%;
+}
+
+#quote-monitor-box {
+    overflow-x: hidden;
 }

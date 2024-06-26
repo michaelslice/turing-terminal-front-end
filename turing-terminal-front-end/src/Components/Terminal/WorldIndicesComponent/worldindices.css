@@ -1,0 +1,16 @@
+#world-indices-box {
+    min-height: 400px;
+    min-height: 200px;
+    
+}
+
+#world-indices-box .top-settings-row{
+
+}
+
+#world-indices-box .top-indices-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}

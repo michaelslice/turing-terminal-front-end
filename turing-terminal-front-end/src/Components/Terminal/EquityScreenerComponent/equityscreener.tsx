@@ -31,6 +31,16 @@ function EquityScreener({setOpenEquityScreener}: any) {
                 </button>
             </div>       
         </div>
+
+
+        <div className="filing-table">
+            <table>
+                <th>Ticker</th>
+                <th>Name</th>
+                <th>Market Cap</th>
+            </table>    
+        </div>
+
         </div>
     )
 }

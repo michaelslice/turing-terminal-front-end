@@ -17,6 +17,7 @@ function Financials({setOpenFinancials}: any) {
             
             <div className="settings-text">
                 <span>Financials</span>
+                <input placeholder="Ticker"></input>
             </div>
             <div className="settings-right-side-buttons">
                 <button>
@@ -32,6 +33,38 @@ function Financials({setOpenFinancials}: any) {
                 </button>
             </div>       
         </div>
+
+        <div className="top-settings-row"> 
+            <button>
+                <span>Balance Sheet</span>
+            </button>
+
+            <button>
+                <span>Income</span>
+            </button>
+
+            <button>
+                <span>Cash Flow</span>
+            </button>
+
+            <button>
+                <span>Quarterly</span>
+            </button>
+
+            <button>
+                <span>Yearly</span>
+            </button>
+
+            <button>
+                <span>In Millions</span>
+            </button>
+
+            <button>
+                <span>Fiscal Years</span>
+            </button>
+
+        </div>
+
         </div>
     )
 }

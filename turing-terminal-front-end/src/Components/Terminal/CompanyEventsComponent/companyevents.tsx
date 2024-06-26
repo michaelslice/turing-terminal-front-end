@@ -1,5 +1,13 @@
-import "./companyevents.css"
 import useDragger from "../DraggerComponent/dragger";
+import { useState } from "react";
+import CalenderFirstDisplay from "../CalenderComponents/calenderstart";
+import CalenderEndDisplay from "../CalenderComponents/calenderend";
+
+import "./companyevents.css"
+
+import "../FilingsComponent/filings.css"
+import "../CalenderComponents/calenderstart.css"
+import "../CalenderComponents/calenderend.css"
 
 function CompanyEvents({setOpenCompanyEvents}: any) {
     
@@ -10,12 +18,29 @@ function CompanyEvents({setOpenCompanyEvents}: any) {
         setOpenCompanyEvents(false);
     }
     
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+
+    const setFirstDateFunction = (e: any) => { setStartDate(e) }
+    const setEndDateFunction = (e: any) => { setEndDate(e) }
+
+    const handleStartDateChange = (event: any) => {
+        setStartDate(event.target.valueAsDate); 
+    };
+
+    const handleEndDateChange = (event: any ) => {
+        setEndDate(event.target.valueAsDate); 
+    };
+
+
+
     return(
-        <div id="company-events-box" className="box">
+        <div id="company-events-box" className="company-events-box">
             <div className="top-settings-row">
             
             <div className="settings-text">
                 <span>Company Events</span>
+                <input placeholder="Ticker"></input>
             </div>
             <div className="settings-right-side-buttons">
                 <button>
@@ -31,7 +56,60 @@ function CompanyEvents({setOpenCompanyEvents}: any) {
                 </button>
             </div>       
         </div>
+
+        <div className="filings-text">            
+            <div className="filings-options">
+                <input placeholder="Company" id="theme" >
+                </input>
+            </div>
+            
+            <div className="time-frame-options">
+                <input 
+                    placeholder="Start date" 
+                    value={ startDate ? (startDate as any)?.toISOString().substr(0, 10): ''} 
+                    onChange={handleStartDateChange}>
+                </input>
+            
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="arrow" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                </svg>
+                
+                <input 
+                    placeholder="End date" 
+                    value={endDate ? (endDate as any)?.toISOString().substr(0, 10) : ''} 
+                    onChange={handleEndDateChange}>
+                </input>
+            </div>
+
+            <div className="filings-options"> 
+                <button>
+                    <span>Clear</span>
+                </button>
+            </div>        
         </div>
+
+        <div className="calender-section">
+            {startDate == null && 
+                <CalenderFirstDisplay 
+                onDateChange={setFirstDateFunction}/>
+            }
+            {endDate == null &&
+                <CalenderEndDisplay 
+                onDateChange={setEndDateFunction}/>
+            }
+        </div>
+
+        <div className="filing-table">
+            <table>
+                <th>Time</th>
+                <th>Type</th>
+                <th>Event</th>
+            </table>    
+        </div>
+
+
+        </div>
+
     )
 }
 

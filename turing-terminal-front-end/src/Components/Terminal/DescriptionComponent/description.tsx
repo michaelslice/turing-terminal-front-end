@@ -31,6 +31,53 @@ function Description({setOpenDescription}: any) {
                 </button>
             </div>       
         </div>
+
+        <div className="top-settings-row"> 
+            <h1>Company Name</h1>
+        </div>
+
+        <div className="top-settings-row"> 
+            <p>Company Text</p>
+        </div>
+
+        <div className="top-settings-row">  
+            <div>
+                <span>Price Chart</span>
+            </div>
+
+            <div>
+                <span>Stats</span>
+            </div>
+        </div>
+
+        <div className="top-settings-row">  
+            <div className="description-chart">
+
+            </div>
+
+            <div className="description-stats">
+                <div>
+                    <a>company.com</a>
+                </div>
+
+                <div>
+                    <span>company address</span>
+                </div>
+
+                <div>
+                    <span>Price</span>
+                </div>
+
+                <div>
+                    <span>Shares Out</span>
+                </div>
+
+                <div>
+                    <span>Market Cap</span>
+                </div>
+            </div>
+        </div>
+
         </div>
     )
 }

@@ -1,0 +1,21 @@
+#description-box {
+    min-width: 650px;
+    min-height: 350px;
+}
+
+#description-box h1 {
+    font-size: 26px ;
+}
+
+#description-box .description-chart {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+}
+
+#description-box .description-stats {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+
+}
