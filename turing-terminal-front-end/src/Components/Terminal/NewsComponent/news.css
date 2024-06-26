@@ -1,0 +1,73 @@
+.news-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+    min-height: 100px;
+    min-width: 640px;
+    
+}
+
+.box button {
+    display: flex;
+    height: 20px;
+}
+
+.filings-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    
+}
+
+.time-frame-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+
+.time-frame {
+    display: flex;
+    flex-direction: row;
+}
+
+.filing-table {
+    display: flex;
+    flex-direction: column;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+
+
+.filings-options input {
+    width: 5rem;
+}
+
+.time-frame-options input {
+    width: 10rem;
+}
+
+.calender-section {
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    flex-direction: row;
+        
+}
+
+.arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useDragger from "../DraggerComponent/dragger";
 import "./focus.css"
 
@@ -6,10 +6,25 @@ function Focus({setOpenFocus}: any) {
     
     useDragger("focus-box");
     
-    const closeOpenFocus = () => {
-        console.log("close settings")
-        setOpenFocus(false);
-    }
+    const closeOpenFocus = () => { setOpenFocus(false); }
+
+    const [boxSize, setBoxSize] = useState({ width: 0, height: 0 });
+
+    useEffect(() => {
+        const resizeObserver = new ResizeObserver((entries) => {
+            for(let entry of entries) {
+                const { width, height} = entry.contentRect;
+                setBoxSize({ width, height})
+            }
+        });
+    
+        const boxElement = document.getElementById('focus-box');
+        resizeObserver.observe(boxElement as Element);
+
+        return() => {
+            resizeObserver.unobserve(boxElement as Element);
+        };
+    }, []);
 
     return(
         <div id="focus-box" className="box">
@@ -32,8 +47,27 @@ function Focus({setOpenFocus}: any) {
                 </button>
             </div>       
         </div>
+
+        <div className="focus">       
+            <div className="ticker">
+                <h1 style={{ fontSize: `${boxSize.width / 10}px` }}>AAPL</h1>
+            </div>
+
+            <div className="ticker-data">
+                <div className="data-row">
+                    <span style={{ fontSize: `${boxSize.width / 10}px` }}>209</span>
+                </div>
+            <div>    
+            
+            <div className="data-row">
+                <span style={{ fontSize: `${boxSize.width / 10}px` }}>0.46%</span>
+                <span style={{ fontSize: `${boxSize.width / 10}px` }}>0.97</span>
+            </div>
         </div>
-    )
+        
+        </div>        
+    </div>
+</div>)
 }
 
 export default Focus

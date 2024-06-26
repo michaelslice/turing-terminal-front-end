@@ -1,6 +1,15 @@
 import { useState } from "react";
 import useDragger from "../DraggerComponent/dragger";
+
+import CalenderFirstDisplay from "../CalenderComponents/calenderstart";
+import CalenderEndDisplay from "../CalenderComponents/calenderend";
+
+import "../FilingsComponent/filings.css"
 import "./news.css"
+
+
+import "../CalenderComponents/calenderstart.css"
+import "../CalenderComponents/calenderend.css"
 
 function News({setOpenNews}: any) {
     
@@ -11,8 +20,23 @@ function News({setOpenNews}: any) {
         setOpenNews(false);
     }
     
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+
+    const setFirstDateFunction = (e: any) => { setStartDate(e) }
+    const setEndDateFunction = (e: any) => { setEndDate(e) }
+
+    const handleStartDateChange = (event: any) => {
+        setStartDate(event.target.valueAsDate); 
+    };
+
+    const handleEndDateChange = (event: any ) => {
+        setEndDate(event.target.valueAsDate); 
+    };
+
+
     return(
-        <div id="news-box" className="box">
+        <div id="news-box" className="news-box">
             <div className="top-settings-row">
             
             <div className="settings-text">
@@ -32,6 +56,65 @@ function News({setOpenNews}: any) {
                 </button>
             </div>       
         </div>
+
+        <div className="filings-text">            
+            <div className="filings-options">
+                <input placeholder="Company" id="theme" >
+                </input>
+            </div>
+            
+            <div className="time-frame-options">
+                <input 
+                    placeholder="Start date" 
+                    value={ startDate ? (startDate as any)?.toISOString().substr(0, 10): ''} 
+                    onChange={handleStartDateChange}>
+                </input>
+            
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="arrow" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                </svg>
+                
+                <input 
+                    placeholder="End date" 
+                    value={endDate ? (endDate as any)?.toISOString().substr(0, 10) : ''} 
+                    onChange={handleEndDateChange}>
+                </input>
+            </div>
+
+            <div className="filings-options"> 
+                <button>
+                    <span>Clear</span>
+                </button>
+       
+                <button>
+                    <span>Pause</span>
+                </button>
+            </div>        
+        </div>
+
+        <div className="calender-section">
+            {startDate == null && 
+                <CalenderFirstDisplay 
+                onDateChange={setFirstDateFunction}/>
+            }
+            {endDate == null &&
+                <CalenderEndDisplay 
+                onDateChange={setEndDateFunction}/>
+            }
+        </div>
+
+        <div className="filing-table">
+            <table>
+                <th>Headline</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Time</th>
+                <th>Ticker</th>
+                <th>Soure</th>
+            </table>    
+        </div>
+
+
         </div>
     )
 }
