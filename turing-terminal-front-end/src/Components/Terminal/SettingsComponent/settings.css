@@ -50,7 +50,12 @@
     padding-left: .5rem; 
     height: 30px;
     align-items: center;
-    
+}
+
+.settings-options span {
+    flex-direction: row;
+    gap: 2px;
+    display: flex;
 }
 
 .settings-options h1 {
@@ -60,6 +65,8 @@
 .settings-options button {
     padding-left: .5rem;
     row-gap: 2px;
+    display: flex;
+    margin-right: .25rem;
 }
 
 
@@ -69,3 +76,62 @@
     align-items: center;
 }
 
+.settings-right-side-buttons button {
+    border: none;
+    background-color: #000000;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.settings-options input {
+    border: none;
+    background-color: #000000;
+}
+
+.settings-options select {
+    border-radius: 15px;
+    border: none;
+    border-color: black;
+}
+
+.settings-options button {
+    cursor: pointer;
+}
+
+.settings-options button {
+    background-color: #38795a;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+
+.top-settings-options {
+    display: flex;
+    flex-direction: row;
+    padding-right: .5rem;
+    padding-left: .5rem; 
+    height: 30px;
+    align-items: center;
+    gap: .5rem;
+}
+
+.top-settings-options h1 {
+    font-size: 20px;
+}
+
+.top-settings-options button {
+    padding-left: .5rem;
+    row-gap: 2px;
+}
+
+.top-settings-options button{
+    background-color: #38795a;;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+
+}

@@ -55,7 +55,7 @@ function Settings({
             </div>       
         </div>
         
-        <div className="settings-options">
+        <div className="top-settings-options">
             <h1>Options</h1>
             <button>
                 <span>Defaults</span>

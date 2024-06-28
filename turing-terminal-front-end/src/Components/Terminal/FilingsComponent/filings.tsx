@@ -57,8 +57,7 @@ function Filings({setOpenFilings}: any) {
 
         <div className="filings-text">            
             <div className="filings-options">
-                <input placeholder="Company" id="theme" >
-                </input>
+                <input placeholder="Company" id="company"></input>
             </div>
             
             <div className="time-frame-options">
@@ -80,7 +79,7 @@ function Filings({setOpenFilings}: any) {
             </div>
 
             <div className="filings-options"> 
-                <button>
+                <button onClick={(e: React.MouseEvent<HTMLButtonElement | MouseEvent>) => {setStartDate(null); setEndDate(null)}}>
                     <span>Clear</span>
                 </button>
        
