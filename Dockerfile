@@ -15,7 +15,7 @@ RUN npm install react-scripts@1.1.1 -g --silent
 COPY ./turing-terminal-front-end /usr/src/app/
 
 # Build The Project
-RUN npm run build
+# RUN npm run build
 
 # Expose Port
 EXPOSE 5173
