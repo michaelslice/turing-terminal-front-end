@@ -9,7 +9,17 @@ body {
 .test {
     display: flex;
     flex-direction: column;
-    background-color: white !important;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
     width: 100%;
 }
 
+.test-form,
+.test-form form {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
