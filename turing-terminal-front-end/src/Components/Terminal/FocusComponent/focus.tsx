@@ -47,22 +47,40 @@ function Focus({setOpenFocus}: any) {
         };
     }, []);
 
+    const [stockSymbol, setStockSymbol] = useState('');
+    const [stockData, setStockData] = useState({
+        price: ' ',
+        price_change: ' ',
+        percent_change: ' ',
+    });
+
+    /**
+     *  
+     * @param 
+     * 
+     * @notes 
+     * 
+     */
     const fetchTicker = async () => {
         try {
             const response = await api.get("http://127.0.0.1:8000/api/v1/focus/ticker/", {
                 params: { ticker : stockSymbol}
             })
-            setStockData(response.data.price);
+            console.log(response.data)
+            setStockData(response.data);
+            
+            setStockData({
+                price: response.data.price,
+                price_change : response.data.price_change,
+                percent_change: response.data.percent_change,
+            }) 
         }
         catch( e ) {
             console.log(e);
         }
     }
 
-    const [stockSymbol, setStockSymbol] = useState('');
-    const [stockData, setStockData] = useState<any>(null);
-
-    const test = (e: any) => {
+    const submitTicker = (e: any) => {
         e.preventDefault();
         fetchTicker();
     }
@@ -74,7 +92,7 @@ function Focus({setOpenFocus}: any) {
             <div className="settings-text">
                 <span>Focus</span>
                 
-                <form onSubmit={test}>
+                <form onSubmit={submitTicker}>
                 <input 
                     placeholder="Ticker"
                     type="text"
@@ -82,7 +100,6 @@ function Focus({setOpenFocus}: any) {
                     onChange={(e) => setStockSymbol(e.target.value)}
                     >
                 </input>
-                <button type="submit">s</button>
                 </form>
             </div>
             <div className="settings-right-side-buttons">
@@ -102,29 +119,19 @@ function Focus({setOpenFocus}: any) {
 
         <div className="focus">       
             <div className="ticker">
-                <h1 style={{ fontSize: `${boxSize.width / 10}px` }}>{stockSymbol}</h1>
+                <h1 style={{ fontSize: `${boxSize.width / 10}px` }}>{stockSymbol.toUpperCase()}</h1>
             </div>
 
             <div className="ticker-data">
                 <div className="data-row">
-                    <span style={{ fontSize: `${boxSize.width / 10}px` }}>{JSON.stringify(stockData, null, 2)}</span>
+                    <span style={{ fontSize: `${boxSize.width / 10}px` }}>{JSON.stringify(stockData.price, null, 2)}</span>
                 </div>
             <div>    
             
             {stockData &&  <div className="data-row">
-                <span style={{ fontSize: `${boxSize.width / 10}px` }}>{JSON.stringify(stockData, null, 2)}</span>
-                <span style={{ fontSize: `${boxSize.width / 10}px` }}>{JSON.stringify(stockData, null, 2)}</span>
-            
-                {/*  
-                {stockData && (
-                            <ul>
-                                <li>Price: {stockData.price}</li>
-                                <li>Price Change: {stockData.price_change}</li>
-                                <li>Percent Change: {stockData.percent_change}%</li>
-                            </ul>
-                        )}*/ 
-                }
-            </div> }
+                <span style={{ fontSize: `${boxSize.width / 10}px` }}>{JSON.stringify(stockData.price_change, null, 2)}</span>
+                <span style={{ fontSize: `${boxSize.width / 10}px` }}>{JSON.stringify(stockData.percent_change, null, 2)}</span>
+            </div>}
         </div>
         
         </div>        
