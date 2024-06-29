@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import useDragger from "../DraggerComponent/dragger";
+import axios from "axios";
+import api from "../../../../api";
 import "./focus.css"
+import { json } from "react-router-dom";
 
 function Focus({setOpenFocus}: any) {
     
@@ -44,13 +47,43 @@ function Focus({setOpenFocus}: any) {
         };
     }, []);
 
+    const fetchTicker = async () => {
+        try {
+            const response = await api.get("http://127.0.0.1:8000/api/v1/focus/ticker/", {
+                params: { ticker : stockSymbol}
+            })
+            setStockData(response.data.price);
+        }
+        catch( e ) {
+            console.log(e);
+        }
+    }
+
+    const [stockSymbol, setStockSymbol] = useState('');
+    const [stockData, setStockData] = useState<any>(null);
+
+    const test = (e: any) => {
+        e.preventDefault();
+        fetchTicker();
+    }
+
     return(
         <div id="focus-box" className="box">
             <div className="top-settings-row">
             
             <div className="settings-text">
                 <span>Focus</span>
-                <input placeholder="Ticker"></input>
+                
+                <form onSubmit={test}>
+                <input 
+                    placeholder="Ticker"
+                    type="text"
+                    value={stockSymbol}
+                    onChange={(e) => setStockSymbol(e.target.value)}
+                    >
+                </input>
+                <button type="submit">s</button>
+                </form>
             </div>
             <div className="settings-right-side-buttons">
                 <button>
@@ -69,19 +102,29 @@ function Focus({setOpenFocus}: any) {
 
         <div className="focus">       
             <div className="ticker">
-                <h1 style={{ fontSize: `${boxSize.width / 10}px` }}>AAPL</h1>
+                <h1 style={{ fontSize: `${boxSize.width / 10}px` }}>{stockSymbol}</h1>
             </div>
 
             <div className="ticker-data">
                 <div className="data-row">
-                    <span style={{ fontSize: `${boxSize.width / 10}px` }}>209</span>
+                    <span style={{ fontSize: `${boxSize.width / 10}px` }}>{JSON.stringify(stockData, null, 2)}</span>
                 </div>
             <div>    
             
-            <div className="data-row">
-                <span style={{ fontSize: `${boxSize.width / 10}px` }}>0.46%</span>
-                <span style={{ fontSize: `${boxSize.width / 10}px` }}>0.97</span>
-            </div>
+            {stockData &&  <div className="data-row">
+                <span style={{ fontSize: `${boxSize.width / 10}px` }}>{JSON.stringify(stockData, null, 2)}</span>
+                <span style={{ fontSize: `${boxSize.width / 10}px` }}>{JSON.stringify(stockData, null, 2)}</span>
+            
+                {/*  
+                {stockData && (
+                            <ul>
+                                <li>Price: {stockData.price}</li>
+                                <li>Price Change: {stockData.price_change}</li>
+                                <li>Percent Change: {stockData.percent_change}%</li>
+                            </ul>
+                        )}*/ 
+                }
+            </div> }
         </div>
         
         </div>        

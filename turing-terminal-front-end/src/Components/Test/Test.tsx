@@ -8,9 +8,9 @@ function Test() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await api.get('http://127.0.0.1:8000/test/');
+                const response = await api.get('http://127.0.0.1:8000/api/v1/test/');
 
-                const response1 = await api.get('http://127.0.0.1:8000/test/msft/');
+                const response1 = await api.get('http://127.0.0.1:8000/api/v1/test/msft/');
                 console.log(response1);
 
             // const response2 = await api.get('http://127.0.0.1:8000/test/msftholders/');
