@@ -3,7 +3,7 @@ import "./login.css"
 import Navbar from "../NavigationBar/Navbar"
 import { initializeApp } from "firebase/app";
 import { useState } from "react";
-
+import { Navigate, Link, useNavigate } from "react-router-dom";
 import { 
     signInWithPopup, 
     getAuth, 
@@ -29,7 +29,8 @@ const googleProvider = new GoogleAuthProvider();
 const gitHubProvider = new GithubAuthProvider();
 
 function Login() {
-    
+
+    const navigate = useNavigate();
     // const navigate = useNavigate(); // Get the navigate function
     const [emailAlertFail, setEmailAlertFail] = useState(false);
     const [invalidEmail, setInvalidEmail] = useState(false);
@@ -37,13 +38,9 @@ function Login() {
     const [invalidLogin, setInvalidLogin] = useState('');
     const [attemptedSignup, setAttemptedSignup] = useState(false);
     const [loginMenuStatus, setloginMenuStatus] = useState(false);
-    
     const setLoginStatusDisplayTrue = () => setloginMenuStatus(true);    
     const setLoginStatusDisplayFalse = () => setloginMenuStatus(false);
-    
     const [loginStatus, setLoginStatus] = useState(false);
-
-
     const [resetPasswordStatus, setresetPasswordStatus] = useState(false);
     const setresetPasswordStatusTrue = () => setresetPasswordStatus(true);
     const setresetPasswordStatusFalse = () => setresetPasswordStatus(false);
@@ -63,20 +60,19 @@ function Login() {
         }));
     }
 
-    function handleSignup(e: any) 
-    {
+    function handleSignup(e: any) {
         e.preventDefault();
-    // Check if the email is invalid
-    if (isInvalidEmail(userCredentials.email)) 
-    {
-        setAttemptedSignup(true)
-        return; 
-    }
-    if(userCredentials.password !== userCredentials.passwordConfirm)
-    {
-        setPasswordStatus(true);
-        return;
-    }
+        // Check if the email is invalid
+        if (isInvalidEmail(userCredentials.email)) 
+        {
+            setAttemptedSignup(true)
+            return; 
+        }
+        if(userCredentials.password !== userCredentials.passwordConfirm)
+        {
+            setPasswordStatus(true);
+            return;
+        }
         createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
         .then((userCredential) => {
         const user = userCredential.user;
@@ -100,15 +96,13 @@ function Login() {
         .then((result) => {
             const user = result.user;
             console.log(user)
-           // navigate('/navigation');
+            navigate('/terminal');
         }).catch((error) => {
             setInvalidLogin(error.message);
-           
         });
     }
 
-    function gitHubLogin(e: any)
-    {
+    function gitHubLogin(e: any) {
         e.preventDefault();
         
         signInWithPopup(auth, gitHubProvider)
@@ -123,15 +117,14 @@ function Login() {
     }
 
     // Handle user log in if account is valid
-    function handleLogin(e: any) 
-    {
+    function handleLogin(e: any) {
         e.preventDefault();
         signInWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
           console.log(user)
-         // navigate('/home');
+          navigate('/terminal');
         })
         .catch((error) => {
             setInvalidLogin(error.message);
@@ -154,61 +147,121 @@ function Login() {
     }
 
     
-    return (
-<>       
-        <Navbar />
-
-       
-       <div className="login">
-       
-       <div className='large-space2'></div>  
-
-        <div className="login-container">
-            <h4 className="top-text">Sign In</h4>
-            <div className="login-row">
-                <div onClick={googleLogin} className="login-button2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="google-logo" viewBox="0 0 16 16">
-                        <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z"/>
-                    </svg>
-                    <p className='login-text'>Google</p>   
-                </div>
-                <div onClick={gitHubLogin} className="login-button2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="github-logo" viewBox="0 0 16 16">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
-                    </svg>
-                    <p className='login-text'>Github</p>   
-                </div>    
-            </div>
-
-            <h3 className="divider-text"><span>Or</span></h3>
-            <form className="login-form" method="POST">
-                <div className="form-group">
-                    <label htmlFor="email">Email:</label>
-                    <input id="email" type="email" />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password:</label>
-                    <input id="password" type="password" />
-                </div>
-            </form>
-            
-            <div className="register-account">
-                <p>Dont't have an account?</p>
-                <a>Register</a>
-            </div>
-
-            <div className="forgot-password-reset">
-                <p>Forgot Password?</p>
-                <a>Password Reset</a>
-            </div>
-            
-            <div className="login-button1">
-                <p className='login-text'>Log in</p>   
-            </div>
-            </div>
+    return ( <div className="Login">
+        <div className="large-space">
         </div>
-        </>
-    )
-}
+
+        {!resetPasswordStatus && <div className="background1">
+          <div className='login-display'>
+                
+               {!loginMenuStatus && <button className='login-button-menu' title='login' onClick={setLoginStatusDisplayTrue}>
+                    <p>LOGIN</p>
+                </button>}
+    
+                {loginMenuStatus && <button className='create-account-button' title='login' onClick={setLoginStatusDisplayFalse}>
+                    <p>CREATE ACCOUNT</p>
+                
+                </button>} 
+            </div>
+        <div className='google-login'>
+            <button className='login-google-button' title='login' onClick={googleLogin}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="google-logo" viewBox="0 0 16 16">
+                <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z"/>
+            </svg>        
+                <p>{loginMenuStatus ? 'LOGIN WITH GOOGLE' : 'SIGNUP WITH GOOGLE'}</p>        
+            </button>
+        </div>
+        <div className='or-display'>
+            <p>or</p>
+        </div>
+        
+        <div className="email-container" >
+            <div className="email-box" >
+                <input title="Please fill out this field." name="email" onChange={handleCredentials} value={userCredentials.email} ></input> 
+                <span>EMAIL *</span >
+            </div>
+    
+            <div className="password-box">
+                <input type="password" title="Please fill out this field." name="password" onChange={handleCredentials} value={userCredentials.password}/> 
+                <span>PASSWORD *</span>
+            </div>
+       
+            {!loginMenuStatus && <div className="password-confirm-box" >
+                <input type="password" title="Please fill out this field." name="passwordConfirm" onChange={handleCredentials} value={userCredentials.passwordConfirm}/> 
+                <span>CONFIRM PASSWORD *</span>
+        </div>}
+       
+        <div className='login-button-menu'>
+            <button className='login-account-button' title='login' onClick={loginMenuStatus ? handleLogin : handleSignup}> {/*  onClick={(e)=>{checkPassword(); if(!passwordStatus) { loginMenuStatus ? handleLogin : handleSignup(e)}}} */}
+            {loginMenuStatus ? 'LOGIN' : 'SIGN UP'}
+            </button>
+        </div>
+    
+        {passwordStatus && <div className='password-must-match'>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="exclamation-point" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+            </svg>
+            <p>Your password must match.</p>
+        </div>}
+    
+        {invalidLogin && <div className='invalid-password'>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="exclamation-point-invalid" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+            </svg>
+            <p>{invalidLogin}</p>
+        </div>}
+    
+        <div className='forget-password' onClick={setresetPasswordStatusTrue}>
+            <p>FORGOT YOUR PASSWORD?</p>
+        </div>
+        </div>
+    </div>} {/* Closing Bracket for resetPasswordStatus logic */}
+    
+    
+    {/* Logic for the reset password section*/}
+    
+        {resetPasswordStatus && 
+        <div className="background1">        
+            <div className='reset-password-section'>
+                <h1>Reset Password</h1>   
+              
+                 {!invalidEmail &&  <div className="email-box">
+                    <input title="Please fill out this field." type="text" name='resetEmail' value={emailReset} onChange={(e) => setEmailReset(e.target.value)}></input>                 
+                    <span>EMAIL *</span>
+                    <div className='login-button-menu' onClick={handlePasswordReset}>
+                        <button className='password-reset-button' title='login'>
+                            SEND PASSWORD RESET LINK
+                        </button>
+                       </div>
+                    {openResetDisplay && <div className='invalid-email-reset'>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="exclamation-point-invalid" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                    </svg>
+                        <p>We could not find an account with that email. Try another email, or create a new account.</p>
+                    </div>}
+                    
+                    <div className='back-to-login' onClick={setresetPasswordStatusFalse}>    
+                    <p>BACK TO LOGIN</p>
+                </div>
+            </div>}
+    
+           {invalidEmail && <div className='reset-password-message'>
+                <p>An email has been sent to your registered email address. 
+                Please check your inbox (and your spam folder, just in case) 
+                and follow the instructions provided in the email to reset your password.                
+                </p>
+                <div className='back-to-login-reset' onClick={setresetPasswordStatusFalse}>    
+                <p>BACK TO LOGIN</p>
+            </div>
+        </div>}
+        </div>
+    </div>}
+    <div className="large-space">
+    </div>
+</div>
+)};
 
 export default Login
