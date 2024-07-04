@@ -295,7 +295,7 @@ function Terminal() {
                     </div>
                 }
 
-            { openSetting &&
+            {openSetting &&
                 <Settings 
                     setOpenSettings={setOpenSettings}
                     toggleFilingsVisibility={toggleFilingsVisibility}
