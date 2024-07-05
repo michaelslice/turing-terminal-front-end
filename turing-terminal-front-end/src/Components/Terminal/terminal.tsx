@@ -1,6 +1,8 @@
-import { useFetcher } from "react-router-dom";
+import { Link, useFetcher } from "react-router-dom";
 import useDragger from "./DraggerComponent/dragger";
 import React, { useState, useEffect, useRef} from 'react'
+import { onAuthStateChanged } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 import Settings from "./SettingsComponent/settings";
 import Filings from "./FilingsComponent/filings";
 import Holders from "./HoldersComponent/holders";
@@ -24,6 +26,21 @@ import WorldIndices from "./WorldIndicesComponent/worldindices";
 import "./terminal.css"
 
 function Terminal() {
+
+    const [userConsent, setUserConsent] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(false);
+    const auth = getAuth();
+    
+    onAuthStateChanged(auth, (user) => {
+      if (user) 
+      {
+        setLoggedIn(true);
+      } 
+      else 
+      {
+        setLoggedIn(false);
+      }
+    });
 
     const [visibility, setVisibility] = useState({
         filings: false,
@@ -283,7 +300,16 @@ function Terminal() {
                     </button>
 
                     <button className="login-button-terminal">
-                        <span>Login</span>
+                        {loggedIn && 
+                            <Link to={"/signout"}>
+                                <span>Log out</span>
+                            </Link>
+                        }
+                        {!loggedIn && 
+                            <Link to={"/login"}>
+                                <span>Login</span>
+                            </Link>
+                        }
                     </button>
                 </div>
             </div>

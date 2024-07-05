@@ -1,7 +1,26 @@
 import './navbar.css'
 import { Link } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useState } from 'react';
 
 function Navbar() {
+    
+    const [userConsent, setUserConsent] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(false);
+    const auth = getAuth();
+    
+    
+    onAuthStateChanged(auth, (user) => {
+      if (user) 
+      {
+        setLoggedIn(true);
+      } 
+      else 
+      {
+        setLoggedIn(false);
+      }
+    });
+
     return(
         <div className='navbar'>    
             <div className='left-side-links'>
@@ -12,7 +31,8 @@ function Navbar() {
             </div>
             <div className='right-side-links'>    
                 <div className='login-button'>
-                    <Link to={"/login"} className='login-text'>Log in</Link>   
+                    {!loggedIn && <Link to={"/login"} className="text">LOGIN</Link>}
+                    {loggedIn && <Link to={"/signout"} className="text">LOGGED IN</Link>}   
                 </div>
                 
                 <div className='terminal-button'>
