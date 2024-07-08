@@ -1,118 +1,547 @@
-.login {
+/* login.css */
+
+.body {
+    background-color: #141414;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
+
 }
 
-.large-space2 {
+.Login {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
     width: 100%;
-    min-height: 7rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.login-row {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-}
-
-.login-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-label {
-    margin-right: 10px;
-    width: 80px; 
-}
-
-.login-button2 {
-    display: flex;
-    gap: 20px;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
-    text-wrap:nowrap;
+    margin: auto;
+    gap: 2rem;
+    background-color: #141414; 
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #141414;
+}
+
+.login-display {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-display p {
+    margin: auto;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.login-button-menu {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 50px;
     border-radius: 10px;
-    background-color: #03A05E; 
-    width: 120px;
-    height: 45px;
-    padding-left: .5rem;
-    padding-right: .5rem;
+    border: none;
+    flex-direction: column;
+    cursor: pointer;
+    background-color: #03A05E;
+}
+
+.create-account-button {
+    display: flex;
+    position: relative;
+    width: 100%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    flex-direction: column;
     cursor: pointer;
 }
 
-h3 {
-    width: 95%; 
-    text-align: center; 
-    border-bottom: 1px solid white; 
-    line-height: 0.1em;
-    margin: 10px 0 20px; 
-} 
-
-h3 span { 
-    background-color: #141414;
-    padding:0 5px; 
+.google-login {
+    display: flex;
+    position: relative;
+    margin: auto;
+    justify-content: center;
+    top: .5rem;
+    align-items: center;
 }
 
-.login-container {    
-    column-gap: 20px;
-    background: #141414;
-    height: 500px;
-    width: 500px;
+.google-login .google-logo {
     display: flex;
+    width: 25px;
+    height: 25px;
+    position:relative;
+    left: 188px;
+    top: 8px;
+}
+
+.google-login p {
+    display: flex;
+    margin: auto;
+    display: inline-flex;
+    position: relative;
+    top: -12px;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.login-google-button {
+    width: 100%;
+    background-color: #03A05E;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+}
+
+.or-display {
+    display: flex;
+    position: relative;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    color: 141414;
+}
+
+.or-display::before,
+.or-display::after {
+  content: '';
+  width: 280px; 
+  height: 1px;
+  background-color: white; 
+  margin: 0 10px; 
+}
+
+/* EMAIL BOX *************************************************************************************/
+
+
+.email-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: .5rem;
+}
+  
+  .email-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+}
+  
+.email-error-dropdown {
+    margin-left: 1px;
+    display: flex;
+    flex-direction: row; 
+    justify-content: center; 
+    align-items: center; 
+    position: absolute;
+    top: 155%;
+    left: 0;
+    width: 100%;
+    max-height: 40px; 
+    overflow-y: auto; 
+    background-color: #141414; 
+    border: 1px solid #ccc; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    z-index: 2;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.exclamation-square-email { 
+    color: orange;
+    width: 20px;
+    height: 20px;
+}
+
+.email-error-dropdown p {
+    margin-left: 20px;
+    position: relative;
+    left: 5px; 
+}
+
+  .email-box input {
+    width: 100%;
+    height: 100%; 
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    outline: none;
+    color: black;
+    font-size: 1em;
+    background-color: #141414; 
+    color: white;
+}
+  
+  .email-box span {
+    position: absolute;
+    left: 10px; 
+    top: -7px; 
+    padding: 0 10px;
+    pointer-events: none;
+    font-size: 0.70em;
+    color: black;
+    background-color: #141414; 
+    border-left: 1px solid #141414; ;
+    border-right: 1px solid #141414; ;
+    letter-spacing: 0.2em;
+    transform: translateX(0) translateY(0);
+    color: white;
+}
+  
+/* PASSWORD BOX *************************************************************************************/
+
+.password-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+  .password-box ,
+  .password-confirm-box {
+    width: 100%;
+    height: 40px; 
+    position: relative;
+}
+  
+.password-box input,
+.password-confirm-box input {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    outline: none;
+    color: white;
+    font-size: 1em;
+    position: relative;
+    background-color: #141414; 
+}
+  
+.password-box span,
+.password-confirm-box span {
+    position: absolute;
+    left: 10px; 
+    top: -7px; 
+    padding: 0 10px;
+    pointer-events: none;
+    font-size: 0.70em;
+    color: white;
+    background-color: #141414; 
+    border-left: 1px solid #141414;
+    border-right: 1px solid #141414;
+    letter-spacing: 0.2em;
+    transform: translateX(0) translateY(0);
+}
+  
+.password-confirm-box {
+    width: 100%;
+    height: 40px; 
+    position: relative;
+}
+
+.login-account-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     margin: auto;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    row-gap: 2px;
-    border-radius: 15px;
-}
-
-.login-form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.register-account,
-.register-account p {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-}
-
-.forgot-password-reset,
-.forgot-password-reset p {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-}
-
-.register-account a,
-.forgot-password-reset a {
-    color: #1668DC;
     cursor: pointer;
 }
 
-.login-button1 {
+.login-account-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px; 
+    position: relative;
+    background-color: #03A05E;
+    border-radius: 5px;
+    border: none;
+    font-family: "Source Sans Pro", sans-serif;
+    color: white;
+}
+
+.password-must-match {
+    display: flex;
+    margin: auto;
+    margin: auto;
+    align-items: left;
+    justify-content: left;
+    position: relative;
+  
+    margin: left;
+    align-items: left;
+    justify-content: left;
+    width: 605px;
+    height: 55px;
+    position: relative;
+    background-color: #8f3b3b;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Source Sans Pro", sans-serif;
+    left: 2px;
+}  
+  
+.exclamation-point {
+    display: flex;
+    width: 255px;
+    height: 25px;
+    position:relative;
+    left: 188px;
+    justify-content: left;
+    align-self: left;
+    left: -170px;
+    margin: auto;
+    color: white;
+}
+
+.password-must-match p {
+    position: relative;
+    left: -350px;
+}
+
+.invalid-password {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-wrap:nowrap;
-    border-radius: 10px;
-    background-color: #03A05E;
-    width: 120px;
-    height: 45px;
-    padding-left: .5rem;
-    padding-right: .5rem;
+    position: relative;
+    width: 605px;
+    height: 55px;
+    background-color: #8f3b3b;
+    border-radius: 5px;
     cursor: pointer;
+    font-family: "Source Sans Pro", sans-serif;
+    left: 2px;
+    margin-top: 10px;
+}
+
+.exclamation-point-invalid {
+    position: absolute;
+    left: calc(511px - 100%); 
+    color: white;
+    width: 255px;
+    height: 25px;
+}
+
+.invalid-password p {
+    margin: 0 0 0 20px; 
+    color: white;
+    position: absolute;
+    left: calc(645px - 100%); 
+}
+
+.privacy-agreement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    width: 605px;
+    height: 35px; 
+    position: relative;
+    background-color: white;
+    border-radius: 5px;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.forget-password {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    width: 605px;
+    height: 35px; 
+    position: relative;
+    background-color: #141414;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Source Sans Pro", sans-serif;
+    text-decoration: none;
+    color: white;
+}
+
+.hyper-link {
+    color: rgb(25, 118, 210);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.forget-password:hover {
+    background-color: #03A05E;
+    width: 100%;
+    transition: .3s;
+}
+
+.forgt-password p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.invalid-email-reset {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 605px;
+    height: 55px;
+    background-color: #8f3b3b;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Source Sans Pro", sans-serif;
+    left: 2px;
+    margin-top: 10px;
+}
+
+.invalid-email-reset p {
+    margin: 0 0 0 20px; 
+    color: white;
+    position: absolute;
+    left: calc(645px - 100%); 
+}
+
+/* PASSWORD RESET BOX *************************************************************************************/
+
+.reset-password-section {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.reset-password-section  h1 {
+    display: flex;
+    position: relative;
+    align-self: left;
+    justify-content: center; 
+    font-size: 1.5rem;
+}
+
+.password-reset-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.password-reset-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    margin: auto;
+    width: 100%;
+    height: 50px; 
+    background-color: #03A05E;
+    border-radius: 5px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: white;
+  }
+
+.back-to-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    width: 605px;
+    height: 35px; 
+    position: relative;
+    background-color: #03A05E;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+
+.back-to-login:hover {
+    background-color: rgb(219, 216, 216);
+    transition: .3s;
+}
+
+  .back-to-login p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 50px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+/* PASSWORD RESET ALERT MESSAGE *************************************************************************************/
+
+.reset-password-message {
+    margin: auto;
+    max-width: 585px;
+}
+
+.reset-password-message p{
+    display: flex;
+    position: relative;
+    top: -10px;
+}
+
+.back-to-login-reset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 10px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    width: 605px;
+    height: 35px;
+    position: relative;
+    background-color: #333;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Source Sans Pro", sans-serif;
 }

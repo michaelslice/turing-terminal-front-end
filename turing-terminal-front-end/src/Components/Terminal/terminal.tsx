@@ -21,6 +21,7 @@ import EquityScreener from "./EquityScreenerComponent/equityscreener";
 import Ipo from "./IPOComponent/ipo";
 import WorldIndices from "./WorldIndicesComponent/worldindices";
 
+import { Link } from "react-router-dom";
 import "./terminal.css"
 
 function Terminal() {
@@ -279,11 +280,15 @@ function Terminal() {
                     </div>
 
                     <button className="register-button">
-                        <span>Register</span>
+                        <Link to={"/login"}>
+                            <span>Register</span>
+                        </Link>
                     </button>
 
                     <button className="login-button-terminal">
+                        <Link to={"/login"}>
                         <span>Login</span>
+                        </Link>
                     </button>
                 </div>
             </div>
