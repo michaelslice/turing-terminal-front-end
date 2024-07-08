@@ -5,18 +5,14 @@ import { useState } from 'react';
 
 function Navbar() {
     
-    const [userConsent, setUserConsent] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
     const auth = getAuth();
     
-    
     onAuthStateChanged(auth, (user) => {
-      if (user) 
-      {
+      if (user) {
         setLoggedIn(true);
       } 
-      else 
-      {
+      else {
         setLoggedIn(false);
       }
     });

@@ -20,11 +20,26 @@ import OptionsChain from "./OptionChainComponent/optionchain";
 import EquityScreener from "./EquityScreenerComponent/equityscreener";
 import Ipo from "./IPOComponent/ipo";
 import WorldIndices from "./WorldIndicesComponent/worldindices";
-
-import { Link } from "react-router-dom";
+import { Link, } from "react-router-dom"
+import {  } from "firebase/auth";
+import {
+    getAuth, 
+    onAuthStateChanged,
+    signInWithPopup, 
+    createUserWithEmailAndPassword, 
+    signInWithEmailAndPassword, 
+    sendPasswordResetEmail, 
+    GoogleAuthProvider,
+    GithubAuthProvider   
+} from "firebase/auth";
 import "./terminal.css"
 
+import { firebaseConfig } from "../LoginPage/login";
+import {auth} from  "../LoginPage/login.tsx"
+
 function Terminal() {
+
+    let user = auth.currentUser?.uid;
 
     const [visibility, setVisibility] = useState({
         filings: false,
@@ -96,9 +111,7 @@ function Terminal() {
     })
 
     const [search, setSearch] = useState(" ");
-    
     const searchValue = (e: any) => { setSearch(e.target.value) }
-
 
     const [openSetting, setOpenSettings] = useState(false);
     const [openFilings, setOpenFilings] = useState(false);
@@ -280,15 +293,27 @@ function Terminal() {
                     </div>
 
                     <button className="register-button">
-                        <Link to={"/login"}>
-                            <span>Register</span>
-                        </Link>
+                        {user ? 
+                            <Link to={"/login"}>
+                                <span>Register</span>
+                            </Link>
+                        :    
+                            <Link to={"/signout"}>
+                                <span>Logout</span>
+                            </Link>
+                        }
                     </button>
 
                     <button className="login-button-terminal">
-                        <Link to={"/login"}>
-                        <span>Login</span>
-                        </Link>
+                        {user ? 
+                            <Link to={"/login"}>
+                                <span>Login</span>
+                            </Link>
+                        :    
+                            <Link to={"/signout"}>
+                                <span>Logout</span>
+                            </Link>
+                        }
                     </button>
                 </div>
             </div>

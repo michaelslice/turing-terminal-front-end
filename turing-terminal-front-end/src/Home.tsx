@@ -12,12 +12,22 @@ function Home() {
 
   return (
     <>
-     
      <Navbar />
-      <div className='large-space'></div>
-        <div className='intro-text'>
-          <h1>Bringing Finance to Everyone</h1>
-          <h2>Introducing Turing, a web-based financial Terminal</h2>
+      <div className='home'>
+        <div className='large-space'>
+        </div>
+          <div className='intro-text'>
+            <h1>Bringing Finance to Everyone</h1>
+            <h2>Introducing Turing, a web-based financial Terminal</h2>
+        </div>
+        <div className='demo-buttons'>
+          <a>
+            Book Demo
+          </a>
+          <a>
+            Launch Terminal
+          </a>
+        </div>
       </div>
     </>
   )
