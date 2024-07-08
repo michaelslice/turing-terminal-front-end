@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import useDragger from "../DraggerComponent/dragger";
 import axios from "axios";
 import api from "../../../../api";
-import "./focus.css"
 import { json } from "react-router-dom";
+import "./focus.css"
 
 function Focus({setOpenFocus}: any) {
     
@@ -47,7 +47,7 @@ function Focus({setOpenFocus}: any) {
         };
     }, []);
 
-    const [stockSymbol, setStockSymbol] = useState('');
+    const [stockSymbol, setStockSymbol] = useState(' ');
     const [stockData, setStockData] = useState({
         price: ' ',
         price_change: ' ',
@@ -66,9 +66,8 @@ function Focus({setOpenFocus}: any) {
             const response = await api.get("http://127.0.0.1:8000/api/v1/focus/ticker/", {
                 params: { ticker : stockSymbol}
             })
-            console.log(response.data)
             setStockData(response.data);
-            
+    
             setStockData({
                 price: response.data.price,
                 price_change : response.data.price_change,

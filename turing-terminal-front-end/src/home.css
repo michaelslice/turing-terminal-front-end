@@ -74,9 +74,19 @@ h1 {
   padding: 1rem;
 }
 
+.book-demo:hover {
+  background-color: #3E8B66;
+  color: rgb(61, 55, 55);
+}
+
+
 .launch-terminal {
   display: flex;
   background-color: #3E8B66;
   border-radius: 15px;
   padding: 1rem;
+}
+
+.launch-terminal:hover {
+  color: rgb(61, 55, 55);
 }

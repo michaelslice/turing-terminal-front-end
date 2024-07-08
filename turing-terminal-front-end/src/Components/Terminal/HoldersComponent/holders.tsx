@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useDragger from "../DraggerComponent/dragger";
+import api from "../../../../api";
 import "./holders.css"
 
 function Holders({setOpenHolders}: any) {
@@ -9,6 +10,25 @@ function Holders({setOpenHolders}: any) {
     const closeOpenHolders = () => {
         console.log("close settings")
         setOpenHolders(false);
+    }
+
+    const [holdersData, setHoldersData] = useState<any[]>([]);
+    const [stockSymbol, setStockSymbol] = useState<string>('');
+
+    const fetchHolders = async () => {
+        try {
+            const response = await api.get("http://127.0.0.1:8000/api/v1/holders/getholders/", {
+                params: { ticker: stockSymbol }
+            });
+            setHoldersData(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const submitTicker = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        fetchHolders();
     }
 
     return(
@@ -32,8 +52,45 @@ function Holders({setOpenHolders}: any) {
                 </button>
             </div>       
         </div>
+
+        <div className="filings-text">
+            <div className="filings-options">
+                <form onSubmit={submitTicker}>
+                    <input
+                        placeholder="Company"
+                        id="theme"
+                        onChange={(e) => setStockSymbol(e.target.value)}>
+                    </input>
+                </form>
+            </div>
         </div>
-    )
+        
+        <div className="filing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Holder</th>
+                            <th>Shares</th>
+                            <th>Date Reported</th>
+                            {/* <th>% Out</th> */}
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {holdersData.map((item, index) => (
+                            <tr key={index}>
+                                <td>{item.Holder}</td>
+                                <td>{item.Shares}</td>
+                                <td>{item['Date Reported']}</td>
+                                {/* <td>{item['% Out']}</td> */}
+                                <td>{item.Value}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+
+    </div>)
 }
 
 export default Holders

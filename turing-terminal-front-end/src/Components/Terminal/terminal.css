@@ -229,7 +229,7 @@ body {
 #middle-section {
     display: flex;
     flex-direction: row;
-    height: 66.3vw;
+    height: 100vh;
     width: 100%;
     background-color: dark;
 }
