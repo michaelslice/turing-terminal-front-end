@@ -23,7 +23,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 .home {
   height: 100vh;
 }
@@ -61,5 +60,23 @@ h1 {
 }
 
 .demo-buttons {
-  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.book-demo {
+  display: flex;
+  background-color: black;
+  border-radius: 15px;
+  padding: 1rem;
+}
+
+.launch-terminal {
+  display: flex;
+  background-color: #3E8B66;
+  border-radius: 15px;
+  padding: 1rem;
 }
