@@ -8,13 +8,11 @@ import Login from './Components/LoginPage/login';
 import Pricing from './Components/PricingPage/Pricing'
 import Roadmap from './Components/RoadmapPage/Roadmap';
 import Signout from './Components/SignOutPage/Signout';
-
 import Test from './Components/Test/Test'
 
 function App() {
     return(
         <>
-
         <div className='container'>
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -24,7 +22,6 @@ function App() {
                 <Route path="/roadmap" element={<Roadmap />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signout" element={<Signout />} />
-
                 <Route path="/test" element={<Test />} />
             </Routes>
         </div>

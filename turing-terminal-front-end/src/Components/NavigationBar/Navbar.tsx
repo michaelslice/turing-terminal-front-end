@@ -5,18 +5,14 @@ import { useState } from 'react';
 
 function Navbar() {
     
-    const [userConsent, setUserConsent] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
     const auth = getAuth();
     
-    
     onAuthStateChanged(auth, (user) => {
-      if (user) 
-      {
+      if (user) {
         setLoggedIn(true);
       } 
-      else 
-      {
+      else {
         setLoggedIn(false);
       }
     });
@@ -31,12 +27,20 @@ function Navbar() {
             </div>
             <div className='right-side-links'>    
                 <div className='login-button'>
-                    {!loggedIn && <Link to={"/login"} className="text">LOGIN</Link>}
-                    {loggedIn && <Link to={"/signout"} className="text">LOGGED IN</Link>}   
+                    {!loggedIn && 
+                        <Link to={"/login"} className="text">
+                        <p>LOGIN</p>
+                    </Link>}
+                    {loggedIn && 
+                        <Link to={"/signout"} className="text">
+                        <p>LOGGED IN</p>
+                    </Link>}   
                 </div>
                 
                 <div className='terminal-button'>
-                    <Link to={"/terminal"} className='terminal-text'>Launch Terminal</Link>   
+                    <Link to={"/terminal"} className='terminal-text'>
+                    <p>Launch Terminal</p>
+                    </Link>   
                 </div>
             </div>
         </div>   

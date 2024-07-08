@@ -23,6 +23,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.home {
+  height: 100vh;
+}
+
 html,
 body {  
   margin: 0%; /* INCLUDE FOR NAV BAR TO COVER 100% WINDOW WIDTH */
@@ -53,4 +57,26 @@ h1 {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+}
+
+.demo-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.book-demo {
+  display: flex;
+  background-color: black;
+  border-radius: 15px;
+  padding: 1rem;
+}
+
+.launch-terminal {
+  display: flex;
+  background-color: #3E8B66;
+  border-radius: 15px;
+  padding: 1rem;
 }

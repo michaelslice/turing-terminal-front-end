@@ -17,6 +17,7 @@
     height: 45px;
     padding-left: .5rem;
     padding-right: .5rem;
+    font-family: Montserrat, sans-serif !important;
 }
 
 .login-button:hover {
@@ -30,6 +31,10 @@
     padding-left: .5rem;
     padding-right: .5rem;
 }
+
+.login-button p:hover {
+    color: black;
+} 
 
 .left-side-links,
 .right-side-links {
@@ -45,10 +50,14 @@
     text-wrap:nowrap;
     border-radius: 10px;
     background-color: #3E8B66;
-    width: 120px;
+    width: 65%;
     height: 45px;
-    padding-left: .5rem;
-    padding-right: .5rem;
+    padding: .5rem;
+    font-family: Montserrat, sans-serif !important;
+}
+
+.terminal-button p:hover {
+    color: rgb(61, 55, 55);
 }
 
 .home-button:hover,

@@ -14,7 +14,7 @@ import {
     GithubAuthProvider   
 } from "firebase/auth";
 
-const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: import.meta.env.VITE_APIKEY,
     authDomain: import.meta.env.VITE_AUTHDOMAIN,
     projectId: import.meta.env.VITE_PROJECTID,
@@ -23,8 +23,10 @@ const firebaseConfig = {
     appId: import.meta.env.VITE_APPID
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+import "./login.css"
+
+export const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 const gitHubProvider = new GithubAuthProvider();
 
