@@ -38,6 +38,7 @@ function Holders({setOpenHolders}: any) {
     }
 
     const submitTicker = (e: React.FormEvent<HTMLFormElement>) => {
+        // Prevent the form from reloading the page when submitted
         e.preventDefault();
         fetchHolders();
     }
