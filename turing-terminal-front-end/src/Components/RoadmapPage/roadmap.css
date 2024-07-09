@@ -1,0 +1,193 @@
+.w-layout-grid-roadmap {
+    grid-row-gap: 16px;
+    grid-column-gap: 16px;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-columns: 1fr;
+    display: grid;
+}
+
+.uui-layout32_timeline-left {
+    border-radius: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    display: flex;
+    position: relative;
+}
+
+.uui-layout32_timeline-step {
+    grid-column-gap: 2.5rem;
+    grid-row-gap: 0px;
+    grid-template-rows: auto;
+    grid-template-columns: max-content 1fr;
+}
+
+.uui-layout32_roadmap-component {
+    grid-column-gap: 4rem;
+    grid-row-gap: 4rem;
+    grid-template: "Area"
+    / 1fr;
+    grid-auto-columns: 1fr;
+    align-items: start;
+    display: grid;
+}
+
+.uui-layout32_component {
+    grid-column-gap: 4rem;
+    grid-row-gap: 4rem;
+    grid-template: "Area"
+    / 1fr;
+    grid-auto-columns: 1fr;
+    align-items: start;
+    display: grid;
+}
+
+.uui-padding-vertical-xhuge-7 {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+}
+
+.uui-container-large-6 {
+    width: 100%;
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.uui-layout32_timeline-wrapper {
+    position: relative;
+}
+    
+.uui-layout32_content-right {
+    margin-top: -246px;
+}
+
+.uui-layout32_timeline-step {
+    grid-column-gap: 2.5rem;
+    grid-row-gap: 0px;
+    grid-template-rows: auto;
+    grid-template-columns: max-content 1fr;
+}
+
+.uui-layout32_progress-bar {
+    background-color: var(--untitled-ui--primary600);
+    width: 2px;
+    height: 100%;
+}
+
+.uui-layout32_progress-bar-wrapper {
+    background-color: var(--untitled-ui--gray200);
+    width: 2px;
+    height: 75%;
+    position: absolute;
+    top: 245px;
+    bottom: -6%;
+    left: 26px;
+    right: 0%;
+}
+
+.uui-heading-xxsmall-2 {
+    color: var(--untitled-ui--primary600);
+    letter-spacing: normal;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.uui-layout32_timeline-right {
+    margin-top: 9px;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+.uui-icon-1x1-xsmall-4 {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.uui-icon-featured-outline-large-4 {
+    border: .5rem solid var(--white);
+    background-color: var(--white);
+    color: var(--untitled-ui--primary600);
+    border-radius: 100%;
+    justify-content: center;
+    align-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+}
+
+.uui-layout32_timeline-icon-wrapper {
+    z-index: 1;
+    color: rgba(17, 68, 17, .27);
+    background-color: #141414;
+    margin-top: -1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    position: relative;
+}
+
+.uui-layout32_timeline-left {
+    border-radius: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    display: flex;
+    position: relative;
+}
+
+.uui-text-size-xlarge-2 {
+    color: var(--untitled-ui--gray600);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.5;
+}
+
+.uui-heading-large-3 {
+    color: var(--untitled-ui--white);
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.uui-heading-subheading-4 {
+    color: var(--untitled-ui--primary600);
+    margin-bottom: .75rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.uui-max-width-large-5 {
+    width: 100%;
+    max-width: 48rem;
+}
+
+.body-7 {
+    background-color: #141414;
+}
+
+.uui-text-size-medium-5 {
+    color: var(--untitled-ui--gray600);
+    letter-spacing: normal;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.uui-space-xxsmall-3 {
+    width: 100%;
+    min-height: .5rem;
+}

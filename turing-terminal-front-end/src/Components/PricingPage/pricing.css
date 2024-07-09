@@ -1,28 +1,241 @@
-.pricing {
+.uui-space-xsmall-2 {
+    width: 100%;
+    min-height: 1rem;
+}
+
+.uui-heading-subheading-3 {
+    color: var(--untitled-ui--primary600);
+    margin-bottom: .75rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.uui-max-width-large-4.align-center, .align-center-3 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.uui-text-align-center-2 {
+    text-align: center;
+}
+
+.uui-padding-vertical-xhuge-5 {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+}
+
+.uui-container-large-4 {
+    width: 100%;
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.uui-page-padding-6 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.uui-pricing03_feature-icon-wrapper {
+    flex: none;
+    align-self: flex-start;
+    margin-right: .75rem;
+}
+
+.uui-pricing03_feature {
     display: flex;
+}
+
+.uui-pricing03_feature-list {
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 1rem;
+    grid-template: 
+                ". ."
+                ". ."
+                ". ."
+                ". ."
+                ". ."
+                ". ."
+                ". Area"
+                / .5fr .5fr;
+    grid-auto-columns: 1fr;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    display: grid;
+}
+
+.uui-pricing03_card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--untitled-ui--primary600);
+    letter-spacing: normal;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.feature-list-flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-wrap: nowrap;
+}
+
+.uui-pricing03_divider {
+    background-color: var(--untitled-ui--gray200);
+    width: 100%;
+    height: 1px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.uui-pricing03_top-right-text {
+    color: var(--untitled-ui--gray600);
+    letter-spacing: normal;
+    margin-left: .125rem;
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+
+.uui-pricing03_top-right-price {
+    color: var(--untitled-ui--primary600);
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
+    font-size: 3.75rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.uui-heading-xsmall-4 {
+    color: var(--untitled-ui--primary700);
+    letter-spacing: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.uui-pricing03_component {
     flex-direction: column;
-    height: 100vh;
-    background-color: black;
+    justify-content: center;
+    align-items: stretch;
+    display: flex;
+}
+
+.uui-pricing03_plan-name-wrapper {
+grid-column-gap: .5rem;
+grid-row-gap: .5rem;
+align-items: center;
+display: flex;
+}
+
+.uui-pricing03_icon-wrapper {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    display: flex;
+}
+
+.uui-pricing03_content-top {
     align-items: center;
-    justify-content: flex-start;
-    gap: 2rem;
+    justify-content: center;
+    column-gap: 2rem;
+    display: flex;
 }
 
-.subheading {
+.uui-pricing03_content {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
     display: flex;
+}
+
+.uui-pricing03_plan {
+    border: 1px solid var(--untitled-ui--gray200);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 12px 16px -4px rgba(0, 0, 0, .08), 0 4px 6px -2px rgba(16, 24, 40, .03);
+    width: 50%;
+    margin: auto;
+}
+
+.uui-pricing03_tab-link {
+    grid-column-gap: .5rem;
+    grid-row-gap: .5rem;
+    color: var(--untitled-ui--gray500);
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: .375rem;
     align-items: center;
-    justify-content: flex-start;
-    gap: 2rem;
-}
-
-.heading-medium {
+    padding: .5rem 1rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
+    font-weight: 600;
     display: flex;
 }
 
-.pricing-component-with-tabs {
+.uui-pricing03_tab-link.w--current {
+    color: var(--untitled-ui--gray700);
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .1), 0 1px 2px rgba(16, 24, 40, .06);
+}
+
+.uui-pricing03_tabs-menu {
+    grid-column-gap: .5rem;
+    grid-row-gap: 16px;
+    border: 1px solid var(--untitled-ui--gray100);
+    background-color: var(--untitled-ui--gray50);
+    border-radius: .5rem;
+    grid-template-rows: auto;
+    grid-auto-columns: 1fr;
+    align-self: center;
+    margin-top: 2.5rem;
+    margin-bottom: 3rem;
+    padding: .375rem;
+    display: grid;
+    cursor: pointer;
+}
+
+.uui-pricing03_component {
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
     display: flex;
 }
 
-.layout-grid {
+.uui-heading-medium-3 {
+    color: var(--untitled-ui--primary700);
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
+    font-size: 2.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.uui-button-8-bottom {
+    grid-column-gap: .5rem;
+    border: 1px solid var(--untitled-ui--primary600);
+    background-color: var(--untitled-ui--primary600);
+    color: var(--untitled-ui--white);
+    text-align: center;
+    white-space: nowrap;
+    border-radius: .5rem;
+    justify-content: center;
+    align-items: center;
+    padding: .625rem 1.125rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration: none;
+    transition: all .3s;
     display: flex;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, .05);
+    cursor: pointer;
 }

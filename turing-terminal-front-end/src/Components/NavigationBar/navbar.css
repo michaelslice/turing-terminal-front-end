@@ -8,6 +8,10 @@
     justify-content: space-between;
 }
 
+.left-side-links {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
+}
+
 .login-button {
     display: flex;
     align-items: center;
@@ -17,7 +21,7 @@
     height: 45px;
     padding-left: .5rem;
     padding-right: .5rem;
-    font-family: Montserrat, sans-serif !important;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
 }
 
 .login-button:hover {
@@ -53,7 +57,7 @@
     width: 65%;
     height: 45px;
     padding: .5rem;
-    font-family: Montserrat, sans-serif !important;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Oxygen, Fira Sans, Droid Sans, sans-serif;
 }
 
 .terminal-button p:hover {
