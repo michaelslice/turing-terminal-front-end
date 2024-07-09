@@ -16,7 +16,7 @@ function Focus({setOpenFocus}: any) {
      * @param Callback function: Creates a resizeObserver to monitor 
      * changes in the focus-box, when the size changes update boxSize
      * 
-     * @param Dependencies []: This hook will run  
+     * @param Dependencies []: This hook will run only when mounted
      * 
      * @param callback function (entries) => {...}: Recieves an 
      * array of ResizeObserverEntry objects(entries). Each entry contains
@@ -55,14 +55,19 @@ function Focus({setOpenFocus}: any) {
     });
 
     /**
+     * const fetchTicker = async () =>: Is a synchronous function used to make
+     * a GET request for the requested tickers price, day % change, day price change
      *  
-     * @param 
+     * @param params: { ticker: stockSymbol }: Send the stock symbol as 
+     * a query parameter with the key 'ticker'
      * 
-     * @notes 
+     * @notes If the API call is successful then, update the state of 
+     * stockData
      * 
      */
     const fetchTicker = async () => {
         try {
+            // Pause The Execution of The Function Until the Promise(Result of api.get) is resolved 
             const response = await api.get("http://127.0.0.1:8000/api/v1/focus/ticker/", {
                 params: { ticker : stockSymbol}
             })
@@ -73,8 +78,7 @@ function Focus({setOpenFocus}: any) {
                 price_change : response.data.price_change,
                 percent_change: response.data.percent_change,
             }) 
-        }
-        catch( e ) {
+        } catch( e ) {
             console.log(e);
         }
     }

@@ -33,7 +33,7 @@ const gitHubProvider = new GithubAuthProvider();
 function Login() {
 
     const navigate = useNavigate();
-    // const navigate = useNavigate(); // Get the navigate function
+    const [emailReset, setEmailReset] = useState('');
     const [emailAlertFail, setEmailAlertFail] = useState(false);
     const [invalidEmail, setInvalidEmail] = useState(false);
     const [openResetDisplay, setOpenResetDisplay] = useState(false);
@@ -64,14 +64,12 @@ function Login() {
 
     function handleSignup(e: any) {
         e.preventDefault();
-        // Check if the email is invalid
-        if (isInvalidEmail(userCredentials.email)) 
-        {
+    
+        if (isInvalidEmail(userCredentials.email)) {
             setAttemptedSignup(true)
             return; 
         }
-        if(userCredentials.password !== userCredentials.passwordConfirm)
-        {
+        if(userCredentials.password !== userCredentials.passwordConfirm) {
             setPasswordStatus(true);
             return;
         }
@@ -79,7 +77,7 @@ function Login() {
         .then((userCredential) => {
         const user = userCredential.user;
         console.log(user)
-        // navigate('/home');
+        navigate('/terminal');
         setUserCredentials(prevState => ({
             ...prevState,
             email: ''
@@ -111,19 +109,33 @@ function Login() {
         .then((result) => {
             const user = result.user;
             console.log(user)
-           // navigate('/navigation');
+            navigate('/terminal');
         }).catch((error) => {
             setInvalidLogin(error.message);
            
         });
     }
 
-    // Handle user log in if account is valid
+    /**
+     * function handleLogin(e: any): Is used to manually handle a login 
+     * with a user inputed email and password 
+     * 
+     * signInWithEmailAndPassword(): Built in Firebase function for
+     * signing in with email and password
+     * 
+     * @param auth: An object representing the authentication context 
+     * 
+     * @param userCredentials.email: React state for managing entered email
+     * 
+     * @param userCredentials.password: React state for managing entered password
+     * 
+     * @note If success navigate to terminal
+     * 
+     */
     function handleLogin(e: any) {
         e.preventDefault();
         signInWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
-        .then((userCredential) => {
-          // Signed in 
+        .then((userCredential) => { 
           const user = userCredential.user;
           console.log(user)
           navigate('/terminal');
@@ -133,10 +145,20 @@ function Login() {
         });
     }
 
-    const [emailReset, setEmailReset] = useState('');
 
+    /**
+     * function handlePasswordReset(): Is used to reset the currently
+     * logged in users password 
+     * 
+     * sendPasswordResetEmail: Built in Firebase function to reset
+     * the password
+     * 
+     * @param auth: An object representing the authentication context
+     * 
+     * @param emailReset: The email address for the email to be sent to
+     * 
+     */
     function handlePasswordReset() {
-        // Assuming emailReset contains the correct email address
         sendPasswordResetEmail(auth, emailReset)
         .then(() => {
             setInvalidEmail(true);

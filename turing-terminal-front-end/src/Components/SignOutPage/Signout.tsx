@@ -6,6 +6,7 @@ import './signout.css'
 function Signout() 
 {
     const navigate = useNavigate();
+    
     function handleSignOut() {
         const auth = getAuth();
         signOut(auth).then(() => {    

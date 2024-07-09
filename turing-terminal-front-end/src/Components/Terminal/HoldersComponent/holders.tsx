@@ -14,7 +14,18 @@ function Holders({setOpenHolders}: any) {
 
     const [holdersData, setHoldersData] = useState<any[]>([]);
     const [stockSymbol, setStockSymbol] = useState<string>('');
-
+   
+    /**
+     * const fetchHolders = async () =>: Is a synchronous function used to make
+     * a GET request for the requested tickers holders
+     *  
+     * @param params: { ticker: stockSymbol }: Send the stock symbol as 
+     * a query parameter with the key 'ticker'
+     * 
+     * @notes If the API call is successful then, update the state of 
+     * NewsData
+     * 
+     */
     const fetchHolders = async () => {
         try {
             const response = await api.get("http://127.0.0.1:8000/api/v1/holders/getholders/", {
@@ -72,7 +83,6 @@ function Holders({setOpenHolders}: any) {
                             <th>Holder</th>
                             <th>Shares</th>
                             <th>Date Reported</th>
-                            {/* <th>% Out</th> */}
                             <th>Value</th>
                         </tr>
                     </thead>
@@ -82,7 +92,6 @@ function Holders({setOpenHolders}: any) {
                                 <td>{item.Holder}</td>
                                 <td>{item.Shares}</td>
                                 <td>{item['Date Reported']}</td>
-                                {/* <td>{item['% Out']}</td> */}
                                 <td>{item.Value}</td>
                             </tr>
                         ))}

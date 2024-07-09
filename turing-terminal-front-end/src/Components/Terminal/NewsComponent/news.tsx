@@ -16,12 +16,25 @@ function News({ setOpenNews }: any) {
     const [endDate, setEndDate] = useState<Date | null>(null);
     const [newsData, setNewsData] = useState<any[]>([]);
     const [stockSymbol, setStockSymbol] = useState<string>('');
-
+   
+    /**
+     * const fetchNews = async () =>: Is a synchronous function used to make
+     * a GET request for the requested tickers news
+     *  
+     * @param params: { ticker: stockSymbol }: Send the stock symbol as 
+     * a query parameter with the key 'ticker'
+     * 
+     * @notes If the API call is successful then, update the state of 
+     * NewsData
+     * 
+     */
     const fetchNews = async () => {
         try {
+            // Pause The Execution of The Function Until the Promise(Result of api.get) is resolved 
             const response = await api.get("http://127.0.0.1:8000/api/v1/news/getnews/", {
                 params: { ticker: stockSymbol }
             });
+
             setNewsData(response.data);
         } catch (error) {
             console.log(error);
