@@ -32,8 +32,85 @@ function Help({setOpenHelp}: any) {
                 </button>
             </div>       
         </div>
+        
+        <div className="flex-container">
+            <div className="top-row">
+                <h1>Turing Terminal</h1>
+                <a>
+                    <span className="documentation">Documentation</span>
+                </a>
+            </div>
+
+            <div className="top-row">
+                <p>
+                    The Godel Terminal is a Command Line Interface (CLI) system. 
+                    You can access the terminal, by clicking the "Enter a Ticker" 
+                    prompt in the upper left, or by pressing ` (backtick) on your keyboard. 
+                    You will use the terminal to enter commands, which provide access all of 
+                    Godel's features. Below, is the syntax for a command. Between each statement 
+                    is a space, or you can press Tab to autoselect the highlighted option in the terminal.
+                </p>
+            </div>
+
+            <div className="top-row">
+            <svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                <path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"></path>
+            </svg>
+                <div className="element-wrapper">
+                    <span className="security-identifier">Security Identifier</span>
+                </div>
+                <div className="element-wrapper">
+                    <span className="asset-class">Asset Class</span>
+                </div>
+                <div className="element-wrapper">
+                    <span className="command-shortcut">Command Shortcut</span>
+                </div>
+                <div className="element-wrapper">
+                    <span className="arguement-one">Arguement 1</span>
+                </div>
+                <div className="element-wrapper">
+                    <span className="arguement-two">Arguement 2</span>
+                </div>
+            </div>
+
+            <div className="top-row">
+                <p>
+                    Here's an example, to pull up a chart for Apple, Inc.
+                </p>
+            </div>
+
+            <div className="top-row">
+            <svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                <path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"></path>
+            </svg>
+                <div className="element-wrapper">
+                    <span className="security-identifier">AAPL</span>
+                </div>
+                <div className="element-wrapper">
+                    <span className="asset-class">EQ</span>
+                </div>
+                <div className="element-wrapper">
+                    <span className="command-shortcut">G</span>
+                </div>
+            </div>
+
+            <div className="top-row">
+                <p>
+                In this case, AAPL is our security identifier. EQ (for equity) 
+                is the asset class. There are many asset classes, you can see 
+                the full list on our documentation page. G, is the command, or 
+                the shortcut, for the Chart Command.
+                </p>
+            </div>
+
+            <div className="top-row">
+                <p>
+                Try it out! Enter AAPL EQ G into the terminal, and you'll see a chart for Apple, Inc.
+                </p>
+            </div>
         </div>
-    )
+    
+</div>)
 }
 
 export default Help

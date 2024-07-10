@@ -12,8 +12,6 @@ function News({ setOpenNews }: any) {
         setOpenNews(false);
     }
 
-    const [startDate, setStartDate] = useState<Date | null>(null);
-    const [endDate, setEndDate] = useState<Date | null>(null);
     const [newsData, setNewsData] = useState<any[]>([]);
     const [stockSymbol, setStockSymbol] = useState<string>('');
    

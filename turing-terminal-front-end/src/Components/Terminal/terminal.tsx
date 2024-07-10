@@ -250,11 +250,16 @@ function Terminal() {
                         </div>
                     </button>}
 
-                    {visibility.equityScreener && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenEquityScreener(true)}>
+                    {/* {visibility.equityScreener && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenEquityScreener(true)}>
                         <div className="pin-commands">
                             <span>EQS</span>
                         </div>
-                    </button>}
+                    </button>} */}
+                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenEquityScreener(true)}>
+                        <div className="pin-commands">
+                            <span>EQS</span>
+                        </div>
+                    </button>
 
                     {visibility.initialPublicOfferings && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenInitialPublicOfferings(true)}>
                         <div className="pin-commands">

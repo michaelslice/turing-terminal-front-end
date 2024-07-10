@@ -1,5 +1,7 @@
 import "./equityscreener.css"
+import { useState } from "react";
 import useDragger from "../DraggerComponent/dragger";
+import api from "../../../../api";
 
 function EquityScreener({setOpenEquityScreener}: any) {
     
@@ -8,6 +10,60 @@ function EquityScreener({setOpenEquityScreener}: any) {
     const closeOpenEquityScreener = () => {
         console.log("close settings")
         setOpenEquityScreener(false);
+    }
+
+    const [stockData, setStockData] = useState<any>([])
+    const [stockSymbol, setStockSymbol] = useState<string>('');
+
+    const fetchTickers = async () => {
+        try {
+            const response = await api.get("http://127.0.0.1:8000/api/v1/equityscreener/screener/", {
+                params: {ticker: stockSymbol}
+            });
+            
+            /**
+             *  Convert the object 'data' into an array dataArray 
+             *  of objects where each object in dataArray represents
+             *  a data point with structured properties time, open,
+             *  high, low, close, volume
+             * 
+             *  Object.keys(data): Retrieve an array of keys from
+             *  the data object. Each key represents a timestamp
+             * 
+             *  .map(key => ({ ... }): This maps each key in the 
+             *  array returned by Object.keys(data) to a new object
+             * 
+             *  ({ ... }): Construct a new object for each key
+             * 
+             *  time: key: Assign the current timestamp to the time
+             *  property of the new object
+             * 
+             *  open: data[key]['1. open]: Retrieve the value 
+             *  associated with the '1. open' property under
+             *  the current key in 'data' and assign it to the 
+             *  'open' property of the new object
+             * 
+             */
+            const data = response.data["Time Series (5min)"]
+            const dataArray = Object.keys(data).map(key => ({
+                time: key,
+                open: data[key]['1. open'],
+                high: data[key]['2. high'],
+                low: data[key]['3. low'],
+                close: data[key]['4. close'],
+                volume: data[key]['5. volume'],
+            }));
+
+            setStockData(dataArray)
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const submitTicker = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        fetchTickers();
     }
 
     return(
@@ -32,20 +88,54 @@ function EquityScreener({setOpenEquityScreener}: any) {
             </div>       
         </div>
 
+        <div className="filings-text">
+                <div className="filings-options">
+                    <form onSubmit={submitTicker}>
+                        <input
+                            placeholder="Company"
+                            id="theme"
+                            onChange={(e) => setStockSymbol(e.target.value)}>
+                        </input>
+                    </form>
+                </div>
+
+                <div className="filings-options">
+                    <button >
+                        <span>Clear</span>
+                    </button>
+
+                    <button>
+                        <span>Pause</span>
+                    </button>
+                </div>
+            </div>
 
         <div className="filing-table">
             <table>
-                <th>Ticker</th>
-                <th>Name</th>
-                <th>Market Cap</th>
+                <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th>Name</th>
+                        <th>Market Cap</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {stockData.map((item: any, index:any) => (
+                        <tr key={index}>
+                        <td>{item.time}</td>
+                        <td>{item.open}</td>
+                        <td>{item.high}</td>
+                        <td>{item.low}</td>
+                        <td>{item.close}</td>
+                        <td>{item.volume}</td>
+                        </tr>
+                    ))}
+                </tbody>
             </table>    
         </div>
 
-        </div>
-    )
+
+    </div>)
 }
 
 export default EquityScreener
-
-
-
