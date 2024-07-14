@@ -138,7 +138,7 @@ function Terminal() {
 
                 <div className="right-side-search-bar" onClick={setSearchBarFunction}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="right" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                        <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
                     </svg>
                     <div className="searchbar">
                         { !searchBar 
@@ -220,11 +220,17 @@ function Terminal() {
                         </div>
                     </button>}
 
-                    {visibility.financials && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenFinancials(true)}>
+                    {/* {visibility.financials && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenFinancials(true)}>
                         <div className="pin-commands">
                             <span>FA</span>
                         </div>
-                    </button>}
+                    </button>} */}
+
+                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenFinancials(true)}>
+                        <div className="pin-commands">
+                            <span>FA</span>
+                        </div>
+                    </button>
 
                     {visibility.settings && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenSettings(true)}>
                         <div className="pin-commands">
@@ -261,17 +267,30 @@ function Terminal() {
                         </div>
                     </button>
 
-                    {visibility.initialPublicOfferings && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenInitialPublicOfferings(true)}>
+
+                    {/* {visibility.initialPublicOfferings && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenInitialPublicOfferings(true)}>
                         <div className="pin-commands">
                             <span>IPO</span>
                         </div>
-                    </button>}
+                    </button>} */}
+
+                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenInitialPublicOfferings(true)}>
+                        <div className="pin-commands">
+                            <span>IPO</span>
+                        </div>
+                    </button>
                     
-                    {visibility.wordIndices && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenWordIndices(true)}>
+                    {/* {visibility.wordIndices && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenWordIndices(true)}>
                         <div className="pin-commands">
                             <span>WI</span>
                         </div>
-                    </button>} 
+                    </button>}  */}
+
+                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenWordIndices(true)}>
+                        <div className="pin-commands">
+                            <span>WI</span>
+                        </div>
+                    </button>
 
                     <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenSettings(true)}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="pin" viewBox="0 0 16 16">

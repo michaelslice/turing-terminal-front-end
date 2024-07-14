@@ -1,6 +1,15 @@
 import { useState } from "react";
 import useDragger from "../DraggerComponent/dragger";
+import api from "../../../../api";
 import "./worldindices.css"
+
+interface worldIndicesType { 
+    symbol: string; 
+    name: string; 
+    last_price: number; 
+    change: number; 
+    change_percent: string;
+}
 
 function WorldIndices({setOpenWordIndices}: any) {
     
@@ -11,12 +20,42 @@ function WorldIndices({setOpenWordIndices}: any) {
         setOpenWordIndices(false);
     }
 
+    const [worldIndices, setWorldIndices] = useState<any>([])
+
+    const getWorldIndices = async () => {
+        try {
+
+            const response = await api.get("http://127.0.0.1:8000/api/v1/worldindices/getworldindices/") 
+
+            const data = response.data
+            const dataArray = data.map((item: worldIndicesType) => ({
+                symbol: item.symbol,
+                name: item.name,
+                lastPrice: item.last_price,
+                change: item.change,
+                changePercent: item.change_percent
+            }));
+
+            setWorldIndices(dataArray)
+        }
+        catch (e) {
+            console.log(e);
+        }
+        
+    }
+
+    const refreshWorldIndices = (e: any) => {
+        e.preventDefault();
+        getWorldIndices();
+    } 
+
     return(
         <div id="world-indices-box" className="box">
             <div className="top-settings-row">
             
             <div className="settings-text">
                 <span>World Indices</span>
+                <button onClick={refreshWorldIndices}>Refresh</button>
             </div>
             <div className="settings-right-side-buttons">
                 <button>
@@ -33,42 +72,32 @@ function WorldIndices({setOpenWordIndices}: any) {
             </div>       
         </div>
 
-
-        <div className="top-indices-row"> 
-            <span>Americas</span>
-
-            <div className="filing-table">
+        <div className="filing-table">
             <table>
                 <thead>
                     <tr>
-                        <th>Ticker</th>
+                        <th>Symbol</th>
                         <th>Name</th>
-                        <th>Value</th>
+                        <th>Last Price</th>
                         <th>Change</th>
                         <th>Change %</th>
                     </tr>
-                </thead> 
-            <tbody>
-           
-                    <tr>
-                        <td>Placeholder</td>
-                        <td>Placeholder</td>
-                        <td>Placeholder</td>
-                        <td>Placeholder</td>
-                        <td>Placeholder</td>
-                    </tr>
-            
-            </tbody>
-        </table>    
-        </div>
-        </div>
-
-        <div className="top-settings-row"> 
-            <span>Americas</span>
+                </thead>
+                <tbody>
+                    {worldIndices.map((item: any, index:any) => (
+                        <tr key={index}>
+                            <td>{item.symbol}</td>
+                            <td>{item.name}</td>
+                            <td>{item.lastPrice}</td>
+                            <td>{item.change}</td>
+                            <td>{item.changePercent}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>    
         </div>
 
-        </div>
-    )
+    </div>)
 }
 
 export default WorldIndices

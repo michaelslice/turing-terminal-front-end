@@ -1,6 +1,18 @@
 import { useState } from "react";
 import useDragger from "../DraggerComponent/dragger";
+import api from "../../../../api";
 import "./ipo.css"
+
+
+interface ipo {
+    symbol: string;                                 
+    name: string;     
+    ipoDate: string; 
+    priceRangeLow: string; 
+    priceRangeHigh: string; 
+    currency: string;  
+    exchange: string;
+}
 
 function Ipo({setOpenInitialPublicOfferings}: any) {
     
@@ -11,12 +23,43 @@ function Ipo({setOpenInitialPublicOfferings}: any) {
         setOpenInitialPublicOfferings(false);
     }
 
+    const [ipos, setIpos] = useState<any>([])
+
+    const fetchIPOs = async () => {
+        try {
+            
+            const response = await api.get("http://127.0.0.1:8000/api/v1/ipo/getipos/")
+            
+            const data = response.data;
+            const dataArray = data.map((item: ipo) =>({
+                symbol: item.symbol,                                 
+                name: item.name, 
+                ipoDate: item.ipoDate, 
+                priceRangeLow: item.priceRangeLow, 
+                priceRangeHigh: item.priceRangeLow, 
+                currency: item.currency,
+                exchange: item.exchange,
+            }));
+
+            setIpos(dataArray);
+
+        } catch (error) {
+            console.log(error)
+        }
+    } 
+
+    const refreshIPOs = (e: any) => {
+        e.preventDefault();
+        fetchIPOs();
+    }
+
     return(
         <div id="ipo-box" className="box">
             <div className="top-settings-row">
             
             <div className="settings-text">
                 <span>Initial Public Offerings</span>
+                <button onClick={refreshIPOs}>Refresh</button>
             </div>
             <div className="settings-right-side-buttons">
                 <button>
@@ -36,19 +79,30 @@ function Ipo({setOpenInitialPublicOfferings}: any) {
 
         <div className="filing-table">
             <table>
-                <th>Ticker</th>
-                <th>Date</th>
-                <th>Status</th>
-                <th>Exchange</th>
-                <th>Offer</th>
-                <th>Price</th>
-                <th>Shares</th>
-                <th>Open</th>
-                <th>Close</th>
-                <th>Volume</th>
-                <th>Change 1D</th>
-                <th>Change 1W</th>
-                <th>Change 1M</th>
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Name</th>
+                        <th>IPO Date</th>
+                        <th>Price Range Low</th>
+                        <th>Price Range High</th>
+                        <th>Currency</th>
+                        <th>Exchange</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {ipos.map((item: any, index:any) => (
+                        <tr key={index}>
+                            <td>{item.symbol}</td>
+                            <td>{item.name}</td>
+                            <td>{item.ipoDate}</td>
+                            <td>{item.priceRangeLow}</td>
+                            <td>{item.priceRangeLow}</td>
+                            <td>{item.currency}</td>
+                            <td>{item.exchange}</td>
+                        </tr>
+                    ))}
+                </tbody>
             </table>    
         </div>
 
