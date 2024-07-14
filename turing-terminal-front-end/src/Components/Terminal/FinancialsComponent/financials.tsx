@@ -11,6 +11,23 @@ function Financials({setOpenFinancials}: any) {
         setOpenFinancials(false);
     }
 
+    const [display, setDisplay] = useState<any>()
+    const renderDisplay = (event: React.MouseEvent) => {
+
+        switch(event.currentTarget.id) {
+            case "balanceSheet":
+                return setDisplay("balanceSheet");
+            case "incomeStatement":
+                return setDisplay("incomeStatement");
+            case "cashFlow":
+                return setDisplay("cashFlow");
+            case "quarterly":
+                return setDisplay("quarterly");
+            case "yearly":
+                return setDisplay("yearly");
+        }
+    }
+    
     return(
         <div id="financials-box" className="box">
             <div className="top-settings-row">
@@ -35,23 +52,23 @@ function Financials({setOpenFinancials}: any) {
         </div>
 
         <div className="top-settings-row"> 
-            <button>
+            <button onClick={renderDisplay} id="balanceSheet">
                 <span>Balance Sheet</span>
             </button>
 
-            <button>
+            <button onClick={renderDisplay} id="incomeStatement">
                 <span>Income</span>
             </button>
 
-            <button>
+            <button onClick={renderDisplay} id="cashFlow">
                 <span>Cash Flow</span>
             </button>
 
-            <button>
+            <button onClick={renderDisplay} id="quarterly">
                 <span>Quarterly</span>
             </button>
 
-            <button>
+            <button onClick={renderDisplay} id="yearly">
                 <span>Yearly</span>
             </button>
 
@@ -62,11 +79,111 @@ function Financials({setOpenFinancials}: any) {
             <button>
                 <span>Fiscal Years</span>
             </button>
-
         </div>
 
-        </div>
-    )
+        {display === "balanceSheet" && 
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Q1 2009</th>
+                        <th>Q3 2009</th>
+                        <th>Q2 2010</th>
+                        <th>Q3 2010</th>
+                        <th>Q1 2011</th>
+                        <th>Q2 2011</th>
+                        <th>Q3 2011</th>
+                        <th>Q1 2012</th>
+                        <th>Q2 2012</th>
+                        <th>Q3 2012</th>
+                        <th>Q1 2013</th>
+                        <th>Q2 2013</th>
+                        <th>Q3 2013</th>
+                        <th>Q1 2014</th>
+                        <th>Q2 2014</th>
+                        <th>Q3 2014</th>
+                        <th>Q1 2015</th>
+                        <th>Q2 2015</th>
+                        <th>Q3 2015</th>
+                        <th>Q1 2016</th>
+                        <th>Q2 2016</th>
+                        <th>Q3 2016</th>
+                        <th>Q1 2017</th>
+                        <th>Q2 2017</th>
+                        <th>Q3 2017</th>
+                        <th>Q1 2018</th>
+                        <th>Q2 2018</th>
+                        <th>Q3 2018</th>
+                        <th>Q1 2019</th>
+                        <th>Q2 2019</th>
+                        <th>Q3 2019</th>
+                        <th>Q1 2020</th>
+                        <th>Q2 2020</th>
+                        <th>Q3 2020</th>
+                        <th>Q1 2021</th>
+                        <th>Q2 2021</th>
+                        <th>Q3 2021</th>
+                        <th>Q1 2022</th>
+                        <th>Q2 2022</th>
+                        <th>Q3 2022</th>
+                        <th>Q1 2023</th>
+                        <th>Q2 2023</th>
+                        <th>Q3 2023</th>
+                        <th>Q1 2024</th>
+                    </tr>
+                </thead>
+            <tbody>
+                <tr>
+                    <td>Total Assets</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                    <td>Data Placeholder</td>
+                </tr>
+            <tr>
+            <td>Data Placeholder</td>
+
+        </tr>
+    </tbody>
+            </table>
+        }
+
+    </div>)
 }
 
 export default Financials
