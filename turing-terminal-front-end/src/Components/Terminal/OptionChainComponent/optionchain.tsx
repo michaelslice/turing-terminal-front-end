@@ -1,7 +1,31 @@
 import { useState } from "react";
 import useDragger from "../DraggerComponent/dragger";
+import api from "../../../../api";
 import "./optionchain.css"
 
+interface OptionContract {
+    contractID: string;
+    symbol: string;
+    expiration: string; 
+    strike: number;
+    type: "call" | "put"; 
+    last: number;
+    mark: number;
+    bid: number;
+    bid_size: number;
+    ask: number;
+    ask_size: number;
+    volume: number;
+    open_interest: number;
+    date: string; 
+    implied_volatility: number;
+    delta: number;
+    gamma: number;
+    theta: number;
+    vega: number;
+    rho: number;
+}
+  
 function OptionsChain({setOpenOptionChain}: any) {
     
     useDragger("options-box");
@@ -11,12 +35,142 @@ function OptionsChain({setOpenOptionChain}: any) {
         setOpenOptionChain(false);
     }
 
+    const [display, setDisplay] = useState<any>()
+    
+    const renderDisplay = (event: React.MouseEvent) => {
+        switch(event.currentTarget.id) {
+            case "callsandputs":
+                getOptionsChain()    
+                return setDisplay("callsandputs");
+            case "calls":
+                getCallOptions()
+                return setDisplay("calls");
+            case "puts":
+                getPutOptions()
+                return setDisplay("puts");
+        }
+    }
+
+    const [ticker, setTicker] = useState('');
+    const [optionChain, setOptionChain] = useState<any[]>([])
+    const [callOptions, setCallOptions] = useState<any[]>([])
+    const [putOptions, setPutOptions] = useState<any[]>([])
+
+    const getOptionsChain =  async () => {
+        try {
+            const response = await api.get("http://127.0.0.1:8000/api/v1/optionchain/getoptionchain/", {
+                params: { ticker: ticker }
+            });
+            const data = response.data;
+            const dataArray = data.map((item: OptionContract) =>({
+                contractID: item.contractID,
+                symbol: item.symbol,
+                expiration: item.expiration,
+                strike: item.strike,
+                type: item.type,
+                last: item.last,
+                mark: item.mark,
+                bid: item.bid,
+                bid_size: item.bid_size,
+                ask: item.ask,
+                ask_size: item.ask_size,
+                volume: item.volume,
+                open_interest: item.open_interest,
+                date: item.date,
+                implied_volatility: item.implied_volatility,
+                delta: item.delta,
+                gamma: item.gamma,
+                theta: item.theta,
+                vega: item.vega,
+                rho: item.rho,
+            }));
+
+            setOptionChain(dataArray)
+
+        } catch (error) {
+            console.log(error)
+        }
+    } 
+
+    const getCallOptions =  async () => {
+        try {
+            const response = await api.get("http://127.0.0.1:8000/api/v1/optionchain/getcalls/", {
+                params: { ticker: ticker }
+            });
+            const data = response.data;
+            const dataArray = data.map((item: OptionContract) =>({
+                contractID: item.contractID,
+                symbol: item.symbol,
+                expiration: item.expiration,
+                strike: item.strike,
+                type: item.type,
+                last: item.last,
+                mark: item.mark,
+                bid: item.bid,
+                bid_size: item.bid_size,
+                ask: item.ask,
+                ask_size: item.ask_size,
+                volume: item.volume,
+                open_interest: item.open_interest,
+                date: item.date,
+                implied_volatility: item.implied_volatility,
+                delta: item.delta,
+                gamma: item.gamma,
+                theta: item.theta,
+                vega: item.vega,
+                rho: item.rho,
+            }));
+
+            setCallOptions(dataArray)
+
+        } catch (error) {
+            console.log(error)
+        }
+    } 
+
+    const getPutOptions =  async () => {
+        try {
+            const response = await api.get("http://127.0.0.1:8000/api/v1/optionchain/getputs/", {
+                params: { ticker: ticker }
+            });
+            const data = response.data;
+            const dataArray = data.map((item: OptionContract) =>({
+                contractID: item.contractID,
+                symbol: item.symbol,
+                expiration: item.expiration,
+                strike: item.strike,
+                type: item.type,
+                last: item.last,
+                mark: item.mark,
+                bid: item.bid,
+                bid_size: item.bid_size,
+                ask: item.ask,
+                ask_size: item.ask_size,
+                volume: item.volume,
+                open_interest: item.open_interest,
+                date: item.date,
+                implied_volatility: item.implied_volatility,
+                delta: item.delta,
+                gamma: item.gamma,
+                theta: item.theta,
+                vega: item.vega,
+                rho: item.rho,
+            }));
+
+            setPutOptions(dataArray)
+
+        } catch (error) {
+            console.log(error)
+        }
+    } 
+
     return(
         <div id="options-box" className="box">
             <div className="top-settings-row">
             
             <div className="settings-text">
                 <span>Option Chain</span>
+                <input onChange={(e) => setTicker(e.target.value)} placeholder="Ticker"></input>
             </div>
             <div className="settings-right-side-buttons">
                 <button>
@@ -32,8 +186,106 @@ function OptionsChain({setOpenOptionChain}: any) {
                 </button>
             </div>       
         </div>
+
+        <div className="top-settings-row"> 
+            <button onClick={renderDisplay} id="callsandputs">
+                <span>Calls/Puts</span>
+            </button>
+
+            <button onClick={renderDisplay} id="calls">
+                <span>Calls</span>
+            </button>
+
+            <button onClick={renderDisplay} id="puts">
+                <span>Puts</span>
+            </button>
         </div>
-    )
+
+        {display === "calls" && 
+            <div className="filing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Strike</th>
+                            <th>Ticker</th>
+                            <th>Bid</th>
+                            <th>Ask</th>
+                            <th>Last</th>
+                            <th>Vol</th>
+                            <th>IV</th>
+                            <th>Delta</th>
+                            <th>Theta</th>
+                            <th>Vega</th>
+                            <th>Rho</th>
+                            {/* <th>Lambda</th> */}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {optionChain.map((item, index) => (
+                            <tr key={index}>
+                            <td >{item.strike}</td>
+                            <td >{item.symbol}</td>
+                            <td >{item.bid}</td>
+                            <td >{item.ask}</td>
+                            <td >{item.last}</td>
+                            <td >{item.volume}</td>
+                            <td >{item.implied_volatility}</td>
+                            <td >{item.delta}</td>
+                            <td >{item.theta}</td>
+                            <td >{item.vega}</td>
+                            <td >{item.rho}</td>
+                            {/* <td >{item.date}</td> */}
+                            {/* <td >{item.gamma}</td> */}
+                            </tr>
+                        ))}
+                 </tbody>
+            </table> 
+        </div>}
+
+        {display === "puts" && 
+            <div className="filing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Strike</th>
+                            <th>Ticker</th>
+                            <th>Bid</th>
+                            <th>Ask</th>
+                            <th>Last</th>
+                            <th>Vol</th>
+                            <th>IV</th>
+                            <th>Delta</th>
+                            <th>Theta</th>
+                            <th>Vega</th>
+                            <th>Rho</th>
+                            {/* <th>Lambda</th> */}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {optionChain.map((item, index) => (
+                            <tr key={index}>
+                            <td >{item.strike}</td>
+                            <td >{item.symbol}</td>
+                            <td >{item.bid}</td>
+                            <td >{item.ask}</td>
+                            <td >{item.last}</td>
+                            <td >{item.volume}</td>
+                            <td >{item.implied_volatility}</td>
+                            <td >{item.delta}</td>
+                            <td >{item.theta}</td>
+                            <td >{item.vega}</td>
+                            <td >{item.rho}</td>
+                            {/* <td >{item.date}</td> */}
+                            {/* <td >{item.gamma}</td> */}
+                            </tr>
+                        ))}
+                 </tbody>
+            </table> 
+        </div>}
+
+
+
+    </div>)
 }
 
 export default OptionsChain

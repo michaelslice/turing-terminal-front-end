@@ -221,22 +221,6 @@ function Financials({setOpenFinancials}: any) {
             <button onClick={renderDisplay} id="cashFlow">
                 <span>Cash Flow</span>
             </button>
-
-            {/* <button onClick={renderDisplay} id="quarterly">
-                <span>Quarterly</span>
-            </button>
-
-            <button onClick={renderDisplay} id="yearly">
-                <span>Yearly</span>
-            </button>
-
-            <button>
-                <span>In Millions</span>
-            </button>
-
-            <button>
-                <span>Fiscal Years</span>
-            </button> */}
         </div>
 
         {display === "balanceSheet" && 

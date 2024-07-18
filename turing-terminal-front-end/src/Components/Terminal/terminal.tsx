@@ -250,11 +250,17 @@ function Terminal() {
                         </div>
                     </button>}
 
-                    {visibility.optionChain && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenOptionChain(true)}>
+                    {/* {visibility.optionChain && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenOptionChain(true)}>
                         <div className="pin-commands">
                             <span>OPT</span>
                         </div>
-                    </button>}
+                    </button>} */}
+
+                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenOptionChain(true)}>
+                        <div className="pin-commands">
+                            <span>OPT</span>
+                        </div>
+                    </button>
 
                     {/* {visibility.equityScreener && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenEquityScreener(true)}>
                         <div className="pin-commands">
