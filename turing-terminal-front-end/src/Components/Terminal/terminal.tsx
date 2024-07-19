@@ -196,11 +196,17 @@ function Terminal() {
                         </div>
                     </button>}
                     
-                    {visibility.quoteMonitor && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenQuoteMonitor(true)}>
+                    {/* {visibility.quoteMonitor && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenQuoteMonitor(true)}>
                         <div className="pin-commands">
                             <span>QM</span>
                         </div>
-                    </button>}
+                    </button>} */}
+
+                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenQuoteMonitor(true)}>
+                        <div className="pin-commands">
+                            <span>QM</span>
+                        </div>
+                    </button>
 
                     {visibility.accountManagement && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenAccountManagement(true)}>
                         <div className="pin-commands">

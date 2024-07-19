@@ -3,6 +3,7 @@ import useDragger from "../DraggerComponent/dragger";
 import "./quotemonitor.css"
 
 import "../FilingsComponent/filings.css"
+import api from "../../../../api";
 
 
 function QuoteMonitor({setOpenQuoteMonitor}: any) {
@@ -16,6 +17,20 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
 
     const [stocks, setStocks] = useState<string[]>([]);
     const [newStock, setNewStock] = useState<string>("");
+
+
+    const saveStock = async() => {
+        try {   
+            const response = await api.post("http://127.0.0.1:8000/api/v1/quotemonitor/uploadticker/", {
+                params: { ticker: newStock }
+            });
+
+            console.log(response);
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     /**
      *
@@ -32,6 +47,7 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
     const addStock = (e: any) => {
         if(e.key === 'Enter' && newStock.trim() !== '') {
             setStocks([...stocks, newStock.trim()]);
+            saveStock();
             setNewStock('');
         }
     };
