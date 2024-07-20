@@ -51,7 +51,8 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
                 changePercent: item.changePercent
             }))
 
-            setStocks(dataArray)
+            // setStocks(dataArray)
+            setStocks([...dataArray]);
 
         } catch (error) {
             console.log(error)

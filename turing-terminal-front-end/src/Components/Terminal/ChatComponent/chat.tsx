@@ -1,5 +1,10 @@
 import "./chat.css"
 import useDragger from "../DraggerComponent/dragger";
+import * as d3 from 'd3'
+import ReactApexChart from 'react-apexcharts'
+import { useMemo, useState } from "react";
+import { candleStickOptions } from "../ChartComponent/candlestick";
+import api from "../../../../api";
 
 function Chat({setOpenChat}: any) {
     
@@ -9,7 +14,7 @@ function Chat({setOpenChat}: any) {
         console.log("close settings")
         setOpenChat(false);
     }
-    
+
     return(
         <div id="chat-box" className="box">
             <div className="top-settings-row">
@@ -31,6 +36,8 @@ function Chat({setOpenChat}: any) {
                 </button>
             </div>       
         </div>
+
+
         </div>
     )
 }

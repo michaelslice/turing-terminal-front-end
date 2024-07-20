@@ -1,9 +1,11 @@
 import "./chart.css"
-
-
 import useDragger from "../DraggerComponent/dragger";
 import { useSearchParams } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+import * as d3 from 'd3'
+import ReactApexChart from 'react-apexcharts'
+import { candleStickOptions } from "./candlestick";
+import api from "../../../../api";
 
 
 function Chart({setOpenChart}: any) {
@@ -15,12 +17,36 @@ function Chart({setOpenChart}: any) {
         setOpenChart(false);
     }
     
-    
     const [openCandle, closeCandle] = useState(false);
     const [candle, setCandle] = useState('');
-
     const [period, setPeriod] = useState('');
     const [openPeriod, closePeriod] = useState(false);
+    const [newStock, setNewStock] = useState<string>("");
+    const [chartData, setChartData] = useState<any>([]);
+
+    const getData = async() => {
+        try {
+            const response = await api.get("http://127.0.0.1:8000/api/v1/chart/getdailydata/", {
+                params: { ticker: newStock }
+            });
+
+            const data = response.data['Weekly Adjusted Time Series'];
+            const formattedData = Object.keys(data).map(key => ({
+                x: new Date(key),
+                y: [
+                    parseFloat(data[key]['1. open']),
+                    parseFloat(data[key]['2. high']),
+                    parseFloat(data[key]['3. low']),
+                    parseFloat(data[key]['4. close'])
+                ]
+            }));
+ 
+            setChartData(formattedData);
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return(
         <div id="chart-box" className="box">
@@ -28,7 +54,7 @@ function Chart({setOpenChart}: any) {
             
             <div className="chart-text">
                 <span>Chart</span>
-                <input placeholder="Ticker"></input>
+                <input onKeyDown={getData} placeholder="Ticker"></input>
             </div>
             <div className="chart-right-side-buttons">
                 <button>
@@ -90,11 +116,18 @@ function Chart({setOpenChart}: any) {
                 </div>}
             </div>
         </div>
+
+        <ReactApexChart
+            series={[
+                {
+                    data: chartData
+                }
+            ]}
+            options={candleStickOptions}
+            type="candlestick"
+        />
+
     </div>);
 }
 
 export default Chart
-
-
-
-
