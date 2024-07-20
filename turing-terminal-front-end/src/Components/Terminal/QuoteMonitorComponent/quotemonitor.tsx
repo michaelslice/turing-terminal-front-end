@@ -1,10 +1,21 @@
 import { useState } from "react";
 import useDragger from "../DraggerComponent/dragger";
 import "./quotemonitor.css"
-
 import "../FilingsComponent/filings.css"
 import api from "../../../../api";
 
+interface QuoteData {
+    symbol: string,
+    open: number;
+    high:number;
+    low:number;
+    price: number;
+    volume: number;
+    latestTradingDay: number;
+    previousClose: number;
+    change: number;
+    changePercent: number;
+}
 
 function QuoteMonitor({setOpenQuoteMonitor}: any) {
     
@@ -15,17 +26,32 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
         setOpenQuoteMonitor(false);
     }
 
-    const [stocks, setStocks] = useState<string[]>([]);
+    const [stocks, setStocks] = useState<any[]>([]);
     const [newStock, setNewStock] = useState<string>("");
 
 
     const saveStock = async() => {
         try {   
-            const response = await api.post("http://127.0.0.1:8000/api/v1/quotemonitor/uploadticker/", {
+            const response = await api.get("http://127.0.0.1:8000/api/v1/quotemonitor/uploadticker/", {
                 params: { ticker: newStock }
             });
 
-            console.log(response);
+            const data = response.data;
+
+            const dataArray = data.map((item: QuoteData) => ({
+                symbol: item.symbol,
+                open: item.open,
+                high: item.high,
+                low: item.low,
+                price: item.price,
+                volume: item.volume,
+                latestTradingDay: item.latestTradingDay,
+                previousClose: item.previousClose,
+                change: item.change,
+                changePercent: item.changePercent
+            }))
+
+            setStocks(dataArray)
 
         } catch (error) {
             console.log(error)
@@ -46,8 +72,9 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
      */
     const addStock = (e: any) => {
         if(e.key === 'Enter' && newStock.trim() !== '') {
-            setStocks([...stocks, newStock.trim()]);
             saveStock();
+            
+            // setStocks([...stocks, newStock.trim()]);
             setNewStock('');
         }
     };
@@ -80,23 +107,23 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
                     <tr>
                         <th>Ticker</th>
                         <th>Last</th>
-                        <th>Bid</th>
-                        <th>Ask</th>
-                        <th>Change</th>
+                        <th>Open</th>
+                        <th>High</th>
+                        <th>Low</th>
                         <th>Change %</th>
                         <th>Volume</th>
                     </tr>
                 </thead> 
             <tbody>
-                {stocks.map((stock, index) => (
+                {stocks.map((item, index) => (
                     <tr key={index}>
-                        <td>{stock}</td>
-                        <td>Placeholder</td>
-                        <td>Placeholder</td>
-                        <td>Placeholder</td>
-                        <td>Placeholder</td>
-                        <td>Placeholder</td>
-                        <td>Placeholder</td>
+                        <td>{item.symbol}</td>
+                        <td>{item.previousClose}</td>
+                        <td>{item.open}</td>
+                        <td>{item.high}</td>
+                        <td>{item.low}</td>
+                        <td>{item.changePercent}</td>
+                        <td>{item.volume}</td>
                     </tr>
                 ))}
             </tbody>

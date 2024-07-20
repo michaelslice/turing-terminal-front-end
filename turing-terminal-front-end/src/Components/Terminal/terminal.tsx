@@ -16,7 +16,6 @@ import AccountManagement from "./AccountManagementComponent/accountmanage";
 import UserBiography from "./UserBiographyComponent/userbiography";
 import Description from "./DescriptionComponent/description";
 import Financials from "./FinancialsComponent/financials";
-import TimeAndSales from "./TimeAndSalesComponent/timeandsales";
 import CompanyEvents from "./CompanyEventsComponent/companyevents";
 import OptionsChain from "./OptionChainComponent/optionchain";
 import EquityScreener from "./EquityScreenerComponent/equityscreener";
@@ -137,100 +136,74 @@ function Terminal() {
             <div className="top-menu-row">
 
                 <div className="right-side-search-bar" onClick={setSearchBarFunction}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="right" viewBox="0 0 16 16">
-                        <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
-                    </svg>
-                    <div className="searchbar">
-                        { !searchBar 
-                            ? 
-                            <span>Terminal</span> 
-                            : 
-                            <div className="search-bar-div">
-                                <input onChange={searchValue} className="search-bar-input"></input>                          
-                                <i></i>
-                            </div>
-                        }
-                    </div>
                 </div>
 
                 <div className="middle-settings-options">
-                    {visibility.filings && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenFilings(true)}>
+                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenFilings(true)}>
                         <div className="pin-commands">
                             <span>CF</span>
                         </div>
-                    </button>}
+                    </button>
 
-                    {visibility.holders && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenHolders(true)}>
+                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenHolders(true)}>
                     <div className="pin-commands">
                             <span>HDS</span>
                         </div>
-                    </button>}
+                    </button>
 
-                    {visibility.news && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenNews(true)}>
+                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenNews(true)}>
                         <div className="pin-commands">
                             <span>N</span>
                         </div>
-                    </button>}
+                    </button>
 
-                    {visibility.focus && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenFocus(true)}>
+                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenFocus(true)}>
                         <div className="pin-commands">
                             <span>FOCUS</span>
                         </div>
-                    </button>}
+                    </button>
                      
-                    {visibility.chart && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenChart(true)}>
+                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenChart(true)}>
                         <div className="pin-commands">
                             <span>C</span>
                         </div>
-                    </button>}
+                    </button>
 
-                    {visibility.help && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenHelp(true)}>
+                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenHelp(true)}>
                         <div className="pin-commands">
                             <span>HELP</span>
                         </div>
-                    </button>}
+                    </button>
 
-                    {visibility.chat && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenChat(true)}>
+                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenChat(true)}>
                         <div className="pin-commands">
                             <span>CHAT</span>
                         </div>
-                    </button>}
+                    </button>
                     
-                    {/* {visibility.quoteMonitor && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenQuoteMonitor(true)}>
-                        <div className="pin-commands">
-                            <span>QM</span>
-                        </div>
-                    </button>} */}
-
                     <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenQuoteMonitor(true)}>
                         <div className="pin-commands">
                             <span>QM</span>
                         </div>
                     </button>
 
-                    {visibility.accountManagement && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenAccountManagement(true)}>
+                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenAccountManagement(true)}>
                         <div className="pin-commands">
                             <span>ACM</span>
                         </div>
-                    </button>}
+                    </button>
 
-                    {visibility.userBiography && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenUserBiography(true)}>
+                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenUserBiography(true)}>
                         <div className="pin-commands">
                             <span>BIO</span>
                         </div>
-                    </button>}
+                    </button>
 
-                    {visibility.description && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenDescription(true)}>
+                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenDescription(true)}>
                         <div className="pin-commands">
                             <span>DES</span>
                         </div>
-                    </button>}
-
-                    {/* {visibility.financials && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenFinancials(true)}>
-                        <div className="pin-commands">
-                            <span>FA</span>
-                        </div>
-                    </button>} */}
+                    </button>
 
                     <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenFinancials(true)}>
                         <div className="pin-commands">
@@ -238,29 +211,11 @@ function Terminal() {
                         </div>
                     </button>
 
-                    {visibility.settings && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenSettings(true)}>
-                        <div className="pin-commands">
-                            <span>PDF</span>
-                        </div>
-                    </button>}
-
-                    {visibility.timeAndSales && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenTimeAndSales(true)}>
-                        <div className="pin-commands">
-                            <span>TAS</span>
-                        </div>
-                    </button>}
-
-                    {visibility.companyEvents && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenCompanyEvents(true)}>
+                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenCompanyEvents(true)}>
                         <div className="pin-commands">
                             <span>EVT</span>
                         </div>
-                    </button>}
-
-                    {/* {visibility.optionChain && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenOptionChain(true)}>
-                        <div className="pin-commands">
-                            <span>OPT</span>
-                        </div>
-                    </button>} */}
+                    </button>
 
                     <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenOptionChain(true)}>
                         <div className="pin-commands">
@@ -268,35 +223,17 @@ function Terminal() {
                         </div>
                     </button>
 
-                    {/* {visibility.equityScreener && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenEquityScreener(true)}>
-                        <div className="pin-commands">
-                            <span>EQS</span>
-                        </div>
-                    </button>} */}
                     <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenEquityScreener(true)}>
                         <div className="pin-commands">
                             <span>EQS</span>
                         </div>
                     </button>
 
-
-                    {/* {visibility.initialPublicOfferings && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenInitialPublicOfferings(true)}>
-                        <div className="pin-commands">
-                            <span>IPO</span>
-                        </div>
-                    </button>} */}
-
                     <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenInitialPublicOfferings(true)}>
                         <div className="pin-commands">
                             <span>IPO</span>
                         </div>
                     </button>
-                    
-                    {/* {visibility.wordIndices && <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenWordIndices(true)}>
-                        <div className="pin-commands">
-                            <span>WI</span>
-                        </div>
-                    </button>}  */}
 
                     <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenWordIndices(true)}>
                         <div className="pin-commands">
@@ -433,10 +370,6 @@ function Terminal() {
             
             {openFinancials && 
                 <Financials setOpenFinancials={setOpenFinancials} 
-            />}
-            
-            {openTimeAndSales && 
-                <TimeAndSales setOpenTimeAndSales={setOpenTimeAndSales} 
             />}
             
             {openCompanyEvents && 
