@@ -84,7 +84,7 @@ function OptionsChain({setOpenOptionChain}: any) {
                 vega: item.vega,
                 rho: item.rho,
             }));
-
+         
             setOptionChain(dataArray)
 
         } catch (error) {
@@ -156,7 +156,7 @@ function OptionsChain({setOpenOptionChain}: any) {
                 vega: item.vega,
                 rho: item.rho,
             }));
-
+            console.log(dataArray)
             setPutOptions(dataArray)
 
         } catch (error) {
@@ -201,7 +201,8 @@ function OptionsChain({setOpenOptionChain}: any) {
             </button>
         </div>
 
-        {display === "calls" && 
+
+        {display === "callsandputs" && 
             <div className="filing-table">
                 <table>
                     <thead>
@@ -217,7 +218,6 @@ function OptionsChain({setOpenOptionChain}: any) {
                             <th>Theta</th>
                             <th>Vega</th>
                             <th>Rho</th>
-                            {/* <th>Lambda</th> */}
                         </tr>
                     </thead>
                     <tbody>
@@ -234,8 +234,45 @@ function OptionsChain({setOpenOptionChain}: any) {
                             <td >{item.theta}</td>
                             <td >{item.vega}</td>
                             <td >{item.rho}</td>
-                            {/* <td >{item.date}</td> */}
-                            {/* <td >{item.gamma}</td> */}
+                            </tr>
+                        ))}
+                 </tbody>
+            </table> 
+        </div>}
+
+
+        {display === "calls" && 
+            <div className="filing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Strike</th>
+                            <th>Ticker</th>
+                            <th>Bid</th>
+                            <th>Ask</th>
+                            <th>Last</th>
+                            <th>Vol</th>
+                            <th>IV</th>
+                            <th>Delta</th>
+                            <th>Theta</th>
+                            <th>Vega</th>
+                            <th>Rho</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {callOptions.map((item, index) => (
+                            <tr key={index}>
+                            <td >{item.strike}</td>
+                            <td >{item.symbol}</td>
+                            <td >{item.bid}</td>
+                            <td >{item.ask}</td>
+                            <td >{item.last}</td>
+                            <td >{item.volume}</td>
+                            <td >{item.implied_volatility}</td>
+                            <td >{item.delta}</td>
+                            <td >{item.theta}</td>
+                            <td >{item.vega}</td>
+                            <td >{item.rho}</td>
                             </tr>
                         ))}
                  </tbody>
@@ -258,11 +295,10 @@ function OptionsChain({setOpenOptionChain}: any) {
                             <th>Theta</th>
                             <th>Vega</th>
                             <th>Rho</th>
-                            {/* <th>Lambda</th> */}
                         </tr>
                     </thead>
                     <tbody>
-                        {optionChain.map((item, index) => (
+                        {putOptions.map((item, index) => (
                             <tr key={index}>
                             <td >{item.strike}</td>
                             <td >{item.symbol}</td>
@@ -275,15 +311,11 @@ function OptionsChain({setOpenOptionChain}: any) {
                             <td >{item.theta}</td>
                             <td >{item.vega}</td>
                             <td >{item.rho}</td>
-                            {/* <td >{item.date}</td> */}
-                            {/* <td >{item.gamma}</td> */}
                             </tr>
                         ))}
                  </tbody>
             </table> 
         </div>}
-
-
 
     </div>)
 }

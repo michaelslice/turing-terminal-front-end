@@ -1,5 +1,10 @@
 import "./description.css"
 import useDragger from "../DraggerComponent/dragger";
+import { useState } from "react";
+import api from "../../../../api";
+import ReactApexChart from "react-apexcharts";
+import { candleStickOptions } from "../ChartComponent/candlestick";
+
 
 function Description({setOpenDescription}: any) {
     
@@ -10,12 +15,66 @@ function Description({setOpenDescription}: any) {
         setOpenDescription(false);
     }
     
+    const [openCandle, closeCandle] = useState(false);
+    const [candle, setCandle] = useState('');
+    const [period, setPeriod] = useState('');
+    const [openPeriod, closePeriod] = useState(false);
+    const [newStock, setNewStock] = useState<string>("");
+    const [chartData, setChartData] = useState<any>([]);
+    const [ticker, setTicker] = useState('');
+    const [data, setData] = useState<any>()
+
+    const getData = async() => {
+        try {
+            const response = await api.get("http://127.0.0.1:8000/api/v1/chart/getdailydata/", {
+                params: { ticker: newStock }
+            });
+
+            const data = response.data['Weekly Adjusted Time Series'];
+            const formattedData = Object.keys(data).map(key => ({
+                x: new Date(key),
+                y: [
+                    parseFloat(data[key]['1. open']),
+                    parseFloat(data[key]['2. high']),
+                    parseFloat(data[key]['3. low']),
+                    parseFloat(data[key]['4. close'])
+                ]
+            }));
+ 
+            setChartData(formattedData);
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const getDescription = async() => {
+        try {
+            const response = await api.get("http://127.0.0.1:8000/api/v1/description/getdescription/", {
+                params: { ticker: ticker }
+            });
+
+            console.log(response.data)
+
+            setData(response.data[0])
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const test = () => {
+        getDescription();
+        getData();
+    }   
+
     return(
         <div id="description-box" className="box">
             <div className="top-settings-row">
             
             <div className="settings-text">
                 <span>Description</span>
+                <input onKeyDown={test}></input>
             </div>
             <div className="settings-right-side-buttons">
                 <button>
@@ -33,11 +92,11 @@ function Description({setOpenDescription}: any) {
         </div>
 
         <div className="top-settings-row"> 
-            <h1>Company Name</h1>
+            <h1>{data?.ticker}</h1>
         </div>
 
         <div className="top-settings-row"> 
-            <p>Company Text</p>
+            <p>{data?.description}</p>
         </div>
 
         <div className="top-settings-row">  
@@ -52,28 +111,44 @@ function Description({setOpenDescription}: any) {
 
         <div className="top-settings-row">  
             <div className="description-chart">
-
+                <ReactApexChart
+                    series={[
+                        {
+                            data: chartData
+                        }
+                    ]}
+                    options={candleStickOptions}
+                    type="candlestick"
+                />
             </div>
 
             <div className="description-stats">
                 <div>
-                    <a>company.com</a>
+                    <a>{data?.website}</a>
                 </div>
 
                 <div>
-                    <span>company address</span>
+                    <a>{data?.address}</a>
                 </div>
 
                 <div>
-                    <span>Price</span>
+                    <a>{data?.city} {data?.state} {data?.zipcode}</a>
                 </div>
 
                 <div>
-                    <span>Shares Out</span>
+                    <span>{data?.ticker}</span>
                 </div>
 
                 <div>
-                    <span>Market Cap</span>
+                    <span>Price {data?.price}</span>
+                </div>
+
+                <div>
+                    <span>Sharse Out{data?.sharesoutstanding}</span>
+                </div>
+
+                <div>
+                    <span>Market Cap{data?.marketcap}</span>
                 </div>
             </div>
         </div>
@@ -83,6 +158,3 @@ function Description({setOpenDescription}: any) {
 }
 
 export default Description
-
-
-
