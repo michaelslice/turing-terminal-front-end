@@ -36,7 +36,7 @@ function Ipo({setOpenInitialPublicOfferings}: any) {
                 name: item.name, 
                 ipoDate: item.ipoDate, 
                 priceRangeLow: item.priceRangeLow, 
-                priceRangeHigh: item.priceRangeLow, 
+                priceRangeHigh: item.priceRangeHigh, 
                 currency: item.currency,
                 exchange: item.exchange,
             }));

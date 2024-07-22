@@ -3,11 +3,20 @@ import useDragger from "../DraggerComponent/dragger";
 
 import CalenderFirstDisplay from "../CalenderComponents/calenderstart";
 import CalenderEndDisplay from "../CalenderComponents/calenderend";
+import api from "../../../../api";
 
 import "./filings.css"
-
 import "../CalenderComponents/calenderstart.css"
 import "../CalenderComponents/calenderend.css"
+
+interface Filing {
+    ticker: string;
+    formType: string;
+    linkToFilingDetails: string
+    description: string;
+    filedAt: string;
+    periodOfReport: string | null;
+}
 
 function Filings({setOpenFilings}: any) {
     
@@ -30,7 +39,34 @@ function Filings({setOpenFilings}: any) {
     const handleEndDateChange = (event: any ) => {
         setEndDate(event.target.valueAsDate); 
     };
+   
+    const [newStock, setNewStock] = useState<string>("");
+
+    const [filings, setFilings] = useState<any>([]);
+
+    const getFilings = async () => {
+        try {
+            const response = await api.get("http://127.0.0.1:8000/api/v1/filings/getfilings/", {
+                params: { ticker: newStock }
+            });
     
+            const data = response.data;
+            const dataArray = data.map((item: Filing) => ({
+                ticker: item.ticker,
+                formType: item.formType,
+                linkToFilingDetails: item.linkToFilingDetails,
+                description: item.description,
+                filedAt: item.filedAt,
+                periodOfReport: item.periodOfReport,
+            }));
+
+            setFilings(dataArray);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     useDragger("filings-box");
     return(
 
@@ -57,7 +93,8 @@ function Filings({setOpenFilings}: any) {
 
         <div className="filings-text">            
             <div className="filings-options">
-                <input placeholder="Company" id="company"></input>
+                <input onChange={(e) => setNewStock(e.target.value)} placeholder="Company" id="company"></input>
+                <button onClick={getFilings} ></button>
             </div>
             
             <div className="time-frame-options">
@@ -102,13 +139,26 @@ function Filings({setOpenFilings}: any) {
 
         <div className="filing-table">
             <table>
-                <th>Ticker</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Time</th>
-                <th>Filed</th>
-                <th>Accepted</th>
+                <thead>
+                    <th>Ticker</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                </thead>
+                <tbody>
+                    {filings.map((item: any, index: any) => (
+                        <tr key={index}>
+                            <td>{item.ticker}</td>
+                            <a href={item.linkToFilingDetails}><td>{item.formType}</td></a>
+                            <td>{item.description}</td>
+                            <td>{item.filedAt}</td>
+                            <td>{item.periodOfReport}</td>
+                        </tr>
+                    ))}
+                </tbody>
             </table>    
+            
         </div>
 
     </div>)

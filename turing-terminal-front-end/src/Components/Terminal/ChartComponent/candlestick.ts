@@ -4,10 +4,10 @@ export const candleStickOptions = {
       },
       title: {
         text: 'My Chart',
-        // align: 'center'
+
       },
       xaxis: {
-        // type: 'category'
+
       },
       yaxis: {
         tooltip: {
