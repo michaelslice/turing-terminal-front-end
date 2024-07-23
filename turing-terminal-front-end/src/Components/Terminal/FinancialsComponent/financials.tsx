@@ -1,7 +1,6 @@
 import { useState } from "react";
 import useDragger from "../DraggerComponent/dragger";
 import api from "../../../../api";
-
 import { cashFlowInterface } from "./interfaces";
 import { balanceSheetInterface } from "./interfaces";
 import { incomeStatementInterface } from "./interfaces";

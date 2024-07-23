@@ -3,7 +3,6 @@ import useDragger from "../DraggerComponent/dragger";
 import api from "../../../../api";
 import "./ipo.css"
 
-
 interface ipo {
     symbol: string;                                 
     name: string;     
@@ -106,8 +105,7 @@ function Ipo({setOpenInitialPublicOfferings}: any) {
             </table>    
         </div>
 
-        </div>
-    )
+    </div>)
 }
 
 export default Ipo

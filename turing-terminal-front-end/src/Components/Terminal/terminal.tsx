@@ -30,10 +30,9 @@ import {
     GoogleAuthProvider,
     GithubAuthProvider   
 } from "firebase/auth";
-import "./terminal.css"
-
 import { firebaseConfig } from "../LoginPage/login";
 import {auth} from  "../LoginPage/login.tsx"
+import "./terminal.css"
 
 function Terminal() {
 
@@ -53,7 +52,6 @@ function Terminal() {
         description: false,
         financials: false,
         settings: false,
-        timeAndSales: false,
         companyEvents: false,
         optionChain: false,
         equityScreener: false,
@@ -81,7 +79,6 @@ function Terminal() {
     const toggleDescriptionVisibility = () => setVisibilityFunction('description', !visibility.description);
     const toggleFinancialsVisibility = () => setVisibilityFunction('financials', !visibility.financials);
     const toggleSettingsVisibility = () => setVisibilityFunction('settings', !visibility.settings);
-    const toggleTimeAndSalesVisibility = () => setVisibilityFunction('timeAndSales', !visibility.timeAndSales);
     const toggleCompanyEventsVisibility = () => setVisibilityFunction('companyEvents', !visibility.companyEvents);
     const toggleOptionChainVisibility = () => setVisibilityFunction('optionChain', !visibility.optionChain);
     const toggleEquityScreenerVisibility = () => setVisibilityFunction('equityScreener', !visibility.equityScreener);
@@ -124,7 +121,6 @@ function Terminal() {
     const [openUserBiography, setOpenUserBiography] = useState(false);
     const [openDescription, setOpenDescription] = useState(false);
     const [openFinancials, setOpenFinancials] = useState(false);
-    const [openTimeAndSales, setOpenTimeAndSales] = useState(false);
     const [openCompanyEvents, setOpenCompanyEvents] = useState(false);
     const [openOptionChain, setOpenOptionChain] = useState(false);
     const [openEquityScreener, setOpenEquityScreener] = useState(false);
@@ -313,7 +309,6 @@ function Terminal() {
                     toggleDescriptionVisibility={toggleDescriptionVisibility}
                     toggleFinancialsVisibility={toggleFinancialsVisibility }
                     toggleSettingsVisibility={toggleSettingsVisibility }
-                    toggleTimeAndSalesVisibility={toggleTimeAndSalesVisibility}
                     toggleCompanyEventsVisibility={toggleCompanyEventsVisibility} 
                     toggleOptionChainVisibility ={toggleOptionChainVisibility }
                     toggleEquityScreenerVisibility={toggleEquityScreenerVisibility }
@@ -405,8 +400,7 @@ function Terminal() {
                     </svg>
                 </button>
             </div>
-        </div>
-    )
+    </div>)
 }
 
 export default Terminal

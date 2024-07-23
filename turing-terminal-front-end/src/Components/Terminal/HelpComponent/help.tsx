@@ -110,7 +110,7 @@ function Help({setOpenHelp}: any) {
             </div>
         </div>
     
-</div>)
+    </div>)
 }
 
 export default Help

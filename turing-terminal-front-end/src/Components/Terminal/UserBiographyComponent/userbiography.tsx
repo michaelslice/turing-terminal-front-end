@@ -1,4 +1,3 @@
-import { useState } from "react";
 import useDragger from "../DraggerComponent/dragger";
 import "./userbiography.css"
 
@@ -36,11 +35,8 @@ function UserBiography({setOpenUserBiography}: any) {
         <div className="top-settings-row">
             <p>Loading...</p>
         </div>
-
-
         
-        </div>
-    )
+    </div>)
 }
 
 export default UserBiography

@@ -1,10 +1,6 @@
-import "./chat.css"
 import useDragger from "../DraggerComponent/dragger";
-import * as d3 from 'd3'
-import ReactApexChart from 'react-apexcharts'
-import { useMemo, useState } from "react";
-import { candleStickOptions } from "../ChartComponent/candlestick";
 import api from "../../../../api";
+import "./chat.css"
 
 function Chat({setOpenChat}: any) {
     
@@ -38,11 +34,7 @@ function Chat({setOpenChat}: any) {
         </div>
 
 
-        </div>
-    )
+    </div>)
 }
 
 export default Chat
-
-
-

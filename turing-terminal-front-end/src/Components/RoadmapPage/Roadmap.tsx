@@ -1,6 +1,5 @@
-
-import "./roadmap.css"
 import Navbar from "../NavigationBar/Navbar"
+import "./roadmap.css"
 
 function Roadmap() {
     return(

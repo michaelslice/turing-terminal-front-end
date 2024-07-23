@@ -1,5 +1,5 @@
-import "./pricing.css"
 import Navbar from "../NavigationBar/Navbar"
+import "./pricing.css"
 
 function Pricing() {
     return(

@@ -1,61 +1,40 @@
-import "./equityscreener.css"
 import { useState } from "react";
 import useDragger from "../DraggerComponent/dragger";
 import api from "../../../../api";
+import "./equityscreener.css"
 
 function EquityScreener({setOpenEquityScreener}: any) {
     
     useDragger("equity-screener-box");
     
     const closeOpenEquityScreener = () => {
-        console.log("close settings")
+        console.log("close settings");
         setOpenEquityScreener(false);
     }
 
-    const [stockData, setStockData] = useState<any>([])
+    const [stockData, setStockData] = useState<any>([]);
     const [stockSymbol, setStockSymbol] = useState<string>('');
 
-    const fetchTickers = async () => {
+    const [operand, setOperand] = useState<string>();
+    const [value, setValue] = useState<string>();
+
+    const screenTickers = async () => {
+        
+        console.log(stockSymbol);
+        console.log(operand);
+        console.log(value);
+
         try {
             const response = await api.get("http://127.0.0.1:8000/api/v1/equityscreener/screener/", {
-                params: {ticker: stockSymbol}
+                params: {
+                    ticker: stockSymbol,
+                    operand: operand,
+                    value: value
+                }
             });
             
-            /**
-             *  Convert the object 'data' into an array dataArray 
-             *  of objects where each object in dataArray represents
-             *  a data point with structured properties time, open,
-             *  high, low, close, volume
-             * 
-             *  Object.keys(data): Retrieve an array of keys from
-             *  the data object. Each key represents a timestamp
-             * 
-             *  .map(key => ({ ... }): This maps each key in the 
-             *  array returned by Object.keys(data) to a new object
-             * 
-             *  ({ ... }): Construct a new object for each key
-             * 
-             *  time: key: Assign the current timestamp to the time
-             *  property of the new object
-             * 
-             *  open: data[key]['1. open]: Retrieve the value 
-             *  associated with the '1. open' property under
-             *  the current key in 'data' and assign it to the 
-             *  'open' property of the new object
-             * 
-             */
-            const data = response.data["Time Series (5min)"]
-            const dataArray = Object.keys(data).map(key => ({
-                time: key,
-                open: data[key]['1. open'],
-                high: data[key]['2. high'],
-                low: data[key]['3. low'],
-                close: data[key]['4. close'],
-                volume: data[key]['5. volume'],
-            }));
-
-            setStockData(dataArray)
-
+            console.log(response.data)
+            
         } catch (error) {
             console.log(error);
         }
@@ -63,7 +42,7 @@ function EquityScreener({setOpenEquityScreener}: any) {
 
     const submitTicker = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        fetchTickers();
+        screenTickers();
     }
 
     return(
@@ -97,6 +76,21 @@ function EquityScreener({setOpenEquityScreener}: any) {
                             onChange={(e) => setStockSymbol(e.target.value)}>
                         </input>
                     </form>
+                </div>
+
+                <div className="conditional-options">
+                    <div>Market Cap</div>
+                    <label htmlFor="operand">
+                        <select onChange={((e) => setOperand(e.target.value))} id="opreand">
+                            <option>=</option>
+                            <option>&gt;</option>
+                            <option>&lt;</option>
+                            <option>&gt;=</option>
+                            <option>&lt;=</option>
+                        </select>
+                    </label>
+                    <input onChange={((e) => setValue(e.target.value))} placeholder="Value"></input>
+                    <button onClick={screenTickers}>Query</button>
                 </div>
 
                 <div className="filings-options">

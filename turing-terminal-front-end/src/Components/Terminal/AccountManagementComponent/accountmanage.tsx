@@ -1,5 +1,5 @@
-import "./accountmanage.css"
 import useDragger from "../DraggerComponent/dragger";
+import "./accountmanage.css"
 
 function AccountManagement({setOpenAccountManagement}: any) {
 
@@ -36,8 +36,7 @@ function AccountManagement({setOpenAccountManagement}: any) {
             <p>Please login to manage your account</p>
         </div>
 
-        </div>
-    )
+    </div>)
 }
 
 export default AccountManagement

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import useDragger from "../DraggerComponent/dragger";
+import api from "../../../../api";
 import "./quotemonitor.css"
 import "../FilingsComponent/filings.css"
-import api from "../../../../api";
 
 interface QuoteData {
     symbol: string,
@@ -134,8 +134,8 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
             <input placeholder="Add a ticker" value={newStock} onChange={(e) => setNewStock(e.target.value)} onKeyDown={addStock}/>
         </div>
 
-    </div>
-</div>)
+        </div>
+    </div>)
 }
 
 export default QuoteMonitor

@@ -1,10 +1,9 @@
-import "./description.css"
 import useDragger from "../DraggerComponent/dragger";
 import { useState } from "react";
 import api from "../../../../api";
 import ReactApexChart from "react-apexcharts";
 import { candleStickOptions } from "../ChartComponent/candlestick";
-
+import "./description.css"
 
 function Description({setOpenDescription}: any) {
     
@@ -153,8 +152,7 @@ function Description({setOpenDescription}: any) {
             </div>
         </div>
 
-        </div>
-    )
+    </div>)
 }
 
 export default Description

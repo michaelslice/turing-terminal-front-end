@@ -1,13 +1,19 @@
 import useDragger from "../DraggerComponent/dragger";
 import { useState } from "react";
-import CalenderFirstDisplay from "../CalenderComponents/calenderstart";
-import CalenderEndDisplay from "../CalenderComponents/calenderend";
-
+import api from "../../../../api";
 import "./companyevents.css"
-
 import "../FilingsComponent/filings.css"
 import "../CalenderComponents/calenderstart.css"
 import "../CalenderComponents/calenderend.css"
+
+interface CompanyEvent {
+    ticker: string;
+    formType: string;
+    linkToTxt: string;
+    description: string;
+    filedAt: string;
+    periodOfReport: string;
+}
 
 function CompanyEvents({setOpenCompanyEvents}: any) {
     
@@ -17,22 +23,44 @@ function CompanyEvents({setOpenCompanyEvents}: any) {
         console.log("close settings")
         setOpenCompanyEvents(false);
     }
-    
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
 
-    const setFirstDateFunction = (e: any) => { setStartDate(e) }
-    const setEndDateFunction = (e: any) => { setEndDate(e) }
-
-    const handleStartDateChange = (event: any) => {
-        setStartDate(event.target.valueAsDate); 
-    };
-
-    const handleEndDateChange = (event: any ) => {
-        setEndDate(event.target.valueAsDate); 
-    };
+    const [newStock, setNewStock] = useState<string>("");
 
 
+    const [companyEventData, setCompanyEventData] = useState<any>([])
+
+    const getCompanyEvents = async () => {
+        try {
+            const response = await api.get("http://127.0.0.1:8000/api/v1/companyevents/get_company_events/", {
+                params: { ticker: newStock }
+            })
+
+            console.log(response);
+
+            const data = response.data;
+
+            const dataArray = data.map((item: CompanyEvent) => ({
+                ticker: item.ticker,
+                formType: item.formType,
+                linkToTxt: item.linkToTxt,
+                description: item.description,
+                filedAt: item.filedAt,
+                periodOfReport: item.periodOfReport,
+
+            }))
+
+            console.log(dataArray);
+            setCompanyEventData(dataArray)
+
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const test = () => {
+        console.log(newStock)
+    }
 
     return(
         <div id="company-events-box" className="company-events-box">
@@ -40,7 +68,7 @@ function CompanyEvents({setOpenCompanyEvents}: any) {
             
             <div className="settings-text">
                 <span>Company Events</span>
-                <input placeholder="Ticker"></input>
+
             </div>
             <div className="settings-right-side-buttons">
                 <button>
@@ -59,26 +87,8 @@ function CompanyEvents({setOpenCompanyEvents}: any) {
 
         <div className="filings-text">            
             <div className="filings-options">
-                <input placeholder="Company" id="theme" >
-                </input>
-            </div>
-            
-            <div className="time-frame-options">
-                <input 
-                    placeholder="Start date" 
-                    value={ startDate ? (startDate as any)?.toISOString().substr(0, 10): ''} 
-                    onChange={handleStartDateChange}>
-                </input>
-            
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="arrow" viewBox="0 0 16 16">
-                    <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-                </svg>
-                
-                <input 
-                    placeholder="End date" 
-                    value={endDate ? (endDate as any)?.toISOString().substr(0, 10) : ''} 
-                    onChange={handleEndDateChange}>
-                </input>
+                <input onChange={((e) => setNewStock( e.target.value))} placeholder="Ticker"></input>
+                <button onClick={getCompanyEvents}>Search</button>
             </div>
 
             <div className="filings-options"> 
@@ -88,33 +98,30 @@ function CompanyEvents({setOpenCompanyEvents}: any) {
             </div>        
         </div>
 
-        <div className="calender-section">
-            {startDate == null && 
-                <CalenderFirstDisplay 
-                onDateChange={setFirstDateFunction}/>
-            }
-            {endDate == null &&
-                <CalenderEndDisplay 
-                onDateChange={setEndDateFunction}/>
-            }
-        </div>
-
         <div className="filing-table">
             <table>
-                <th>Time</th>
-                <th>Type</th>
-                <th>Event</th>
+                <thead>
+                    <th>Ticker</th>
+                    <th>Form Type</th>
+                    <th>Link</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                </thead>
+                <tbody>
+                    {companyEventData.map((item: CompanyEvent, index: number) => (
+                        <tr key={index}>
+                            <td>{item.ticker}</td>
+                            <td>{item.formType}</td>
+                            <td>{item.linkToTxt}</td>
+                            <td>{item.filedAt}</td>
+                            <td>{item.periodOfReport}</td>
+                        </tr>
+                    ))}
+                </tbody>
             </table>    
         </div>
 
-
-        </div>
-
-    )
+    </div>)
 }
 
 export default CompanyEvents
-
-
-
-

@@ -1,13 +1,8 @@
 // Main Component, Defines the Root Component Which is The Project Entry Point
-import { useState } from 'react'
-import React from 'react'
-import App from './App.tsx'
 import { Link } from 'react-router-dom'
-import './home.css'
-
-import '/src/Components/NavigationBar/Navbar'
-
 import Navbar from './Components/NavigationBar/Navbar';
+import './home.css'
+import '/src/Components/NavigationBar/Navbar'
 
 function Home() {
 

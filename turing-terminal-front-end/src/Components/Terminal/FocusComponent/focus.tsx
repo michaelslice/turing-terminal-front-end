@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import useDragger from "../DraggerComponent/dragger";
-import axios from "axios";
 import api from "../../../../api";
-import { json } from "react-router-dom";
 import "./focus.css"
 
 function Focus({setOpenFocus}: any) {
@@ -138,8 +136,8 @@ function Focus({setOpenFocus}: any) {
         </div>
         
         </div>        
-    </div>
-</div>)
+        </div>
+    </div>)
 }
 
 export default Focus

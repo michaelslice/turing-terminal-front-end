@@ -1,12 +1,9 @@
-import "./chart.css"
 import useDragger from "../DraggerComponent/dragger";
-import { useSearchParams } from "react-router-dom";
-import React, { useState, useEffect, useMemo } from "react";
-import * as d3 from 'd3'
+import React, { useState } from "react";
 import ReactApexChart from 'react-apexcharts'
 import { candleStickOptions } from "./candlestick";
 import api from "../../../../api";
-
+import "./chart.css"
 
 function Chart({setOpenChart}: any) {
     

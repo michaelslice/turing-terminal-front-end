@@ -1,9 +1,6 @@
-
-import "./login.css"
-import Navbar from "../NavigationBar/Navbar"
 import { initializeApp } from "firebase/app";
 import { useState } from "react";
-import { Navigate, Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { 
     signInWithPopup, 
     getAuth, 
@@ -22,7 +19,6 @@ export const firebaseConfig = {
     messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
     appId: import.meta.env.VITE_APPID
 };
-
 import "./login.css"
 
 export const app = initializeApp(firebaseConfig);
