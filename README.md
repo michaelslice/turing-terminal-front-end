@@ -45,3 +45,8 @@ docker kill <CONTAINER ID>
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [React](https://react.dev/reference/react)
+- [SocketIO](https://socket.io/)
+  ## Documentation
+
+- [D3](https://d3js.org/)
+- [Line Chart with Tooltip](https://observablehq.com/@d3/line-with-tooltip/2?intent=fork)
