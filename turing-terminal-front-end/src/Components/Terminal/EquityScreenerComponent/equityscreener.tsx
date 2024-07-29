@@ -43,7 +43,7 @@ function EquityScreener({setOpenEquityScreener}: any) {
             }))
 
             setStockData(dataArray)
-            
+
         } catch (error) {
             console.log(error);
         }

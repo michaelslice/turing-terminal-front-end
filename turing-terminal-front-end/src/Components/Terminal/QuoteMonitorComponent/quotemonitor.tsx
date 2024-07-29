@@ -29,7 +29,6 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
     const [stocks, setStocks] = useState<any[]>([]);
     const [newStock, setNewStock] = useState<string>("");
 
-
     const saveStock = async() => {
         try {   
             const response = await api.get("http://127.0.0.1:8000/api/v1/quotemonitor/uploadticker/", {
@@ -52,7 +51,7 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
             }))
 
             // setStocks(dataArray)
-            setStocks([...dataArray]);
+            setStocks([...stocks, ...dataArray]);
 
         } catch (error) {
             console.log(error)
