@@ -3,6 +3,12 @@ import useDragger from "../DraggerComponent/dragger";
 import api from "../../../../api";
 import "./equityscreener.css"
 
+interface ScreenerData {
+    name: string;
+    ticker: string,
+    market_cap: number;
+}
+
 function EquityScreener({setOpenEquityScreener}: any) {
     
     useDragger("equity-screener-box");
@@ -20,10 +26,6 @@ function EquityScreener({setOpenEquityScreener}: any) {
 
     const screenTickers = async () => {
         
-        console.log(stockSymbol);
-        console.log(operand);
-        console.log(value);
-
         try {
             const response = await api.get("http://127.0.0.1:8000/api/v1/equityscreener/screener/", {
                 params: {
@@ -33,6 +35,15 @@ function EquityScreener({setOpenEquityScreener}: any) {
                 }
             });
             
+            const data = response.data;
+
+            const dataArray = data.map((item: ScreenerData) => ({
+                name: item.name,
+                ticker: item.ticker,
+                market_cap: item.market_cap
+            }))
+
+            setStockData(dataArray)
             console.log(response.data)
             
         } catch (error) {
@@ -116,19 +127,14 @@ function EquityScreener({setOpenEquityScreener}: any) {
                 <tbody>
                     {stockData.map((item: any, index:any) => (
                         <tr key={index}>
-                        <td>{item.time}</td>
-                        <td>{item.open}</td>
-                        <td>{item.high}</td>
-                        <td>{item.low}</td>
-                        <td>{item.close}</td>
-                        <td>{item.volume}</td>
+                        <td>{item.ticker}</td>
+                        <td>{item.name}</td>
+                        <td>{item.market_cap}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>    
         </div>
-
-
     </div>)
 }
 
