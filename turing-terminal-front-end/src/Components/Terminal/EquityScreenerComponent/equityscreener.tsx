@@ -25,7 +25,6 @@ function EquityScreener({setOpenEquityScreener}: any) {
     const [value, setValue] = useState<string>();
 
     const screenTickers = async () => {
-        
         try {
             const response = await api.get("http://127.0.0.1:8000/api/v1/equityscreener/screener/", {
                 params: {
@@ -44,7 +43,6 @@ function EquityScreener({setOpenEquityScreener}: any) {
             }))
 
             setStockData(dataArray)
-            console.log(response.data)
             
         } catch (error) {
             console.log(error);
@@ -81,11 +79,11 @@ function EquityScreener({setOpenEquityScreener}: any) {
         <div className="filings-text">
                 <div className="filings-options">
                     <form onSubmit={submitTicker}>
-                        <input
+                        {/* <input
                             placeholder="Company"
                             id="theme"
                             onChange={(e) => setStockSymbol(e.target.value)}>
-                        </input>
+                        </input> */}
                     </form>
                 </div>
 
