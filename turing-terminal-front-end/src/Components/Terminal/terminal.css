@@ -2,13 +2,394 @@
     box-sizing: border-box;
 }
 
-body {
-    overflow-x: hidden;
+.box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+    min-height: 200px;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+
+.top-settings-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: .5rem;
+    padding-left: .5rem; 
+}
+
+.settings-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.settings-right-side-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: right;
+}
+.gear {
+
+}
+
+.x {
+
+}
+
+.settings-options {
+    display: flex;
+    flex-direction: row;
+    padding-right: .5rem;
+    padding-left: .5rem; 
+    height: 30px;
+    align-items: center;
+}
+
+.settings-options span {
+    flex-direction: row;
+    gap: 2px;
+    display: flex;
+}
+
+.settings-options h1 {
+    font-size: 20px;
+}
+
+.settings-options button {
+    padding-left: .5rem;
+    row-gap: 2px;
+    display: flex;
+    margin-right: .25rem;
+}
+
+.settings-row {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+.settings-right-side-buttons button {
+    border: none;
+    background-color: #000000;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.settings-options input {
+    border: none;
+    background-color: #000000;
+}
+
+.settings-options select {
+    border-radius: 15px;
+    border: none;
+    border-color: black;
+}
+
+.settings-options button {
+    cursor: pointer;
+}
+
+.settings-options button {
+    background-color: #38795a;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.top-settings-options {
+    display: flex;
+    flex-direction: row;
+    padding-right: .5rem;
+    padding-left: .5rem; 
+    height: 30px;
+    align-items: center;
+    gap: .5rem;
+}
+
+.top-settings-options h1 {
+    font-size: 20px;
+}
+
+.top-settings-options button {
+    padding-left: .5rem;
+    row-gap: 2px;
+}
+
+.top-settings-options button{
+    background-color: #38795a;;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
 }
 
 .terminal {
     display: flex;
     flex-direction: column;
+}
+
+.hidden1 {
+    display: none;
+}
+
+.hidden-text {
+    background-color: gray;
+    font-size: 17px;
+    border-radius: 5px;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.carrot1 {
+    top: 5px;
+    margin-left: -15px;
+    position: relative;
+    color: gray;
+}
+
+#CF:hover .hidden1 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin-left: -54px;
+}
+
+.carrot2 {
+    top: 5px;
+    margin-left: 0px;
+    position: relative;
+    color: gray;
+}
+
+#HDS:hover .hidden1 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin-left: -25px;
+}
+
+.carrot3 {
+    top: 5px;
+    margin-left: 0px;
+    position: relative;
+    color: gray;
+}
+
+#N:hover .hidden1 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin-left: -24px;
+}
+
+.carrot4 {
+    top: 5px;
+    margin-left: 0px;
+    position: relative;
+    color: gray;
+}
+
+#FOCUS:hover .hidden1 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin-left: -9px;
+}
+
+.carrot5 {
+    top: 5px;
+    margin-left: 0px;
+    position: relative;
+    color: gray;
+}
+
+#C:hover .hidden1 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin-left: -24px;
+}
+
+.carrot6 {
+    top: 5px;
+    margin-left: 0px;
+    position: relative;
+    color: gray;
+}
+
+#CHAT:hover .hidden1 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin-left: -10px;
+}
+
+.carrot7 {
+    top: 5px;
+    margin-left: 0px;
+    position: relative;
+    color: gray;
+}
+
+#QM:hover .hidden1 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin-left: -51px;
+}
+
+.carrot8 {
+    top: 5px;
+    margin-left: 5px;
+    position: relative;
+    color: gray;
+}
+
+#ACM:hover .hidden1 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin-left: -80px;
+}
+
+.carrot9 {
+    top: 5px;
+    margin-left: 0px;
+    position: relative;
+    color: gray;
+}
+
+#BIO:hover .hidden1 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin-left: -10px;
+}
+
+.carrot10 {
+    top: 5px;
+    margin-left: 0px;
+    position: relative;
+    color: gray;
+}
+
+#DES:hover .hidden1 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin-left: -38px;
+}
+
+.carrot11 {
+    top: 5px;
+    margin-left: 0px;
+    position: relative;
+    color: gray;
+}
+
+#FA:hover .hidden1 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin-left: -38px;
+}
+
+.carrot12 {
+    top: 5px;
+    margin-left: 0px;
+    position: relative;
+    color: gray;
+}
+
+#EVT:hover .hidden1 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin-left: -60px;
+}
+
+.carrot13 {
+    top: 5px;
+    margin-left: 0px;
+    position: relative;
+    color: gray;
+}
+
+#OPT:hover .hidden1 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin-left: -44px;
+}
+
+.carrot14 {
+    top: 5px;
+    margin-left: 0px;
+    position: relative;
+    color: gray;
+}
+
+#EQS:hover .hidden1 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin-left: -54px;
+}
+
+.carrot15 {
+    top: 5px;
+    margin-left: 0px;
+    position: relative;
+    color: gray;
+}
+
+#IPO:hover .hidden1 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin-left: -80px;
+}
+
+.carrot16 {
+    top: 5px;
+    margin-left: 0px;
+    position: relative;
+    color: gray;
+}
+
+#WI:hover .hidden1 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin-left: -50px;
 }
 
 .top-menu-row {
@@ -224,8 +605,6 @@ body {
     transition: .5s;
 }
 
-
-
 #middle-section {
     display: flex;
     flex-direction: row;
@@ -260,6 +639,7 @@ body {
 .search-bar-div {
 	position: relative;
 }
+
 .search-bar-div	i {
 	position: absolute;
 	width: 21px;
@@ -282,5 +662,3 @@ body {
 	from { opacity: 1; }
 	to { opacity: 0; }
 }
-
-
