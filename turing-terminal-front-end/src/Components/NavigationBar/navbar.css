@@ -36,6 +36,10 @@
     padding-right: .5rem;
 }
 
+.text:hover p {
+    color: black;
+}
+
 .login-button p:hover {
     color: black;
 } 

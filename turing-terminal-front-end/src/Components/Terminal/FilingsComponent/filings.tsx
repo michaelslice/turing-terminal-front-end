@@ -6,7 +6,7 @@ import "./filings.css"
 interface Filing {
     ticker: string;
     formType: string;
-    linkToFilingDetails: string
+    linkToFilingDetails: string;
     description: string;
     filedAt: string;
     periodOfReport: string | null;
@@ -15,7 +15,6 @@ interface Filing {
 function Filings({setOpenFilings}: any) {
     useDragger("filings-box");
     const closeOpenFilings = () => {
-        console.log("close filings")
         setOpenFilings(false);
     }
 
@@ -41,9 +40,9 @@ function Filings({setOpenFilings}: any) {
             setFilings(dataArray);
 
         } catch (error) {
-            console.log(error);
+            console.log(error);;
         }
-    }
+    };
     return(
         <div id="filings-box" className="filing-box">
             <div className="top-settings-row">      

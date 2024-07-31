@@ -8,7 +8,6 @@ function Holders({setOpenHolders}: any) {
     useDragger("holders-box");
     
     const closeOpenHolders = () => {
-        console.log("close settings")
         setOpenHolders(false);
     }
 
@@ -35,14 +34,7 @@ function Holders({setOpenHolders}: any) {
         } catch (error) {
             console.log(error);
         }
-    }
-
-    const submitTicker = (e: React.FormEvent<HTMLFormElement>) => {
-        // Prevent the form from reloading the page when submitted
-        e.preventDefault();
-        fetchHolders();
-    }
-
+    };
     return(
         <div id="holders-box" className="box">
             <div className="top-settings-row">

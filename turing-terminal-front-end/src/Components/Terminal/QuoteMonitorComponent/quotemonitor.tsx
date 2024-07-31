@@ -22,9 +22,8 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
     useDragger("quote-monitor-box");
     
     const closeOpenQuoteMonitor = () => {
-        console.log("close settings")
         setOpenQuoteMonitor(false);
-    }
+    };
 
     const [stocks, setStocks] = useState<any[]>([]);
     const [newStock, setNewStock] = useState<string>("");
@@ -53,9 +52,9 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
             setStocks([...stocks, ...dataArray]);
 
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    }
+    };
 
     /**
      *
@@ -75,7 +74,6 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
             setNewStock('');
         }
     };
-
     return(
         <div id="quote-monitor-box" className="box">
             <div className="top-settings-row">
@@ -126,7 +124,7 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
             </tbody>
         </table>    
 
-        <div className="filing-row1">
+        <div className="ticker-search">
             <input placeholder="Add a ticker" value={newStock} onChange={(e) => setNewStock(e.target.value)} onKeyDown={addStock}/>
         </div>
 

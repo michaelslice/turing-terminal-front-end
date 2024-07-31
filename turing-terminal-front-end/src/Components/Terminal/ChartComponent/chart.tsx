@@ -9,7 +9,6 @@ function Chart({setOpenChart}: any) {
     
     useDragger("chart-box");
     const closeOpenChart = () => {
-        console.log("close chart")
         setOpenChart(false);
     }
     
@@ -29,16 +28,16 @@ function Chart({setOpenChart}: any) {
                     parseFloat(data[key]['1. open']),
                     parseFloat(data[key]['2. high']),
                     parseFloat(data[key]['3. low']),
-                    parseFloat(data[key]['4. close'])
+                    parseFloat(data[key]['4. close']),
                 ]
             }));
  
             setChartData(formattedData);
 
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    }
+    };
     return(
         <div id="chart-box" className="box">
             <div className="top-chart-row">

@@ -18,11 +18,10 @@ function Ipo({setOpenInitialPublicOfferings}: any) {
     useDragger("ipo-box");
     
     const closeOpenIpo = () => {
-        console.log("close settings")
         setOpenInitialPublicOfferings(false);
     }
 
-    const [ipos, setIpos] = useState<any>([])
+    const [ipos, setIpos] = useState<any>([]);
 
     const fetchIPOs = async () => {
         try {
@@ -43,22 +42,21 @@ function Ipo({setOpenInitialPublicOfferings}: any) {
             setIpos(dataArray);
 
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    } 
+    };
 
     const refreshIPOs = (e: any) => {
         e.preventDefault();
         fetchIPOs();
-    }
-
+    };
     return(
         <div id="ipo-box" className="box">
             <div className="top-settings-row">
             
             <div className="settings-text">
                 <span>Initial Public Offerings</span>
-                <button id="refresh" onClick={refreshIPOs}>Refresh</button>
+                <button id="company" onClick={refreshIPOs}>Refresh</button>
             </div>
             <div className="settings-right-side-buttons">
                 <button>
@@ -74,7 +72,6 @@ function Ipo({setOpenInitialPublicOfferings}: any) {
                 </button>
             </div>       
         </div>
-
 
         <div className="filing-table">
             <table>

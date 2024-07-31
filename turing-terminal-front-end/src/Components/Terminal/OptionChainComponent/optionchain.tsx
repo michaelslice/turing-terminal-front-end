@@ -31,30 +31,29 @@ function OptionsChain({setOpenOptionChain}: any) {
     useDragger("options-box");
     
     const closeOpenOptionsChain = () => {
-        console.log("close settings")
         setOpenOptionChain(false);
-    }
+    };
 
     const [display, setDisplay] = useState<any>()
     
     const renderDisplay = (event: React.MouseEvent) => {
         switch(event.currentTarget.id) {
             case "callsandputs":
-                getOptionsChain()    
+                getOptionsChain();    
                 return setDisplay("callsandputs");
             case "calls":
-                getCallOptions()
+                getCallOptions();
                 return setDisplay("calls");
             case "puts":
-                getPutOptions()
+                getPutOptions();
                 return setDisplay("puts");
         }
-    }
+    };
 
     const [ticker, setTicker] = useState('');
-    const [optionChain, setOptionChain] = useState<any[]>([])
-    const [callOptions, setCallOptions] = useState<any[]>([])
-    const [putOptions, setPutOptions] = useState<any[]>([])
+    const [optionChain, setOptionChain] = useState<any[]>([]);
+    const [callOptions, setCallOptions] = useState<any[]>([]);
+    const [putOptions, setPutOptions] = useState<any[]>([]);
 
     const getOptionsChain =  async () => {
         try {
@@ -85,12 +84,12 @@ function OptionsChain({setOpenOptionChain}: any) {
                 rho: item.rho,
             }));
          
-            setOptionChain(dataArray)
+            setOptionChain(dataArray);
 
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    } 
+    };
 
     const getCallOptions =  async () => {
         try {
@@ -121,12 +120,12 @@ function OptionsChain({setOpenOptionChain}: any) {
                 rho: item.rho,
             }));
 
-            setCallOptions(dataArray)
+            setCallOptions(dataArray);
 
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    } 
+    };
 
     const getPutOptions =  async () => {
         try {
@@ -156,21 +155,19 @@ function OptionsChain({setOpenOptionChain}: any) {
                 vega: item.vega,
                 rho: item.rho,
             }));
-            console.log(dataArray)
-            setPutOptions(dataArray)
+
+            setPutOptions(dataArray);
 
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    } 
-
+    };
     return(
         <div id="options-box" className="box">
             <div className="top-settings-row">
-            
             <div className="settings-text">
                 <span>Option Chain</span>
-                <input onChange={(e) => setTicker(e.target.value)} placeholder="Ticker"></input>
+                <input id="company" onChange={(e) => setTicker(e.target.value)} placeholder="Ticker"></input>
             </div>
             <div className="settings-right-side-buttons">
                 <button>
@@ -187,20 +184,17 @@ function OptionsChain({setOpenOptionChain}: any) {
             </div>       
         </div>
 
-        <div className="top-settings-row"> 
+        <div className="top-options-row"> 
             <button onClick={renderDisplay} id="callsandputs">
                 <span>Calls/Puts</span>
             </button>
-
             <button onClick={renderDisplay} id="calls">
                 <span>Calls</span>
             </button>
-
             <button onClick={renderDisplay} id="puts">
                 <span>Puts</span>
             </button>
         </div>
-
 
         {display === "callsandputs" && 
             <div className="filing-table">
@@ -239,7 +233,6 @@ function OptionsChain({setOpenOptionChain}: any) {
                  </tbody>
             </table> 
         </div>}
-
 
         {display === "calls" && 
             <div className="filing-table">
@@ -316,7 +309,6 @@ function OptionsChain({setOpenOptionChain}: any) {
                  </tbody>
             </table> 
         </div>}
-
     </div>)
 }
 

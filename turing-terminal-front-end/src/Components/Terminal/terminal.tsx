@@ -1,6 +1,6 @@
 import { Link, useFetcher } from "react-router-dom";
 import useDragger from "./DraggerComponent/dragger";
-import React, { useState, useEffect, useRef} from 'react'
+import { useState, useEffect, useRef} from 'react'
 import { onAuthStateChanged } from "firebase/auth";
 import { getAuth, signOut } from "firebase/auth";
 import Filings from "./FilingsComponent/filings";
@@ -42,7 +42,7 @@ function Terminal() {
             setTime(new Date());
         }, 1000);
 
-        return () => clearInterval(interval)
+        return () => clearInterval(interval);
     }, [])
 
     const [openFilings, setOpenFilings] = useState(false);
@@ -61,10 +61,10 @@ function Terminal() {
     const [openEquityScreener, setOpenEquityScreener] = useState(false);
     const [openInitialPublicOfferings, setOpenInitialPublicOfferings] = useState(false);
     const [openWordIndices, setOpenWordIndices] = useState(false);
-
+    
     return (
         <div className="terminal">
-            <div className="top-menu-row">
+            <div className="top-menu-row" id="top-menu-row">
                 <div className="right-side-search-bar"></div>
                 <div className="middle-settings-options">
                     <button id="CF" onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setOpenFilings(true)}>
@@ -377,7 +377,7 @@ function Terminal() {
                 />}
             </div>
 
-            <div className="bottom-menu-row">
+            <div className="bottom-menu-row" id="bottom-menu-row">
                 <button className="main-button">
                     <span>Main</span>
                 </button>

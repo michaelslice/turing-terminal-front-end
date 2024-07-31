@@ -17,12 +17,11 @@ function CompanyEvents({setOpenCompanyEvents}: any) {
     useDragger("company-events-box");
     
     const closeOpenCompanyEvents = () => {
-        console.log("close settings")
         setOpenCompanyEvents(false);
     }
 
     const [newStock, setNewStock] = useState<string>("");
-    const [companyEventData, setCompanyEventData] = useState<any>([])
+    const [companyEventData, setCompanyEventData] = useState<any>([]);
 
     const getCompanyEvents = async () => {
         try {
@@ -42,12 +41,12 @@ function CompanyEvents({setOpenCompanyEvents}: any) {
 
             }))
 
-            setCompanyEventData(dataArray)
+            setCompanyEventData(dataArray);
 
         } catch (error) {
             console.log(error);
         }
-    }
+    };
     return(
         <div id="company-events-box" className="company-events-box">
             <div className="top-settings-row">

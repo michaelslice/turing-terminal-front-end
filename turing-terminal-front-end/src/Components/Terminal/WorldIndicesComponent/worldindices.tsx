@@ -16,16 +16,15 @@ function WorldIndices({setOpenWordIndices}: any) {
     useDragger("world-indices-box");
     
     const closeOpenWordIndices = () => {
-        console.log("close settings")
         setOpenWordIndices(false);
-    }
+    };
 
-    const [worldIndices, setWorldIndices] = useState<any>([])
+    const [worldIndices, setWorldIndices] = useState<any>([]);
 
     const getWorldIndices = async () => {
         try {
 
-            const response = await api.get("http://127.0.0.1:8000/api/v1/worldindices/getworldindices/") 
+            const response = await api.get("http://127.0.0.1:8000/api/v1/worldindices/getworldindices/");
 
             const data = response.data
             const dataArray = data.map((item: worldIndicesType) => ({
@@ -36,18 +35,17 @@ function WorldIndices({setOpenWordIndices}: any) {
                 changePercent: item.change_percent
             }));
 
-            setWorldIndices(dataArray)
+            setWorldIndices(dataArray);
         }
         catch (e) {
             console.log(e);
         }
-        
-    }
+    };
 
     const refreshWorldIndices = (e: any) => {
         e.preventDefault();
         getWorldIndices();
-    } 
+    }; 
     return(
         <div id="world-indices-box" className="box">
             <div className="top-settings-row">

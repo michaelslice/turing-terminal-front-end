@@ -13,7 +13,7 @@ function Signout() {
         }).catch((error) => {
             console.log(error);
         });
-    }    
+    };    
     return(
         <div className='Signout'>  
         <div className='background'></div>

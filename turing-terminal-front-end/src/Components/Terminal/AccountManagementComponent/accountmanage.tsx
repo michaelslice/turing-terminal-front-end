@@ -6,10 +6,8 @@ function AccountManagement({setOpenAccountManagement}: any) {
     useDragger("account-management-box");
     
     const closeOpenAccountManagement = () => {
-        console.log("close settings")
         setOpenAccountManagement(false);
-    }
-    
+    };
     return(
         <div id="account-management-box" className="box">
             <div className="top-settings-row">

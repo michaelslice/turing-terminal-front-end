@@ -16,7 +16,6 @@ function Navbar() {
         setLoggedIn(false);
       }
     });
-
     return(
         <div className='navbar'>    
         <div className='left-side-links'>
@@ -29,17 +28,16 @@ function Navbar() {
             <div className='login-button'>
                 {!loggedIn && 
                     <Link to={"/login"} className="text">
-                    <p>LOGIN</p>
-                </Link>}
+                        <p>LOGIN</p>
+                    </Link>}
                 {loggedIn && 
                     <Link to={"/signout"} className="text">
-                    <p>LOGGED IN</p>
-                </Link>}   
-            </div>
-            
+                        <p>LOGGED IN</p>
+                    </Link>}   
+                </div>
             <div className='terminal-button'>
                 <Link to={"/terminal"} className='terminal-text'>
-                <p>Launch Terminal</p>
+                    <p>Launch Terminal</p>
                 </Link>   
             </div>
         </div>

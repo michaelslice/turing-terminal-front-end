@@ -11,7 +11,6 @@ function Financials({setOpenFinancials}: any) {
     useDragger("financials-box");
     
     const closeOpenFinancials = () => {
-        console.log("close settings")
         setOpenFinancials(false);
     }
 
@@ -20,25 +19,25 @@ function Financials({setOpenFinancials}: any) {
 
         switch(event.currentTarget.id) {
             case "balanceSheet":
-                getBalanceSheet()    
+                getBalanceSheet();    
                 return setDisplay("balanceSheet");
             case "incomeStatement":
-                getIncomeStatement()
+                getIncomeStatement();
                 return setDisplay("incomeStatement");
             case "cashFlow":
-                getCashFlow()
+                getCashFlow();
                 return setDisplay("cashFlow");
             case "quarterly":
                 return setDisplay("quarterly");
             case "yearly":
                 return setDisplay("yearly");
         }
-    }
+    };
     
     const [ticker, setTicker] = useState('');
-    const [balanceSheetData, setBalanceSheetData] = useState<any[]>([])
-    const [cashFlowData, setCashFlowData] = useState<any[]>([])
-    const [incomeStatementData, setIncomeStatementData] = useState<any[]>([])
+    const [balanceSheetData, setBalanceSheetData] = useState<any[]>([]);
+    const [cashFlowData, setCashFlowData] = useState<any[]>([]);
+    const [incomeStatementData, setIncomeStatementData] = useState<any[]>([]);
 
     const getBalanceSheet = async () => {
         try {
@@ -88,10 +87,10 @@ function Financials({setOpenFinancials}: any) {
                 commonStockSharesOutstanding: item.commonStockSharesOutstanding,
             }));
 
-            setBalanceSheetData(dataArray)
+            setBalanceSheetData(dataArray);
 
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 
@@ -134,10 +133,10 @@ function Financials({setOpenFinancials}: any) {
                 netIncome: item.netIncome,
             }));
 
-            setCashFlowData(dataArray)
+            setCashFlowData(dataArray);
 
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 
@@ -177,20 +176,19 @@ function Financials({setOpenFinancials}: any) {
                 netIncome: item.netIncome,
             }));
 
-            setIncomeStatementData(dataArray)
+            setIncomeStatementData(dataArray);
 
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    }
-
+    };
     return(
         <div id="financials-box" className="box">
             <div className="top-settings-row">
             
             <div className="settings-text">
                 <span>Financials</span>
-                <input onChange={(e) => setTicker(e.target.value)} placeholder="Ticker"></input>
+                <input id="company" onChange={(e) => setTicker(e.target.value)} placeholder="Ticker"></input>
             </div>
             <div className="settings-right-side-buttons">
                 <button>
@@ -207,16 +205,14 @@ function Financials({setOpenFinancials}: any) {
             </div>       
         </div>
 
-        <div className="top-settings-row"> 
-            <button onClick={renderDisplay} id="balanceSheet">
+        <div className="top-options-row"> 
+            <button className="search-button" onClick={renderDisplay} id="balanceSheet">
                 <span>Balance Sheet</span>
             </button>
-
-            <button onClick={renderDisplay} id="incomeStatement">
+            <button className="search-button" onClick={renderDisplay} id="incomeStatement">
                 <span>Income</span>
             </button>
-
-            <button onClick={renderDisplay} id="cashFlow">
+            <button className="search-button" onClick={renderDisplay} id="cashFlow">
                 <span>Cash Flow</span>
             </button>
         </div>

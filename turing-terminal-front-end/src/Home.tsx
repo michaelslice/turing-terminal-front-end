@@ -5,7 +5,6 @@ import './home.css'
 import '/src/Components/NavigationBar/Navbar'
 
 function Home() {
-
   return (
     <>
      <Navbar />

@@ -1,4 +1,4 @@
-.filing-row1 input{
+.ticker-search input{
     width: 100%;
 }
 
@@ -8,7 +8,7 @@
     height: 350px;
 }
 
-.filing-row1 input {
+.ticker-search input {
     border: none;
     height: 2rem;
 }

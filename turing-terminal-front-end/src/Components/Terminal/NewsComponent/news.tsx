@@ -36,12 +36,12 @@ function News({ setOpenNews }: any) {
         } catch (error) {
             console.log(error);
         }
-    }
+    };
 
     const submitNews = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         fetchNews();
-    }
+    };
     return (
         <div id="news-box" className="news-box">
             <div className="top-settings-row">
@@ -66,11 +66,7 @@ function News({ setOpenNews }: any) {
             <div className="filings-text">
                 <div className="filings-options">
                     <form onSubmit={submitNews}>
-                        <input
-                            placeholder="Company"
-                            id="theme"
-                            onChange={(e) => setStockSymbol(e.target.value)}>
-                        </input>
+                        <input placeholder="Company" id="theme" onChange={(e) => setStockSymbol(e.target.value)}></input>
                         <button className="search-button" onClick={fetchNews}>Search</button>
                     </form>
                 </div>

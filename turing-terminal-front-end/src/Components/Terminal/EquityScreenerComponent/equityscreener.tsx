@@ -14,13 +14,11 @@ function EquityScreener({setOpenEquityScreener}: any) {
     useDragger("equity-screener-box");
     
     const closeOpenEquityScreener = () => {
-        console.log("close settings");
         setOpenEquityScreener(false);
     }
 
     const [stockData, setStockData] = useState<any>([]);
     const [stockSymbol, setStockSymbol] = useState<string>('');
-
     const [operand, setOperand] = useState<string>();
     const [value, setValue] = useState<string>();
 
@@ -30,34 +28,26 @@ function EquityScreener({setOpenEquityScreener}: any) {
                 params: {
                     ticker: stockSymbol,
                     operand: operand,
-                    value: value
+                    value: value,
                 }
             });
             
             const data = response.data;
-
             const dataArray = data.map((item: ScreenerData) => ({
                 name: item.name,
                 ticker: item.ticker,
                 market_cap: item.market_cap
-            }))
+            }));
 
-            setStockData(dataArray)
+            setStockData(dataArray);
 
         } catch (error) {
             console.log(error);
         }
-    }
-
-    const submitTicker = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        screenTickers();
-    }
-
+    };
     return(
         <div id="equity-screener-box" className="box">
             <div className="top-settings-row">
-            
             <div className="settings-text">
                 <span>Equity Screener</span>
             </div>
@@ -75,44 +65,24 @@ function EquityScreener({setOpenEquityScreener}: any) {
                 </button>
             </div>       
         </div>
-
-        <div className="filings-text">
-                <div className="filings-options">
-                    <form onSubmit={submitTicker}>
-                        {/* <input
-                            placeholder="Company"
-                            id="theme"
-                            onChange={(e) => setStockSymbol(e.target.value)}>
-                        </input> */}
-                    </form>
-                </div>
-
+        <div className="equity-screener-text">
+                <div className="filings-options"></div>
                 <div className="conditional-options">
-                    <div>Market Cap</div>
+                    <div className="market-cap-text">Market Cap</div>
                     <label htmlFor="operand">
-                        <select onChange={((e) => setOperand(e.target.value))} id="opreand">
-                            <option>=</option>
+                        <select id="operand-select" onChange={((e) => setOperand(e.target.value))}>
+                            <option >=</option>
                             <option>&gt;</option>
                             <option>&lt;</option>
                             <option>&gt;=</option>
                             <option>&lt;=</option>
                         </select>
                     </label>
-                    <input onChange={((e) => setValue(e.target.value))} placeholder="Value"></input>
-                    <button onClick={screenTickers}>Query</button>
+                    <input id="company" onChange={((e) => setValue(e.target.value))} placeholder="Value"></input>
+                    <button id="query" onClick={screenTickers}>Query</button>
                 </div>
-
-                <div className="filings-options">
-                    <button >
-                        <span>Clear</span>
-                    </button>
-
-                    <button>
-                        <span>Pause</span>
-                    </button>
-                </div>
+                <div className="filings-options"></div>
             </div>
-
         <div className="filing-table">
             <table>
                 <thead>

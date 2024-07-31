@@ -1,3 +1,19 @@
 #options-box {
- 
+ overflow-y: scroll;
+}
+
+#callsandputs,
+#calls,
+#puts {
+    font-family: "Oxygen Mono", monospace;
+    border-radius: 5px;
+    border: 1px solid #424242;
+    background: #141414;
+    margin: .25rem;
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    height: 24px;
+    padding: 0px 7px;
+    border-radius: 4px;
+    cursor: pointer;
 }

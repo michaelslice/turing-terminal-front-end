@@ -1,5 +1,7 @@
 #equity-screener-box {
     overflow-y: scroll;
+    height: 350px;
+    width: 750px;
 }
 
 .conditional-options {
@@ -9,4 +11,32 @@
     justify-content: flex-start;
     text-align: end;
     gap: .5rem;
+}
+
+.market-cap-text {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: row;
+    align-items: center;
+    margin: auto;
+}
+
+.equity-screener-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#operand-select,
+#query {
+    border-radius: 5px;
+    border: 1px solid #424242;
+    background: #141414;
+    margin: .25rem;
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
 }

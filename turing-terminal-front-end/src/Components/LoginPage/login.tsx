@@ -164,22 +164,18 @@ function Login() {
             setInvalidLogin(error.message);
             setEmailAlertFail(true)
         })
-    }
-
-    return ( <div className="Login">
-        <div className="large-space">
-        </div>
-
+    };
+    return( 
+        <div className="Login">
+        <div className="large-space"></div>
+        
         {!resetPasswordStatus && <div className="background1">
           <div className='login-display'>
-                
                {!loginMenuStatus && <button className='login-button-menu' title='login' onClick={setLoginStatusDisplayTrue}>
                     <p>LOGIN</p>
                 </button>}
-    
                 {loginMenuStatus && <button className='create-account-button' title='login' onClick={setLoginStatusDisplayFalse}>
                     <p>CREATE ACCOUNT</p>
-                
                 </button>} 
             </div>
         <div className='google-login'>
@@ -236,11 +232,9 @@ function Login() {
             <p>FORGOT YOUR PASSWORD?</p>
         </div>
         </div>
-    </div>} {/* Closing Bracket for resetPasswordStatus logic */}
-    
+    </div>}
     
     {/* Logic for the reset password section*/}
-    
         {resetPasswordStatus && 
         <div className="background1">        
             <div className='reset-password-section'>

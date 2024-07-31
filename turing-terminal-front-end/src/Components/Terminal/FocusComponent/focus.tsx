@@ -83,8 +83,7 @@ function Focus({setOpenFocus}: any) {
     const submitTicker = (e: any) => {
         e.preventDefault();
         fetchTicker();
-    }
-
+    };
     return(
         <div id="focus-box" className="box">
             <div className="top-settings-row">

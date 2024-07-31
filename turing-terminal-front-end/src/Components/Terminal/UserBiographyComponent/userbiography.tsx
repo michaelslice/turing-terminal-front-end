@@ -6,14 +6,11 @@ function UserBiography({setOpenUserBiography}: any) {
     useDragger("user-biography-box");
     
     const closeOpenUserBiography = () => {
-        console.log("close settings")
         setOpenUserBiography(false);
-    }
-
+    };
     return(
         <div id="user-biography-box" className="box">
             <div className="top-settings-row">
-            
             <div className="settings-text">
                 <span>User Biography</span>
             </div>

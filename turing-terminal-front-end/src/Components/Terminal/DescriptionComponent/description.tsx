@@ -10,14 +10,13 @@ function Description({setOpenDescription}: any) {
     useDragger("description-box");
     
     const closeOpenDescription = () => {
-        console.log("close settings")
         setOpenDescription(false);
     }
     
     const [newStock, setNewStock] = useState<string>("");
     const [chartData, setChartData] = useState<any>([]);
     const [ticker, setTicker] = useState('');
-    const [data, setData] = useState<any>()
+    const [data, setData] = useState<any>();
 
     const getData = async() => {
         try {
@@ -32,16 +31,16 @@ function Description({setOpenDescription}: any) {
                     parseFloat(data[key]['1. open']),
                     parseFloat(data[key]['2. high']),
                     parseFloat(data[key]['3. low']),
-                    parseFloat(data[key]['4. close'])
+                    parseFloat(data[key]['4. close']),
                 ]
             }));
  
             setChartData(formattedData);
 
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    }
+    };
 
     const getDescription = async() => {
         try {
@@ -49,17 +48,17 @@ function Description({setOpenDescription}: any) {
                 params: { ticker: ticker }
             });
 
-            setData(response.data[0])
+            setData(response.data[0]);
 
         } catch (error) {
             console.log(error);
         }
-    }
+    };
 
     const requestData = () => {
         getDescription();
         getData();
-    }   
+    };
     return(
         <div id="description-box" className="box">
             <div className="top-settings-row"> 
