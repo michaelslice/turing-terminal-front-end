@@ -5,8 +5,7 @@ import "./focus.css"
 
 function Focus({setOpenFocus}: any) {
     
-    useDragger("focus-box");
-    
+    useDragger("focus-box"); 
     const closeOpenFocus = () => { setOpenFocus(false); }
 
     /**
@@ -95,12 +94,13 @@ function Focus({setOpenFocus}: any) {
                 
                 <form onSubmit={submitTicker}>
                 <input 
+                    id="company"
                     placeholder="Ticker"
                     type="text"
                     value={stockSymbol}
                     onChange={(e) => setStockSymbol(e.target.value)}
                     >
-                </input>
+                </input>               
                 </form>
             </div>
             <div className="settings-right-side-buttons">
@@ -118,25 +118,30 @@ function Focus({setOpenFocus}: any) {
             </div>       
         </div>
 
-        <div className="focus">       
-            <div className="ticker">
-                <h1 style={{ fontSize: `${boxSize.width / 10}px` }}>{stockSymbol.toUpperCase()}</h1>
-            </div>
-
-            <div className="ticker-data">
-                <div className="data-row">
-                    <span style={{ fontSize: `${boxSize.width / 10}px` }}>{JSON.stringify(stockData.price, null, 2)}</span>
+        {stockSymbol === " " ? 
+            <div></div>
+        : 
+            <div className="focus">       
+                <div className="ticker">
+                    <h1 style={{ fontSize: `${boxSize.width / 10}px` }}>{stockSymbol.toUpperCase()}</h1>
                 </div>
-            <div>    
-            
-            {stockData &&  <div className="data-row">
-                <span style={{ fontSize: `${boxSize.width / 10}px` }}>{JSON.stringify(stockData.price_change, null, 2)}</span>
-                <span style={{ fontSize: `${boxSize.width / 10}px` }}>{JSON.stringify(stockData.percent_change, null, 2)}</span>
-            </div>}
-        </div>
-        
-        </div>        
-        </div>
+
+                <div className="ticker-data">
+                    <div className="data-row">
+                        {stockData.price === " " ? <div></div> : <span style={{ fontSize: `${boxSize.width / 10}px` }}>{JSON.stringify(stockData.price)}</span>}                        
+                    </div>
+                <div>    
+                
+                {stockData &&  
+                    <div className="data-row">
+                        {stockData.percent_change === " " ? <div></div> : <span style={{ fontSize: `${boxSize.width / 10}px` }}>{JSON.stringify(stockData.percent_change)+ "%"}</span>}
+                        {stockData.price_change === " " ? <div></div> : <span style={{ fontSize: `${boxSize.width / 10}px` }}>{JSON.stringify(stockData.price_change)}</span>} 
+                    </div>}
+                </div>
+                </div>        
+            </div>
+        }
+
     </div>)
 }
 

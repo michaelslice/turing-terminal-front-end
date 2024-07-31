@@ -3,11 +3,15 @@
     top: 0;
     left: 0;
     background-color: #000000;
-    height: 60px;
-    width: 60px;
+    height: 600px;
+    width: 600px;
     cursor: pointer;
     min-height: 100px;
     min-width: 640px;
+    overflow: scroll;
+    border-color: #3E8B66;;
+    border-radius: .1px;
+    border-style: solid;
 }
 
 .box button {
@@ -32,7 +36,6 @@
     gap: .5rem;
 }
 
-
 .time-frame {
     display: flex;
     flex-direction: row;
@@ -45,8 +48,6 @@
     padding-right: .5rem;
 }
 
-
-
 .filings-options input {
     width: 5rem;
 }
@@ -55,12 +56,6 @@
     width: 10rem;
 }
 
-.calender-section {
-    display: flex;
-    align-self: center;
-    justify-self: center;
-    flex-direction: row;
-}
 
 .arrow {
     display: flex;

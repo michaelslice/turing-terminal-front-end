@@ -1,5 +1,22 @@
 #ipo-box {
     min-width: 400px;
     min-height: 200px;
-    overflow: scroll;
+    height: 350px;
+    width: 950px;
+    overflow-y: scroll;
+}
+
+#refresh {
+    border-radius: 5px;
+    border: 1px solid #424242;
+    background: #141414;
+    margin: .25rem;
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    height: 24px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }

@@ -46,7 +46,6 @@ function Holders({setOpenHolders}: any) {
     return(
         <div id="holders-box" className="box">
             <div className="top-settings-row">
-            
             <div className="settings-text">
                 <span>Holders</span>
             </div>
@@ -66,40 +65,34 @@ function Holders({setOpenHolders}: any) {
         </div>
 
         <div className="filings-text">
-            <div className="filings-options">
-                <form onSubmit={submitTicker}>
-                    <input
-                        placeholder="Company"
-                        id="theme"
-                        onChange={(e) => setStockSymbol(e.target.value)}>
-                    </input>
-                </form>
+            <div id="holders-options" className="filings-options">
+                <input placeholder="Company" id="company" onChange={(e) => setStockSymbol(e.target.value)}></input>
+                <button className="search-button" onClick={fetchHolders}>Search</button>
             </div>
         </div>
         
         <div className="filing-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Holder</th>
-                            <th>Shares</th>
-                            <th>Date Reported</th>
-                            <th>Value</th>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Holder</th>
+                        <th>Shares</th>
+                        <th>Date Reported</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {holdersData.map((item, index) => (
+                        <tr key={index}>
+                            <td>{item.Holder}</td>
+                            <td>{item.Shares}</td>
+                            <td>{item['Date Reported']}</td>
+                            <td>{item.Value}</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {holdersData.map((item, index) => (
-                            <tr key={index}>
-                                <td>{item.Holder}</td>
-                                <td>{item.Shares}</td>
-                                <td>{item['Date Reported']}</td>
-                                <td>{item.Value}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-
+                    ))}
+                </tbody>
+            </table>
+        </div>
     </div>)
 }
 

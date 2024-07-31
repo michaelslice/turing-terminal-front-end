@@ -3,8 +3,6 @@ import { useState } from "react";
 import api from "../../../../api";
 import "./companyevents.css"
 import "../FilingsComponent/filings.css"
-import "../CalenderComponents/calenderstart.css"
-import "../CalenderComponents/calenderend.css"
 
 interface CompanyEvent {
     ticker: string;
@@ -16,7 +14,6 @@ interface CompanyEvent {
 }
 
 function CompanyEvents({setOpenCompanyEvents}: any) {
-    
     useDragger("company-events-box");
     
     const closeOpenCompanyEvents = () => {
@@ -25,8 +22,6 @@ function CompanyEvents({setOpenCompanyEvents}: any) {
     }
 
     const [newStock, setNewStock] = useState<string>("");
-
-
     const [companyEventData, setCompanyEventData] = useState<any>([])
 
     const getCompanyEvents = async () => {
@@ -34,8 +29,6 @@ function CompanyEvents({setOpenCompanyEvents}: any) {
             const response = await api.get("http://127.0.0.1:8000/api/v1/companyevents/get_company_events/", {
                 params: { ticker: newStock }
             })
-
-            console.log(response);
 
             const data = response.data;
 
@@ -49,26 +42,17 @@ function CompanyEvents({setOpenCompanyEvents}: any) {
 
             }))
 
-            console.log(dataArray);
             setCompanyEventData(dataArray)
-
 
         } catch (error) {
             console.log(error);
         }
     }
-
-    const test = () => {
-        console.log(newStock)
-    }
-
     return(
         <div id="company-events-box" className="company-events-box">
             <div className="top-settings-row">
-            
             <div className="settings-text">
                 <span>Company Events</span>
-
             </div>
             <div className="settings-right-side-buttons">
                 <button>
@@ -90,12 +74,7 @@ function CompanyEvents({setOpenCompanyEvents}: any) {
                 <input onChange={((e) => setNewStock( e.target.value))} placeholder="Ticker"></input>
                 <button onClick={getCompanyEvents}>Search</button>
             </div>
-
-            <div className="filings-options"> 
-                <button>
-                    <span>Clear</span>
-                </button>
-            </div>        
+            <div className="filings-options"></div>        
         </div>
 
         <div className="filing-table">
@@ -112,7 +91,7 @@ function CompanyEvents({setOpenCompanyEvents}: any) {
                         <tr key={index}>
                             <td>{item.ticker}</td>
                             <td>{item.formType}</td>
-                            <td>{item.linkToTxt}</td>
+                            <a href={item.linkToTxt}><td>Event Link</td></a>
                             <td>{item.filedAt}</td>
                             <td>{item.periodOfReport}</td>
                         </tr>
@@ -120,7 +99,6 @@ function CompanyEvents({setOpenCompanyEvents}: any) {
                 </tbody>
             </table>    
         </div>
-
     </div>)
 }
 

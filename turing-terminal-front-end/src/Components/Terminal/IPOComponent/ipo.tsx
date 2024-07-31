@@ -58,7 +58,7 @@ function Ipo({setOpenInitialPublicOfferings}: any) {
             
             <div className="settings-text">
                 <span>Initial Public Offerings</span>
-                <button onClick={refreshIPOs}>Refresh</button>
+                <button id="refresh" onClick={refreshIPOs}>Refresh</button>
             </div>
             <div className="settings-right-side-buttons">
                 <button>

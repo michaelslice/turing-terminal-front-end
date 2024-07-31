@@ -52,14 +52,14 @@
     grid-column-gap: 1.5rem;
     grid-row-gap: 1rem;
     grid-template: 
-                ". ."
-                ". ."
-                ". ."
-                ". ."
-                ". ."
-                ". ."
-                ". Area"
-                / .5fr .5fr;
+        ". ."
+        ". ."
+        ". ."
+        ". ."
+        ". ."
+        ". ."
+        ". Area"
+        / .5fr .5fr;
     grid-auto-columns: 1fr;
     margin-top: 1.5rem;
     margin-bottom: 2rem;

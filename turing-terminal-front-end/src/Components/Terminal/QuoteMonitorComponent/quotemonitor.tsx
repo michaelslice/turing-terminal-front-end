@@ -50,7 +50,6 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
                 changePercent: item.changePercent
             }))
 
-            // setStocks(dataArray)
             setStocks([...stocks, ...dataArray]);
 
         } catch (error) {
@@ -73,8 +72,6 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
     const addStock = (e: any) => {
         if(e.key === 'Enter' && newStock.trim() !== '') {
             saveStock();
-            
-            // setStocks([...stocks, newStock.trim()]);
             setNewStock('');
         }
     };

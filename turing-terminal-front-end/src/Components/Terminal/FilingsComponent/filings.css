@@ -4,11 +4,13 @@
     left: 0;
     background-color: #000000;
     height: 400px;
-    width: 60px;
+    width: 800px;
     cursor: pointer;
-    min-height: 100px;
-    min-width: 640px;
     font-family: Oxygen Mono, sans-serif;
+    overflow-y: scroll;
+    border-color: #3E8B66;;
+    border-radius: .1px;
+    border-style: solid;
 }
 
 #company {
@@ -19,8 +21,11 @@
     font-size: 14px;
     line-height: 1.5714285714285714;
     height: 24px;
-    padding: 0px 7px;
     border-radius: 4px;
+}
+
+.search-button {
+    font-family: "Oxygen Mono", monospace;
 }
 
 .box button {
@@ -32,29 +37,44 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-left: .5rem;
-    padding-right: .5rem;
 }
 
-.time-frame-options {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: .5rem;
+.filing-table table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+} 
+
+.filing-table th, .filing-table td {
+    margin: 0;
+    padding: 8px;
+    text-align: center; 
 }
 
-
-.time-frame {
-    display: flex;
-    flex-direction: row;
+.filing-table td {
+    text-wrap: nowrap;
+    align-items: left;
+    text-align: left;
 }
 
-.filing-table {
-    display: flex;
-    flex-direction: column;
-    padding-left: .5rem;
-    padding-right: .5rem;
+.filing-table th {
+    background-color: #141414; 
+    font-weight: bold; 
+    text-wrap: nowrap;
+}
+
+.filing-table a {
+    text-decoration: none;
+    color: inherit; 
+    text-wrap: nowrap;
+}
+
+.filing-table tr:nth-child(even) {
+    background-color: rgb(36, 34, 34); 
+}
+
+.filing-table tr:hover {
+    background-color: rgb(36, 34, 34); 
 }
 
 .filings-options input {
@@ -63,13 +83,6 @@
 
 .time-frame-options input {
     width: 10rem;
-}
-
-.calender-section {
-    display: flex;
-    align-self: center;
-    justify-self: center;
-    flex-direction: row;
 }
 
 .arrow {
@@ -93,13 +106,11 @@
     height: 24px;
     padding: 0px 7px;
     border-radius: 4px;
-   
 }
 
 .filings-text span {
     font-family: "Oxygen Mono", monospace;
 }
-
 
 .filings-text button {
     border-radius: 5px;

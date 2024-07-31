@@ -1,5 +1,5 @@
 import useDragger from "../DraggerComponent/dragger";
-import React, { useState } from "react";
+import { useState } from "react";
 import ReactApexChart from 'react-apexcharts'
 import { candleStickOptions } from "./candlestick";
 import api from "../../../../api";
@@ -8,16 +8,11 @@ import "./chart.css"
 function Chart({setOpenChart}: any) {
     
     useDragger("chart-box");
-    
     const closeOpenChart = () => {
         console.log("close chart")
         setOpenChart(false);
     }
     
-    const [openCandle, closeCandle] = useState(false);
-    const [candle, setCandle] = useState('');
-    const [period, setPeriod] = useState('');
-    const [openPeriod, closePeriod] = useState(false);
     const [newStock, setNewStock] = useState<string>("");
     const [chartData, setChartData] = useState<any>([]);
 
@@ -44,14 +39,13 @@ function Chart({setOpenChart}: any) {
             console.log(error)
         }
     }
-
     return(
         <div id="chart-box" className="box">
             <div className="top-chart-row">
             
             <div className="chart-text">
                 <span>Chart</span>
-                <input onKeyDown={getData} placeholder="Ticker"></input>
+                <input id="company" onKeyDown={getData} placeholder="Ticker"></input>
             </div>
             <div className="chart-right-side-buttons">
                 <button>
@@ -68,52 +62,6 @@ function Chart({setOpenChart}: any) {
             </div>       
         </div>
 
-        <div className="top-chart-row-input">
-        
-            <div>
-                <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => closeCandle(true)}>
-                    <span>Candles: </span>
-                    <span>{candle}</span>
-                </button>
-
-                {openCandle && <div className="candle-options">
-                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {setCandle("1m"), closeCandle(false)}}>1 minute</button>
-                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {setCandle("5m"), closeCandle(false)}}>5 minutes</button>
-                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {setCandle("15m"), closeCandle(false)}}>15 minutes</button>
-                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {setCandle("30m"), closeCandle(false)}}>30 minutes</button>
-                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {setCandle("60m"),  closeCandle(false)}}>1 hour</button>
-                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {setCandle("1d"),  closeCandle(false)}}>1 day</button>
-                </div>}
-            </div>
-
-            <div>
-                <span>Price</span>
-            </div>
-
-            <div>
-                <span>Percent</span>
-            </div>
-
-            <div>
-                <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => closePeriod(true)}>
-                    <span>Period: </span>
-                    <span>{period}</span>
-                </button>
-                
-                {openPeriod && <div className="period-options">
-                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {setPeriod("1D"), closePeriod(false)}}>1D</button>
-                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {setPeriod("5D"), closePeriod(false)}}>5D</button>
-                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {setPeriod("1M"), closePeriod(false)}}>1M</button>
-                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {setPeriod("3M"), closePeriod(false)}}>3M</button>
-                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {setPeriod("6M"), closePeriod(false)}}>6M</button>
-                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {setPeriod("YTD"), closePeriod(false)}}>YTD</button>
-                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {setPeriod("1YR"), closePeriod(false)}}>1YR</button>
-                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {setPeriod("5YR"), closePeriod(false)}}>5YR</button>
-                    <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {setPeriod("All"), closePeriod(false)}}>All</button>
-                </div>}
-            </div>
-        </div>
-
         <ReactApexChart
             series={[
                 {
@@ -123,7 +71,6 @@ function Chart({setOpenChart}: any) {
             options={candleStickOptions}
             type="candlestick"
         />
-
     </div>);
 }
 

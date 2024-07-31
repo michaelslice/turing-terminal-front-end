@@ -1,6 +1,9 @@
 #focus-box {
     min-height: 200px;
     min-width: 400px;
+    border-color: #3E8B66;;
+    border-radius: .1px;
+    border-style: solid;
 }
 
 .focus {
@@ -45,5 +48,3 @@
 .focus span {
     font-size: 3vh;
 }
-
-

@@ -1,11 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import useDragger from "../DraggerComponent/dragger";
-import CalenderFirstDisplay from "../CalenderComponents/calenderstart";
-import CalenderEndDisplay from "../CalenderComponents/calenderend";
 import api from "../../../../api";
 import "./filings.css"
-import "../CalenderComponents/calenderstart.css"
-import "../CalenderComponents/calenderend.css"
 
 interface Filing {
     ticker: string;
@@ -17,29 +13,13 @@ interface Filing {
 }
 
 function Filings({setOpenFilings}: any) {
-    
-
+    useDragger("filings-box");
     const closeOpenFilings = () => {
         console.log("close filings")
         setOpenFilings(false);
     }
 
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
-
-    const setFirstDateFunction = (e: any) => { setStartDate(e) }
-    const setEndDateFunction = (e: any) => { setEndDate(e) }
-
-    const handleStartDateChange = (event: any) => {
-        setStartDate(event.target.valueAsDate); 
-    };
-
-    const handleEndDateChange = (event: any ) => {
-        setEndDate(event.target.valueAsDate); 
-    };
-   
     const [newStock, setNewStock] = useState<string>("");
-
     const [filings, setFilings] = useState<any>([]);
 
     const getFilings = async () => {
@@ -64,13 +44,9 @@ function Filings({setOpenFilings}: any) {
             console.log(error);
         }
     }
-
-    useDragger("filings-box");
     return(
-
         <div id="filings-box" className="filing-box">
-            <div className="top-settings-row">
-            
+            <div className="top-settings-row">      
             <div className="settings-text">
                 <span>Filings</span>
             </div>
@@ -92,47 +68,8 @@ function Filings({setOpenFilings}: any) {
         <div className="filings-text">            
             <div className="filings-options">
                 <input onChange={(e) => setNewStock(e.target.value)} placeholder="Company" id="company"></input>
-                <button onClick={getFilings} ></button>
+                <button className="search-button" onClick={getFilings}>Search</button>
             </div>
-            
-            <div className="time-frame-options">
-                <input 
-                    placeholder="Start date" 
-                    value={ startDate ? (startDate as any)?.toISOString().substr(0, 10): ''} 
-                    onChange={handleStartDateChange}>
-                </input>
-            
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="arrow" viewBox="0 0 16 16">
-                    <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-                </svg>
-                
-                <input 
-                    placeholder="End date" 
-                    value={endDate ? (endDate as any)?.toISOString().substr(0, 10) : ''} 
-                    onChange={handleEndDateChange}>
-                </input>
-            </div>
-
-            <div className="filings-options"> 
-                <button onClick={(e: React.MouseEvent<HTMLButtonElement | MouseEvent>) => {setStartDate(null); setEndDate(null)}}>
-                    <span>Clear</span>
-                </button>
-       
-                <button>
-                    <span>Pause</span>
-                </button>
-            </div>        
-        </div>
-
-        <div className="calender-section">
-            {startDate == null && 
-                <CalenderFirstDisplay 
-                onDateChange={setFirstDateFunction}/>
-            }
-            {endDate == null &&
-                <CalenderEndDisplay 
-                onDateChange={setEndDateFunction}/>
-            }
         </div>
 
         <div className="filing-table">
@@ -156,9 +93,7 @@ function Filings({setOpenFilings}: any) {
                     ))}
                 </tbody>
             </table>    
-            
         </div>
-
     </div>)
 }
 

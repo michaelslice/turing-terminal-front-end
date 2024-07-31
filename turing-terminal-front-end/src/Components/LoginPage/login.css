@@ -1,10 +1,7 @@
-/* login.css */
-
 .body {
     background-color: #141414;
     height: 100vh;
     display: flex;
-
 }
 
 .Login {
@@ -22,7 +19,6 @@
 .container {
     display: flex;
     flex-direction: column;
-
     background-color: #141414;
 }
 
@@ -115,7 +111,6 @@
 
 /* EMAIL BOX *************************************************************************************/
 
-
 .email-container {
     display: flex;
     flex-direction: column;
@@ -125,7 +120,7 @@
     gap: .5rem;
 }
   
-  .email-box {
+.email-box {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -165,7 +160,7 @@
     left: 5px; 
 }
 
-  .email-box input {
+.email-box input {
     width: 100%;
     height: 100%; 
     padding: 10px;
@@ -178,7 +173,7 @@
     color: white;
 }
   
-  .email-box span {
+.email-box span {
     position: absolute;
     left: 10px; 
     top: -7px; 
@@ -204,8 +199,8 @@
     position: relative;
 }
 
-  .password-box ,
-  .password-confirm-box {
+.password-box ,
+.password-confirm-box {
     width: 100%;
     height: 40px; 
     position: relative;
@@ -285,7 +280,6 @@
     align-items: left;
     justify-content: left;
     position: relative;
-  
     margin: left;
     align-items: left;
     justify-content: left;
@@ -438,7 +432,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
 }
 
 .reset-password-section  h1 {
@@ -501,7 +494,7 @@
     transition: .3s;
 }
 
-  .back-to-login p {
+.back-to-login p {
     display: flex;
     flex-direction: column;
     align-items: center;

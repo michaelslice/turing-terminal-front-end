@@ -40,7 +40,6 @@ function Financials({setOpenFinancials}: any) {
     const [cashFlowData, setCashFlowData] = useState<any[]>([])
     const [incomeStatementData, setIncomeStatementData] = useState<any[]>([])
 
-
     const getBalanceSheet = async () => {
         try {
             const response = await api.get("http://127.0.0.1:8000/api/v1/financials/getbalancesheet/", {

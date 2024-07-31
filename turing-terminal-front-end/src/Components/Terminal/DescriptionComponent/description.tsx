@@ -14,10 +14,6 @@ function Description({setOpenDescription}: any) {
         setOpenDescription(false);
     }
     
-    const [openCandle, closeCandle] = useState(false);
-    const [candle, setCandle] = useState('');
-    const [period, setPeriod] = useState('');
-    const [openPeriod, closePeriod] = useState(false);
     const [newStock, setNewStock] = useState<string>("");
     const [chartData, setChartData] = useState<any>([]);
     const [ticker, setTicker] = useState('');
@@ -53,8 +49,6 @@ function Description({setOpenDescription}: any) {
                 params: { ticker: ticker }
             });
 
-            console.log(response.data)
-
             setData(response.data[0])
 
         } catch (error) {
@@ -62,18 +56,16 @@ function Description({setOpenDescription}: any) {
         }
     }
 
-    const test = () => {
+    const requestData = () => {
         getDescription();
         getData();
     }   
-
     return(
         <div id="description-box" className="box">
-            <div className="top-settings-row">
-            
+            <div className="top-settings-row"> 
             <div className="settings-text">
                 <span>Description</span>
-                <input onKeyDown={test}></input>
+                <input id="company" onKeyDown={requestData} onChange={((e) => setTicker( e.target.value))}></input>
             </div>
             <div className="settings-right-side-buttons">
                 <button>
@@ -89,68 +81,60 @@ function Description({setOpenDescription}: any) {
                 </button>
             </div>       
         </div>
-
-        <div className="top-settings-row"> 
-            <h1>{data?.ticker}</h1>
-        </div>
-
-        <div className="top-settings-row"> 
-            <p>{data?.description}</p>
-        </div>
-
-        <div className="top-settings-row">  
+        {ticker === "" ? 
+            <div></div>
+        :       
             <div>
-                <span>Price Chart</span>
+                <div className="top-settings-row"> 
+                    <h1>{data?.ticker}</h1>
+                </div>
+                <div className="top-settings-row"> 
+                    <p>{data?.description}</p>
+                </div>
+            <div className="top-settings-row">  
+                <div className="description-chart">
+                <div className="chart-title"><h1><b>Price Chart</b></h1></div>
+                    <ReactApexChart
+                        series={[
+                            {
+                                data: chartData
+                            }
+                        ]}
+                        options={candleStickOptions}
+                        type="candlestick"
+                    />
             </div>
-
-            <div>
-                <span>Stats</span>
-            </div>
-        </div>
-
-        <div className="top-settings-row">  
-            <div className="description-chart">
-                <ReactApexChart
-                    series={[
-                        {
-                            data: chartData
-                        }
-                    ]}
-                    options={candleStickOptions}
-                    type="candlestick"
-                />
-            </div>
-
-            <div className="description-stats">
-                <div>
-                    <a>{data?.website}</a>
-                </div>
-
-                <div>
-                    <a>{data?.address}</a>
-                </div>
-
-                <div>
-                    <a>{data?.city} {data?.state} {data?.zipcode}</a>
-                </div>
-
-                <div>
-                    <span>{data?.ticker}</span>
-                </div>
-
-                <div>
-                    <span>Price {data?.price}</span>
-                </div>
-
-                <div>
-                    <span>Sharse Out{data?.sharesoutstanding}</span>
-                </div>
-
-                <div>
-                    <span>Market Cap{data?.marketcap}</span>
+                <div className="description-stats">
+                    <div className="title"><h1><b>Stats</b></h1></div>
+                    <div>
+                        <div className="color-text"><a href={data?.website}>{data?.website}</a></div>
+                    </div>
+                    <div>
+                        <a>{data?.address}</a>
+                    </div>
+                    <div>
+                        <a>{data?.city} {data?.state} {data?.zipcode}</a>
+                    </div>
+                    <div className="spacing">
+                        <div className="color-text"><span>Ticker:</span></div>
+                        <div className="regular-text"><span>{data?.ticker}</span></div>
+                    </div>
+                    <div className="spacing">
+                        <div className="color-text"><span>Price:</span></div>
+                        <div className="regular-text"><span>${data?.price}</span></div>
+                    </div>
+                    <div className="spacing">
+                        <div className="color-text"><span>Sharse Out:</span></div>
+                        <div className="regular-text"><span>{data?.sharesoutstanding}</span></div>
+                    </div>
+                    <div className="spacing">
+                        <div className="color-text"><span>Market Cap:</span></div>
+                        <div className="regular-text"><span>${data?.marketcap}</span></div>
+                    </div>
                 </div>
             </div>
         </div>
+        }
 
     </div>)
 }

@@ -48,14 +48,13 @@ function WorldIndices({setOpenWordIndices}: any) {
         e.preventDefault();
         getWorldIndices();
     } 
-
     return(
         <div id="world-indices-box" className="box">
             <div className="top-settings-row">
             
             <div className="settings-text">
                 <span>World Indices</span>
-                <button onClick={refreshWorldIndices}>Refresh</button>
+                <button id="refresh" onClick={refreshWorldIndices}>Refresh</button>
             </div>
             <div className="settings-right-side-buttons">
                 <button>
@@ -96,7 +95,6 @@ function WorldIndices({setOpenWordIndices}: any) {
                 </tbody>
             </table>    
         </div>
-
     </div>)
 }
 

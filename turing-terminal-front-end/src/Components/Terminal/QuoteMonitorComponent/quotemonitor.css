@@ -4,4 +4,11 @@
 
 #quote-monitor-box {
     overflow-x: hidden;
+    width: 700px;
+    height: 350px;
+}
+
+.filing-row1 input {
+    border: none;
+    height: 2rem;
 }

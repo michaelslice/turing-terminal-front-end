@@ -3,41 +3,20 @@
     top: 0;
     left: 0;
     background-color: #000000;
-    height: 60px;
-    width: 60px;
+    height: 400px;
+    width: 800px;
     cursor: pointer;
     min-height: 100px;
     min-width: 640px;
-    
+    border-color: #3E8B66;;
+    border-radius: .1px;
+    border-style: solid;
 }
 
 .box button {
     display: flex;
     height: 20px;
     color: white;
-}
-
-.filings-text {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-left: .5rem;
-    padding-right: .5rem;
-    
-}
-
-.time-frame-options {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: .5rem;
-}
-
-
-.time-frame {
-    display: flex;
-    flex-direction: row;
 }
 
 .filing-table {
@@ -47,22 +26,8 @@
     padding-right: .5rem;
 }
 
-
-
 .filings-options input {
     width: 5rem;
-}
-
-.time-frame-options input {
-    width: 10rem;
-}
-
-.calender-section {
-    display: flex;
-    align-self: center;
-    justify-self: center;
-    flex-direction: row;
-        
 }
 
 .arrow {
@@ -71,4 +36,27 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+#holders-options {
+    display: flex;
+    flex-direction: row;
+}
+
+#holders-options input {
+    width: 5rem;
+}
+
+#holders-options button {
+    border-radius: 5px;
+    border: 1px solid #424242;
+    background: #141414;
+    margin: .25rem;
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    height: 24px;
+    padding: 0px 7px;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
 }

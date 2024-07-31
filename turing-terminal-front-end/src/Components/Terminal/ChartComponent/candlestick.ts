@@ -1,17 +1,17 @@
 export const candleStickOptions = {
-    chart: {
-        type: 'candlestick' as 'candlestick', 
-      },
-      title: {
-        text: 'My Chart',
+  chart: {
+    type: 'candlestick' as 'candlestick', 
+    },
+  title: {
+    text: 'My Chart',
 
-      },
-      xaxis: {
+  },
+  xaxis: {
 
-      },
-      yaxis: {
-        tooltip: {
-          enabled: true
-        }
-      }
+  },
+  yaxis: {
+    tooltip: {
+      enabled: true
+    }
+  }
 };

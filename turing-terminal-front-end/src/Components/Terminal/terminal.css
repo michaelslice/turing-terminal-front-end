@@ -38,11 +38,15 @@
     align-items: right;
 }
 .gear {
-
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .x {
-
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .settings-options {
