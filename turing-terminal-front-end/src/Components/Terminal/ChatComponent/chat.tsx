@@ -60,28 +60,27 @@ function Chat({ setOpenChat }: any) {
                 </div>
             </div>
 
-            <div className="top-settings-row">
-                <div>Anonymous</div>
+            <div className="top-chat-row">
+                <h2>General</h2>
+                <h4 className="connected-text">Connected</h4>
             </div>
 
             <div className="chat-middle-section">
                 
                 <div className="open-channels">
-                    Open Channels
-                    <div>#welcome</div>
                 </div>
 
                 <div className="chat-location">
-                    <span><b>General</b></span>
                     <div className="bottom">
                         <ul id="messages">
                             {comments.map((msg: any, index: any) => (
                                 <li key={index}>{msg}</li>
                             ))}
                         </ul>
+
                         <form id="comment-form" onSubmit={submitComment}>
                             <input id="comment" value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Comment"/>
-                            <button type="submit">Post</button>
+                            <button id="post-comment" type="submit">Post</button>
                         </form>
                     </div>
                 </div>

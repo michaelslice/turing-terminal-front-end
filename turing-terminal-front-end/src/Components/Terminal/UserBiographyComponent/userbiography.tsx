@@ -1,9 +1,59 @@
 import useDragger from "../DraggerComponent/dragger";
+import { onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import api from "../../../../api";
 import "./userbiography.css"
 
 function UserBiography({setOpenUserBiography}: any) {
     
     useDragger("user-biography-box");
+    const auth = getAuth();
+
+    const userEmail = auth.currentUser?.email
+    const [userName, setUserName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [company, setCompany] = useState('');
+
+    const submitForm = (e: any) => {
+        e.preventDefault();
+        updateUser();
+        setUserName('');
+        setLastName('');
+        setCompany('');
+    };
+
+    const updateUser = async () => {
+        try {
+            const response = await api.post("http://127.0.0.1:8000/api/v1/userbiography/postuserbio/", {
+                params: { 
+                    userEmail: userEmail,
+                    userName: userName,
+                    firstName: firstName,
+                    lastName: lastName,
+                    company: company,
+                }
+            });
+
+            console.log(response.data);
+
+
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setLoggedIn(!!user); // Convert auth state to boolean
+        });
+
+        return () => unsubscribe();
+    }, [auth]);
     
     const closeOpenUserBiography = () => {
         setOpenUserBiography(false);
@@ -29,9 +79,38 @@ function UserBiography({setOpenUserBiography}: any) {
             </div>       
         </div>
 
-        <div className="top-settings-row">
-            <p>Loading...</p>
-        </div>
+        {!loggedIn ? 
+            <div className="top-settings-row">
+                <p>Loading...</p>
+            </div>
+        : 
+            <div>
+                <form id="bio-form">
+                    <div className="bio-row">
+                        <b><label>User Name: </label></b>
+                        <input id="company" onChange={((e) => setUserName(e.target.value))}></input>
+                    </div>
+                    <div className="bio-row">
+                        <b><label>First Name: </label></b>
+                        <input id="company" onChange={((e) => setFirstName(e.target.value))}></input>
+                    </div>
+                    <div className="bio-row">
+                        <b><label>Last Name: </label></b>
+                        <input id="company" onChange={((e) => setLastName(e.target.value))}></input>
+                    </div>
+                    <div className="bio-row">
+                        <b><label>Company: </label></b>
+                        <input id="company" onChange={((e) => setCompany(e.target.value))}></input>
+                    </div>
+                    <div className="submit-row">
+                        <Link to={"/signout"}>
+                            <button id="log-out"><span>Log Out</span></button>
+                        </Link>
+                        <button id="next" onClick={submitForm}><span>Next</span></button>
+                    </div>
+                </form>
+            </div>
+        }
         
     </div>)
 }

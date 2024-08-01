@@ -1,5 +1,4 @@
 #chat-box {
-  overflow-y: scroll;
   width: 600px;
   height: 500px;
   border-color: #3E8B66;;
@@ -16,30 +15,30 @@
     width: 100%;
 }
 
-/* .bottom {
-    border: 1px;
-    border-width: 1px;
-    border-color: #3E8B66;;
-    border-radius: .1px;
-    border-style: solid;
-    justify-content: flex-end;
-    flex-direction: column-reverse;
-    width: 50%;
-    position: absolute;
-    flex-direction: column;
-} */
-
 .open-channels {
     border-right: 1px solid rgba(46, 46, 46);
     height: 100%;
     width: 250px;
+}
 
+.top-chat-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: .5rem;
+    padding-left: .5rem; 
+    border-style: solid;
+    border-left: none;
+    border-right: none;
+    border-color: #3E8B66;
+    height: 2.5rem;
+    align-items: center;
 }
 
 .chat-location {
     position: absolute;
     top: 50px;
-    bottom: 60px;
+    bottom: 0px;
     right: 0;
     padding: 10px;
     left: 0;
@@ -48,10 +47,43 @@
     flex-direction: column-reverse;
 }
 
+.connected-text {
+    color: #3E8B66;
+}
+
+#comment {
+    width: 90%;
+    border: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#post-comment {
+    border: none;
+    width: 10%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3E8B66;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
 #comment-form {
     display: flex;
     flex-direction: row;
     justify-content: center;
     width: 100%;
     bottom: 0;
+}
+
+#messages {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+    padding-left: 0;
 }

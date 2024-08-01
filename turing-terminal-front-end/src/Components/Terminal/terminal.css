@@ -675,3 +675,8 @@
 	from { opacity: 1; }
 	to { opacity: 0; }
 }
+
+.login-button-terminal .person-fill {
+    height: 24px; 
+    width: auto;  
+}

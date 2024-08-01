@@ -1,0 +1,55 @@
+#bio-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.bio-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.submit-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    gap: .5rem;
+}
+
+#log-out {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    border-radius: 5px;
+    background-color: #141414;
+    width: 80px;
+    height: 35px;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    cursor: pointer;
+    border: none;
+}
+
+#next {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    border-radius: 5px;
+    background-color: #3E8B66;
+    width: 80px;
+    height: 35px;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    cursor: pointer;
+    border: none;
+}

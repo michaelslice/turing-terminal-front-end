@@ -1,8 +1,7 @@
-import { Link, useFetcher } from "react-router-dom";
-import useDragger from "./DraggerComponent/dragger";
-import { useState, useEffect, useRef} from 'react'
+import { Link, } from "react-router-dom";
+import { useState, useEffect } from 'react'
 import { onAuthStateChanged } from "firebase/auth";
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import Filings from "./FilingsComponent/filings";
 import Holders from "./HoldersComponent/holders";
 import News from "./NewsComponent/news";
@@ -19,22 +18,21 @@ import OptionsChain from "./OptionChainComponent/optionchain";
 import EquityScreener from "./EquityScreenerComponent/equityscreener";
 import Ipo from "./IPOComponent/ipo";
 import WorldIndices from "./WorldIndicesComponent/worldindices";
-import {  } from "firebase/auth";
-import {
-    signInWithPopup, 
-    createUserWithEmailAndPassword, 
-    signInWithEmailAndPassword, 
-    sendPasswordResetEmail, 
-    GoogleAuthProvider,
-    GithubAuthProvider   
-} from "firebase/auth";
-import { firebaseConfig } from "../LoginPage/login";
-import {auth} from  "../LoginPage/login.tsx"
 import "./terminal.css"
 
 function Terminal() {
 
-    let user = auth.currentUser?.uid;
+    const [loggedIn, setLoggedIn] = useState(false);
+    const auth = getAuth();
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setLoggedIn(!!user); // Convert auth state to boolean
+        });
+
+        return () => unsubscribe();
+    }, [auth]);
+
     const [time, setTime] = useState(new Date());
 
     useEffect(() => {
@@ -283,7 +281,7 @@ function Terminal() {
                     </div>
 
                     <button className="register-button">
-                        {user ? 
+                        {!loggedIn ? 
                             <Link to={"/login"}>
                                 <span>Register</span>
                             </Link>
@@ -295,13 +293,15 @@ function Terminal() {
                     </button>
 
                     <button className="login-button-terminal">
-                        {user ? 
+                        {!loggedIn ? 
                             <Link to={"/login"}>
                                 <span>Login</span>
                             </Link>
                         :    
                             <Link to={"/signout"}>
-                                <span>Logout</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="person-fill" viewBox="0 0 16 16">
+                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                </svg>
                             </Link>
                         }
                     </button>
