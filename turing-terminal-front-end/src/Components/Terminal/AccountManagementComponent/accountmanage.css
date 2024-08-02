@@ -2,4 +2,20 @@
     border-color: #3E8B66;;
     border-radius: .1px;
     border-style: solid;
+    width: 500px;
+    height: 250px;
+}
+
+#submit {
+    font-family: "Oxygen Mono", monospace;
+    border-radius: 5px;
+    border: 1px solid #424242;
+    background: #141414;
+    margin: .25rem;
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    height: 24px;
+    padding: 0px 7px;
+    border-radius: 4px;
+    cursor: pointer;
 }

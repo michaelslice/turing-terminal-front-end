@@ -1,18 +1,43 @@
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 import useDragger from "../DraggerComponent/dragger";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import "./chat.css";
+import api from "../../../../api";
 
 function Chat({ setOpenChat }: any) {
+    
     useDragger("chat-box");
 
-    const closeOpenChat = () => {
-        setOpenChat(false);
-    };
-
+    const auth = getAuth();
     const [comment, setComment] = useState("");
     const [comments, setComments] = useState<any>([]);
 
+    const userEmail = auth.currentUser?.email
+    const [userName, setUserName] = useState('');
+
+    useEffect(() => {
+        const getAccountInfo = async () => {
+            try {
+                const response = await api.get("http://127.0.0.1:8000/api/v1/accountmanagement/getaccountinfo/", {
+                    params: { userEmail: userEmail }
+                });
+    
+                const data = response.data;
+                setUserName(data.Success[0].user_name)
+                console.log(userName)
+
+            } catch (error) {
+                console.log(error);
+            }
+        };
+    
+        if(userEmail) {
+            getAccountInfo();
+        }
+
+    }, [userEmail]) // Run effect when userEmail changes
+    
     useEffect(() => {
         const socket = io("http://localhost:4000", {
             transports: ["websocket", "polling"]
@@ -22,6 +47,7 @@ function Chat({ setOpenChat }: any) {
             console.log("Connected to server");
         });
 
+        // Post comment
         socket.on("chat message", (msg) => {
             setComments((prevComments: any) => [...prevComments, msg]);
         });
@@ -36,8 +62,24 @@ function Chat({ setOpenChat }: any) {
         if (comment) {
             const socket = io("http://localhost:4000");
             socket.emit("chat message", comment);
+            
+            //socket.emit("chat message", comment, userName);
             setComment("");
         }
+    };
+
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setLoggedIn(!!user); // Convert auth state to boolean
+        });
+
+        return () => unsubscribe();
+    }, [auth]);
+
+    const closeOpenChat = () => {
+        setOpenChat(false);
     };
     return (
         <div id="chat-box" className="box">
@@ -78,10 +120,16 @@ function Chat({ setOpenChat }: any) {
                             ))}
                         </ul>
 
-                        <form id="comment-form" onSubmit={submitComment}>
-                            <input id="comment" value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Comment"/>
-                            <button id="post-comment" type="submit">Post</button>
-                        </form>
+                        {!loggedIn ?
+                            <form id="comment-form" onSubmit={submitComment}>
+                                <input id="disabled-comment" disabled placeholder="Sign in to chat"/>
+                            </form>
+                        :
+                            <form id="comment-form" onSubmit={submitComment}>
+                                <input id="comment" value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Comment"/>
+                                <button id="post-comment" type="submit">Post</button>
+                            </form>
+                        }
                     </div>
                 </div>
             </div>

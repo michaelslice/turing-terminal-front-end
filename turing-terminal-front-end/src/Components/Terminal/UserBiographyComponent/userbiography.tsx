@@ -23,11 +23,12 @@ function UserBiography({setOpenUserBiography}: any) {
         setUserName('');
         setLastName('');
         setCompany('');
+        closeOpenUserBiography();
     };
 
     const updateUser = async () => {
         try {
-            const response = await api.post("http://127.0.0.1:8000/api/v1/userbiography/postuserbio/", {
+            const response = await api.post("http://127.0.0.1:8000/api/v1/userbiography/postuseraccount/", {
                 params: { 
                     userEmail: userEmail,
                     userName: userName,

@@ -1,9 +1,54 @@
+import { useEffect, useState } from "react";
 import useDragger from "../DraggerComponent/dragger";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import api from "../../../../api";
 import "./accountmanage.css"
+
 
 function AccountManagement({setOpenAccountManagement}: any) {
 
     useDragger("account-management-box");
+    const auth = getAuth();
+
+    const userEmail = auth.currentUser?.email
+    const [userName, setUserName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [company, setCompany] = useState('');
+
+    useEffect(() => {
+        const getAccountInfo = async () => {
+            try {
+                const response = await api.get("http://127.0.0.1:8000/api/v1/accountmanagement/getaccountinfo/", {
+                    params: { userEmail: userEmail }
+                });
+    
+                const data = response.data;
+                setUserName(data.Success[0].user_name)
+                setFirstName(data.Success[0].first_name)
+                setLastName(data.Success[0].last_name)
+                setCompany(data.Success[0].company)
+    
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        if(userEmail) {
+            getAccountInfo();
+        }
+    
+    }, [userEmail])
+    
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setLoggedIn(!!user); // Convert auth state to boolean
+        });
+
+        return () => unsubscribe();
+    }, [auth]);
     
     const closeOpenAccountManagement = () => {
         setOpenAccountManagement(false);
@@ -30,9 +75,33 @@ function AccountManagement({setOpenAccountManagement}: any) {
             </div>       
         </div>
 
-        <div className="top-settings-row">
-            <p>Please login to manage your account</p>
-        </div>
+        {!loggedIn ? 
+            <div className="top-settings-row">
+                <p>Please login to manage your account</p>
+            </div>
+        :
+            <div>
+                {/* <button onClick={getAccountInfo} type="button" id="submit">Request Account Information</button> */}
+                <form id="bio-form">
+                    <div className="bio-row">
+                        <b><label>User Name: </label></b>
+                        <p>{userName}</p>    
+                    </div>
+                    <div className="bio-row">
+                        <b><label>First Name: </label></b>
+                        <p>{firstName}</p>
+                    </div>
+                    <div className="bio-row">
+                        <b><label>Last Name: </label></b>
+                        <p>{lastName}</p>
+                    </div>
+                    <div className="bio-row">
+                        <b><label>Company: </label></b>
+                        <p>{company}</p>
+                    </div>
+                </form>
+            </div>
+        }
 
     </div>)
 }
