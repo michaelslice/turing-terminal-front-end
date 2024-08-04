@@ -6,9 +6,77 @@
     overflow-x: hidden;
     width: 700px;
     height: 350px;
+    overflow-y: scroll;
 }
 
 .ticker-search input {
     border: none;
     height: 2rem;
+}
+
+#ticker-location {
+    display: flex;
+    flex-direction: row;
+}
+
+#ticker-location:hover 
+#delete-ticker {
+    display: flex;
+    color: white;
+}
+
+#delete-ticker {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+}
+
+#delete-ticker {
+    display: none;
+}
+
+#quote-table {
+    display: flex;
+    flex-direction: column;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.quote-table table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+} 
+
+.quote-table th, .quote-table td {
+    margin: 0;
+    padding: 8px;
+    text-align: center; 
+}
+
+.quote-table td {
+    text-wrap: nowrap;
+    align-items: left;
+    text-align: left;
+}
+
+.quote-table th {
+    background-color: #141414; 
+    font-weight: bold; 
+    text-wrap: nowrap;
+}
+
+.quote-table a {
+    text-decoration: none;
+    color: inherit; 
+    text-wrap: nowrap;
+}
+
+.quote-table tr:nth-child(even) {
+    background-color: rgb(36, 34, 34); 
+}
+
+.quote-table tr:hover {
+    background-color: rgb(36, 34, 34); 
 }

@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useDragger from "../DraggerComponent/dragger";
 import api from "../../../../api";
+import { getAuth } from "firebase/auth";
 import "./quotemonitor.css"
 import "../FilingsComponent/filings.css"
 
@@ -25,13 +26,19 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
         setOpenQuoteMonitor(false);
     };
 
+    const auth = getAuth();
+    const userEmail = auth.currentUser?.email
+
     const [stocks, setStocks] = useState<any[]>([]);
     const [newStock, setNewStock] = useState<string>("");
 
     const saveStock = async() => {
         try {   
             const response = await api.get("http://127.0.0.1:8000/api/v1/quotemonitor/uploadticker/", {
-                params: { ticker: newStock }
+                params: { 
+                    ticker: newStock,
+                    userEmail: userEmail,
+                 }
             });
 
             const data = response.data;
@@ -49,12 +56,54 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
                 changePercent: item.changePercent
             }))
 
-            setStocks([...stocks, ...dataArray]);
+            setStocks([dataArray]);
 
         } catch (error) {
             console.log(error);
         }
     };
+
+    useEffect(() => {
+        const getTickers = async () => {
+            try {
+                const response = await api.get("http://127.0.0.1:8000/api/v1/quotemonitor/gettickers/", {
+                    params: { userEmail: userEmail }
+                });
+
+                const data = response.data;
+                const tickers = data.Tickers
+
+                const dataArray = tickers.map((item: QuoteData) => ({
+                    symbol: item.symbol, 
+                    previousClose: item.previousClose, 
+                    open: item.open, 
+                    high: item.high, 
+                    low: item.low, 
+                    changePercent: item.changePercent, 
+                    volume: item.volume
+                }))
+    
+                setStocks([...stocks, ...dataArray]);
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        if(userEmail) {
+            getTickers();
+        }
+    }, [userEmail])
+    
+    const deleteTicker = async () => {
+        try {
+            const response = await api.delete("http://127.0.0.1:8000/api/v1/quotemonitor/delete_ticker/", {
+                params: { }
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     /**
      *
@@ -77,7 +126,6 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
     return(
         <div id="quote-monitor-box" className="box">
             <div className="top-settings-row">
-            
             <div className="settings-text">
                 <span>Quote Monitor</span>
             </div>
@@ -96,7 +144,7 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
             </div>       
         </div>
 
-        <div className="filing-table">
+        <div className="quote-table">
             <table>
                 <thead>
                     <tr>
@@ -111,8 +159,13 @@ function QuoteMonitor({setOpenQuoteMonitor}: any) {
                 </thead> 
             <tbody>
                 {stocks.map((item, index) => (
-                    <tr key={index}>
-                        <td>{item.symbol}</td>
+                    <tr key={index}>                  
+                        <td id="ticker-location">
+                            <svg onClick={deleteTicker} id="delete-ticker" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="x-lg" viewBox="0 0 16 16">
+                                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                            </svg>
+                            <div>{item.symbol}</div>
+                        </td>
                         <td>{item.previousClose}</td>
                         <td>{item.open}</td>
                         <td>{item.high}</td>
