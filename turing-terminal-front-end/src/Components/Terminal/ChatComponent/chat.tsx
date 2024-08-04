@@ -5,6 +5,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import "./chat.css";
 import api from "../../../../api";
 
+
 function Chat({ setOpenChat }: any) {
     
     useDragger("chat-box");
@@ -25,7 +26,6 @@ function Chat({ setOpenChat }: any) {
     
                 const data = response.data;
                 setUserName(data.Success[0].user_name)
-                console.log(userName)
 
             } catch (error) {
                 console.log(error);
@@ -47,11 +47,14 @@ function Chat({ setOpenChat }: any) {
             console.log("Connected to server");
         });
 
-        // Post comment
+        socket.on("load comments", (loadedComments) => {
+            setComments(loadedComments)
+        });
+
         socket.on("chat message", (msg) => {
             setComments((prevComments: any) => [...prevComments, msg]);
         });
-
+        
         return () => {
             socket.disconnect();
         };
@@ -61,9 +64,8 @@ function Chat({ setOpenChat }: any) {
         e.preventDefault();
         if (comment) {
             const socket = io("http://localhost:4000");
-            socket.emit("chat message", comment);
-            
-            //socket.emit("chat message", comment, userName);
+            // Name of event: 'chat message', Data Emitted to Server: user, comment
+            socket.emit("chat message", { user: userName, comment: comment});
             setComment("");
         }
     };
@@ -108,7 +110,6 @@ function Chat({ setOpenChat }: any) {
             </div>
 
             <div className="chat-middle-section">
-                
                 <div className="open-channels">
                 </div>
 
@@ -116,7 +117,7 @@ function Chat({ setOpenChat }: any) {
                     <div className="bottom">
                         <ul id="messages">
                             {comments.map((msg: any, index: any) => (
-                                <li key={index}>{msg}</li>
+                                <li key={index}>{`${msg.user}: ${msg.comment}`}</li>
                             ))}
                         </ul>
 
