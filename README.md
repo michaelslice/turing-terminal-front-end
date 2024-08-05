@@ -134,7 +134,7 @@ Users on Turing Terminal are able to uniquely identiy themselves with a username
 ![image](https://github.com/user-attachments/assets/aa3472d2-b178-4dc5-9d91-8a02370ab452)
 
 ## Account Management
-If you are logged in, and have created your own bio you can view your most recent settings by accessing the ```ACM``` component.
+If you are logged in, and have created your own bio you can view your most recent settings by accessing the ```ACM``` component. <br>
 ![image](https://github.com/user-attachments/assets/efcb9c0d-898f-4a2d-b522-bd6a7e021a63)
 
 ## Description
