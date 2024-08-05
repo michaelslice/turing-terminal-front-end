@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import Navbar from './Components/NavigationBar/Navbar';
 import './home.css'
 import '/src/Components/NavigationBar/Navbar'
+import './Images/financials.png'
+
 
 function Home() {
   return (
@@ -62,14 +64,12 @@ function Home() {
                                   <div className="uui-space-medium"></div>
                               </div>
                               <div className="uui-layout10_image-wrapper">
-                                  {/* ADD IMAGE */}
-                                  <img src="test" loading="lazy" alt="Dashboard mockup" className="uui-layout10_image shadow-xlarge"/>
+                                  <img src="/src/Images/charting.png" loading="lazy" alt="Dashboard mockup" className="uui-layout10_image shadow-xlarge"/>
                               </div>
                           </div>
                           <div className="w-layout-grid uui-layout10_component">
                               <div className="uui-layout10_image-wrapper">
-                                  {/* ADD IMAGE */}
-                                  <img src="test" loading="lazy" alt="Dashboard mockup" className="uui-layout10_image-copy shadow-xlarge"/>
+                                  <img src="/src/Images/news.png" loading="lazy" alt="Dashboard mockup" className="uui-layout10_image-copy shadow-xlarge"/>
                               </div>
                               <div className="uui-layout10_content">
                                   <div className="uui-icon-featured-outline-large">
@@ -99,14 +99,13 @@ function Home() {
                                       </div>
                                   </div>
                                   <div className="uui-space-small"></div>
-                                  <h2 className="uui-heading-medium">Live Market Quotes</h2>
+                                  <h2 className="uui-heading-medium">Live Option Quotes</h2>
                                   <div className="uui-space-xsmall"></div>
-                                  <div className="uui-text-size-large">Live market quotes, trades, and level II realtime prices directly from Nasdaq. Delivered to you in under 100ms</div>
+                                  <div className="uui-text-size-large">Live option quotes, trades, and level II realtime prices directly from Nasdaq. Delivered to you in under 100ms</div>
                                   <div className="uui-space-medium"></div>
                               </div>
                               <div className="uui-layout10_image-wrapper">
-                                  {/* ADD IMAGE */}
-                                  <img src="test" loading="lazy" alt="Dashboard mockup" className="uui-layout10_image shadow-xlarge"/>
+                                  <img src="/src/Images/options.png" loading="lazy" alt="Dashboard mockup" className="uui-layout10_image shadow-xlarge"/>
                               </div>
                           </div>
                           <section className="uui-section_layout33">
@@ -121,8 +120,7 @@ function Home() {
                                           <div className="uui-container-large-5">
                                               <div className="w-layout-grid uui-layout10_component">
                                                   <div className="uui-layout10_image-wrapper">
-                                                      {/* ADD IMAGE */}
-                                                      <img src="test" loading="lazy" sizes="(max-width: 479px) 53vw, (max-width: 767px) 63vw, (max-width: 991px) 28vw, 30vw" srcSet="test" alt="Dashboard mockup" className="uui-layout10_image-copy shadow-xlarge"/>
+                                                      <img src="/src/Images/filings.png" loading="lazy" sizes="(max-width: 479px) 53vw, (max-width: 767px) 63vw, (max-width: 991px) 28vw, 30vw" alt="Dashboard mockup" className="uui-layout10_image-copy shadow-xlarge"/>
                                                   </div>
                                                   <div className="uui-layout10_content">
                                                       <div className="uui-icon-featured-outline-large">
@@ -159,8 +157,7 @@ function Home() {
                                                           <div className="uui-space-medium"></div>
                                                       </div>
                                                       <div className="uui-layout10_image-wrapper">
-                                                          {/* ADD IMAGE */}
-                                                          <img src="test" loading="lazy" sizes="(max-width: 479px) 67vw, (max-width: 767px) 79vw, (max-width: 991px) 35vw, 38vw" srcSet="test" alt="Dashboard mockup" className="uui-layout10_image-copy shadow-xlarge-copy"/>
+                                                          <img src="/src/Images/financials.png" loading="lazy" sizes="(max-width: 479px) 67vw, (max-width: 767px) 79vw, (max-width: 991px) 35vw, 38vw" alt="Dashboard mockup" className="uui-layout10_image-copy shadow-xlarge-copy"/>
                                                       </div>
                                                   </div>
                                               </div>

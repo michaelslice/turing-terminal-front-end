@@ -21,7 +21,7 @@ function Description({setOpenDescription}: any) {
     const getData = async() => {
         try {
             const response = await api.get("http://127.0.0.1:8000/api/v1/chart/getdailydata/", {
-                params: { ticker: newStock }
+                params: { ticker: ticker }
             });
 
             const data = response.data['Weekly Adjusted Time Series'];
@@ -123,8 +123,8 @@ function Description({setOpenDescription}: any) {
                         <div className="regular-text"><span>${data?.price}</span></div>
                     </div>
                     <div className="spacing">
-                        <div className="color-text"><span>Sharse Out:</span></div>
-                        <div className="regular-text"><span>{data?.sharesoutstanding}</span></div>
+                        {/* <div className="color-text"><span>Sharse Out:</span></div>
+                        <div className="regular-text"><span>{data?.sharesoutstanding}</span></div> */}
                     </div>
                     <div className="spacing">
                         <div className="color-text"><span>Market Cap:</span></div>

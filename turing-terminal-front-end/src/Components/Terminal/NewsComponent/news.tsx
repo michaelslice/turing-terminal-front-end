@@ -84,7 +84,7 @@ function News({ setOpenNews }: any) {
                     <tbody>
                         {newsData.map((item, index) => (
                             <tr key={index}>
-                                <td>{item.title}</td>
+                                <td id="news-header">{item.title}</td>
                                 <td>{item.publisher}</td>
                                 <td><a href={item.link} target="_blank" rel="noopener noreferrer">Read more</a></td>
                             </tr>

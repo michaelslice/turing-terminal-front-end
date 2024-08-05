@@ -17,3 +17,18 @@
     border-radius: 4px;
     cursor: pointer;
 }
+
+#callsandputs:focus {
+    color: white;
+    background-color: #3E8B66;
+}
+
+#calls:focus {
+    color: white;
+    background-color: #3E8B66;
+}
+
+#puts:focus {
+    color: white;
+    background-color: #3E8B66;
+}
