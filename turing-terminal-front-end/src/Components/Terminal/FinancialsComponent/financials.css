@@ -1,5 +1,5 @@
 #financials-box {
-   
+   overflow: scroll;
     width: 750px;
     height: 350px;
 }
