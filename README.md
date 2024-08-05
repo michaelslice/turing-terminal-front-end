@@ -4,7 +4,7 @@ This is a React project that was initiated with [`npm create vite@latest`](https
 
 ## Description
 
-Turing-Terminal is a web-based financial terminal developed using React, and Django.
+Turing-Terminal is a web-based financial terminal developed using React, TypeScript, Django, Python, PostgreSQL, Firebase, Docker, and SocketIO.
 
 ## Prerequisites
 
