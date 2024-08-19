@@ -80,25 +80,23 @@ docker kill <CONTAINER ID>
    ```npm run dev``` <br>
    The project should now be running at ```http://localhost:5173/``` <br>
 
-## Setting up The Backend
-
-
+# Setting up The Backend
 
 ## Turing Terminal Functionality 
-The Turing Terminal allows for viewing company filings, holders, news, live market data, charts, user created stock lists, account creation, account management, live chat rooms, company financials, company events, options chains, equity screening, initial public offerings, world indices data. 
+The Turing Terminal allows viewing company filings, holders, news, live market data, charts, user-created stock lists, account creation, account management, live chat rooms, company financials, company events, options chains, equity screening, initial public offerings, and world indices data. 
 
-## Landing Page
+# Landing Page
 
 ## Login
-At the top of the landing page, users are capable of creating accounts with google or through email. <br>
+At the top of the landing page, users can create accounts with google or through email. <br>
 ![image](https://github.com/user-attachments/assets/31c437d5-62bd-46fa-8761-444520d61bd1) <br>
 After clicking ```LOGIN``` <br>
 ![image](https://github.com/user-attachments/assets/229d6dec-9060-4673-8a3a-a234de965d11)<br>
-Users are capable of creating accounts or logging in with google, or email. After a succsfull login, the user will be navigated to the financial terminal.
+Users are capable of creating accounts or logging in with google, or email. After a successful login, the user will be navigated to the financial terminal.
 
 ## Launch Terminal 
 ![image](https://github.com/user-attachments/assets/88b82375-b927-4a3c-a28c-5bb3a49d4695)
-After loggin in the user is now able to accesss the terminal enabling functionality for using 16 API endpoints, and creating a custom environment designed for their own needs through resizable and draggable components.
+After logging in the user is now able to access the terminal enabling functionality for using 16 API endpoints, and creating a custom environment designed for their own needs through resizable and draggable components.
 ## Accessing Components
 Hovering your mouse over the text at the top will display the component name, and simply clicking on it will open it within the terminal.
 ![image](https://github.com/user-attachments/assets/d5f1b264-8a5b-4835-9480-8ee1370f654a)
@@ -125,16 +123,16 @@ To view a company's most recent price, day change, and day percent change access
 An example query for AAPL's most recent price, day change, and day percent change. <br>
 
 ## Chart
-To view a company's all time chart access the ```Chart``` component , and enter in the TICKER name and press ```Enter``` and the request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/chart/getdailydata/```
+To view a company's all time chart access the ```Chart``` component , enter in the TICKER name and press ```Enter``` and the request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/chart/getdailydata/```
 ![image](https://github.com/user-attachments/assets/c2fa6899-8f75-4f84-8b4b-7369bcb77b6b) <br>
 An example query for IBM's all time stock chart.
 
 ## Bio
-Users on Turing Terminal are able to uniquely identiy themselves with a username, to do so navigate to the ```BIO``` component, and enter in your information, and click ```Next```, after doing so the data will be saved in PostgreSQL.
+Users on Turing Terminal can uniquely identify themselves with a username, to do so navigate to the ```BIO``` component, enter your information, and click ```Next```, after doing so the data will be saved in PostgreSQL.
 ![image](https://github.com/user-attachments/assets/aa3472d2-b178-4dc5-9d91-8a02370ab452)
 
 ## Account Management
-If you are logged in, and have created your own bio you can view your most recent settings by accessing the ```ACM``` component. <br>
+If you are logged in and have created your bio you can view your most recent settings by accessing the ```ACM``` component. <br>
 ![image](https://github.com/user-attachments/assets/efcb9c0d-898f-4a2d-b522-bd6a7e021a63)
 
 ## Description
@@ -147,18 +145,18 @@ To view a company's financial information for the balance sheet, cash flow state
 An example query for IBM's annual cash flow statement data for the last 15 years.
 
 ## Company Events
-To view a company's most recent company events access the ```EVT``` component, and enter in the TICKER name and press ```Enter``` and the request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/companyevents/get_company_events/```  
+To view a company's most recent company events access the ```EVT``` component, enter in the TICKER name, and press ```Enter``` and the request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/companyevents/get_company_events/```  
 ![image](https://github.com/user-attachments/assets/81887a2f-4e4c-4f2b-a8c3-a9282142e336) <br>
 An example query for AVGO's most recent company events.
 
 ## Option Chain
-To view a company's most recent company events access the ```OPT``` component, and enter in the TICKER name and click ```Enter``` and click the option for the document type you would like and a request will be made to one of the following API endpoints  ```http://127.0.0.1:8000/api/v1/optionchain/getoptionchain/```, ```http://127.0.0.1:8000/api/v1/optionchain/getcalls/```, ```http://127.0.0.1:8000/api/v1/optionchain/getputs/```
+To view a company's most recent company events access the ```OPT``` component, enter in the TICKER name click ```Enter``` and click the option for the document type you would like and a request will be made to one of the following API endpoints  ```http://127.0.0.1:8000/api/v1/optionchain/getoptionchain/```, ```http://127.0.0.1:8000/api/v1/optionchain/getcalls/```, ```http://127.0.0.1:8000/api/v1/optionchain/getputs/```
 ![image](https://github.com/user-attachments/assets/100f4c77-8259-4a54-9650-10609b09b29e) <br>
 An example query for IBM's call option chain.
 
 ## Equity Screener
 
-To screen companys in the S&P500 by market cap access the ```EQS``` componnet, and you will be prompted for a inequality, and a market cap value after entering in the following click query and a request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/equityscreener/screener/``` <br>
+To screen companies in the S&P500 by market cap access the ```EQS``` component, and you will be prompted for a inequality, and a market cap value after entering in the following click query and a request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/equityscreener/screener/``` <br>
 ![image](https://github.com/user-attachments/assets/19e2d513-dcdc-40ad-b19d-dce1f5711691)
  <br>
 An example query for companies with a market cap greater than a billion. 
@@ -168,8 +166,6 @@ An example query for companies with a market cap greater than a billion.
 To view data for the world indices, access the ```WI``` component, and click ```Refresh``` and a request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/worldindices/getworldindices/```
 ![image](https://github.com/user-attachments/assets/b871516a-da51-4bcc-b104-7856c7fb0e3e) <br>
 An example query.
-
-
 
 
 ## Technologies Used
