@@ -9,9 +9,9 @@ Turing-Terminal is a web-based financial terminal developed using React, TypeScr
 ## Prerequisites
 
 - Node.js: Ensure node.js is installed on your machine. [Download  here](https://nodejs.org/en/download/prebuilt-installer/current)
-- A PostgreSQL account: This project used PostgreSQL for database management. An acccount can be through Postgres after downloading [here](https://www.postgresql.org/download/)
+- A PostgreSQL account: This project used PostgreSQL for database management. An account can be through Postgres after downloading [here](https://www.postgresql.org/download/)
 - Firebase Account: Firebase Authentication is used for authentication in this project. This can be done [here](https://firebase.google.com/)
-- Docker Account: This project's frontend and backend is both containerized using Docker. Setup [here](https://www.docker.com/products/docker-desktop/)
+- Docker Account: This project's frontend and backend are containerized using Docker. Setup [here](https://www.docker.com/products/docker-desktop/)
 
 ## Installation & Setup
 
@@ -55,7 +55,7 @@ docker kill <CONTAINER ID>
    The environment variables need to be set up next. Follow these steps: <br>
    - In the directory ```turing-terminal-front/turing-terminal-front-end/```
    - Access the ```.env``` file in your text editor.
-   - Append the following lines the file: <br>
+   - Append the following lines to the file: <br>
    ```
    VITE_API_URL=<The Hosting URL>
    VITE_APIKEY=<Your Firebase API Key>
@@ -66,9 +66,9 @@ docker kill <CONTAINER ID>
    VITE_APPID=<Your Firebase app ID>
    ```
    - Replace the placeholders with your actual values. Here's how you can obtain each of these:
-     - VITE_API_URL: This is the base URL of your application. During development this is usally <br>
+     - VITE_API_URL: This is the base URL of your application. During development, this is usually <br>
         ```http://127.0.0.1:8000/```
-     - The rest of the above values are provided by Firebase. After creating an account and a new project, the ```VITE_APIKEY```, ```VITE_AUTHDOMAIN```, ```VITE_PROJECTID```, ```VITE_STORAGEBUCKET```, ```VITE_MESSAGINGSENDERID```, ```VITE_APPID```, can be found once you register a app and go to the Project Settings option. An example of the values you need in Firebase can seen below. <br>
+     - The rest of the above values are provided by Firebase. After creating an account and a new project, the ```VITE_APIKEY```, ```VITE_AUTHDOMAIN```, ```VITE_PROJECTID```, ```VITE_STORAGEBUCKET```, ```VITE_MESSAGINGSENDERID```, ```VITE_APPID```, can be found once you register an app and go to the Project Settings option. An example of the values you need in Firebase can seen below. <br>
      ![image](https://github.com/user-attachments/assets/87ddb90a-f163-4452-b675-b28a2c26d68d)
    - After obtaining these values, replace the placeholders in ```.env``` file with the actual values and save the file.
   
@@ -88,11 +88,11 @@ The Turing Terminal allows viewing company filings, holders, news, live market d
 # Landing Page
 
 ## Login
-At the top of the landing page, users can create accounts with google or through email. <br>
+At the top of the landing page, users can create accounts with Google or through email. <br>
 ![image](https://github.com/user-attachments/assets/31c437d5-62bd-46fa-8761-444520d61bd1) <br>
 After clicking ```LOGIN``` <br>
 ![image](https://github.com/user-attachments/assets/229d6dec-9060-4673-8a3a-a234de965d11)<br>
-Users are capable of creating accounts or logging in with google, or email. After a successful login, the user will be navigated to the financial terminal.
+Users are capable of creating accounts or logging in with Google, or email. After a successful login, the user will be navigated to the financial terminal.
 
 ## Launch Terminal 
 ![image](https://github.com/user-attachments/assets/88b82375-b927-4a3c-a28c-5bb3a49d4695)
@@ -103,29 +103,29 @@ Hovering your mouse over the text at the top will display the component name, an
 ![image](https://github.com/user-attachments/assets/8b06960f-7233-443f-90ad-24f177bb0980)
 
 ## Filings
-To view a company's most recent SEC filings, enter in the TICKER name and either press ```Enter``` or click ```Search``` and the request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/filings/getfilings/```
+To view a company's most recent SEC filings, enter the TICKER name, and either press ```Enter``` or click ```Search``` and the request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/filings/getfilings/```
 ![image](https://github.com/user-attachments/assets/006ebe63-03dd-4412-b5a9-784a25ac25d8)
 An example query for NVDA's SEC filings.
 
 ## Holders
-To view a company's largest holders access the ```HDS``` component , and enter in the TICKER name and either press ```Enter``` or click ```Search``` and the request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/holders/getholders/```
+To view a company's largest holders access the ```HDS``` component, and enter in the TICKER name and either press ```Enter``` or click ```Search``` and the request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/holders/getholders/```
 ![image](https://github.com/user-attachments/assets/83bec1e8-ccb7-49c8-bd62-c344d5ddeeb7)
 An example query for META's largest holders.
 
 ## News
-To view a company's most recent news access the ```N``` component , and enter in the TICKER name and either press ```Enter``` or click ```Search``` and the request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/news/getnews/```
+To view a company's most recent news access the ```N``` component, enter in the TICKER name and either press ```Enter``` or click ```Search``` and the request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/news/getnews/```
 ![image](https://github.com/user-attachments/assets/ccf09864-6997-4c9e-aadf-a919da97eed6)
 An example query for AMZN's most recent news.
 
 ## Focus 
-To view a company's most recent price, day change, and day percent change access the ```FOCUS``` component , and enter in the TICKER name and press ```Enter``` and the request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/focus/ticker/```
+To view a company's most recent price, day change, and day percent change access the ```FOCUS``` component, and enter in the TICKER name and press ```Enter``` and the request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/focus/ticker/```
 ![image](https://github.com/user-attachments/assets/dbe67c9e-ac4f-4d79-878c-d4971c3db976) <br>
 An example query for AAPL's most recent price, day change, and day percent change. <br>
 
 ## Chart
-To view a company's all time chart access the ```Chart``` component , enter in the TICKER name and press ```Enter``` and the request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/chart/getdailydata/```
+To view a company's all-time chart access the ```Chart``` component, enter in the TICKER name and press ```Enter``` and the request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/chart/getdailydata/```
 ![image](https://github.com/user-attachments/assets/c2fa6899-8f75-4f84-8b4b-7369bcb77b6b) <br>
-An example query for IBM's all time stock chart.
+An example query for IBM's all-time stock chart.
 
 ## Bio
 Users on Turing Terminal can uniquely identify themselves with a username, to do so navigate to the ```BIO``` component, enter your information, and click ```Next```, after doing so the data will be saved in PostgreSQL.
@@ -136,7 +136,7 @@ If you are logged in and have created your bio you can view your most recent set
 ![image](https://github.com/user-attachments/assets/efcb9c0d-898f-4a2d-b522-bd6a7e021a63)
 
 ## Description
-To view a company's description access the ```DES``` component , and enter in the TICKER name and press ```Enter``` and the request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/chart/getdailydata/```
+To view a company's description access the ```DES``` component, enter in the TICKER name and press ```Enter``` and the request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/chart/getdailydata/```
 ![image](https://github.com/user-attachments/assets/a18fd96f-68d6-4e81-877f-2252b8e17eaa)
 
 ## Financials
@@ -156,7 +156,7 @@ An example query for IBM's call option chain.
 
 ## Equity Screener
 
-To screen companies in the S&P500 by market cap access the ```EQS``` component, and you will be prompted for a inequality, and a market cap value after entering in the following click query and a request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/equityscreener/screener/``` <br>
+To screen companies in the S&P500 by market cap access the ```EQS``` component, and you will be prompted for an inequality, and a market cap value after entering in the following click query and a request will be made to the API endpoint ```http://127.0.0.1:8000/api/v1/equityscreener/screener/``` <br>
 ![image](https://github.com/user-attachments/assets/19e2d513-dcdc-40ad-b19d-dce1f5711691)
  <br>
 An example query for companies with a market cap greater than a billion. 
