@@ -177,7 +177,7 @@ An example query.
 - [Firebase Authentication](https://firebase.google.com/docs/auth/)
 - [Docker](https://www.docker.com/)
   
-  ## References
+## References
 - [React Documentation](https://react.dev/reference/react)
 - [TypeScript Documentation](https://www.typescriptlang.org/docs/handbook/intro.html)
 - [Firebase Authentication Documentation](https://firebase.google.com/docs/auth/web/google-signin)
